@@ -1,0 +1,104 @@
+<aside>
+    <a class="logo" routerLink="/"></a>
+
+    <div class="toggle-icon" (click)="toggleMinimize()">
+        <div>
+            <i class="fa fa-angle-left"></i>
+        </div>
+    </div>
+
+    <nav *ngIf="user">
+        <ul>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/dashboard']">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li (click)="onToggleMenuProduct()">
+                <a routerLinkActive="active" (clickOutside)="onCloseMenuProduct()">
+                    <i class="fas fa-cube"></i>Product
+                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                </a>
+                <ul [class.show]="isOpenMenuProduct">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-th"></i>
+                            <span>Product portfolio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-tags"></i>
+                            <span>Set prices</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/exchange']">
+                    <i class="fas fa-exchange-alt"></i>Exchange
+                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-file"></i>
+                            <span>Bill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-reply-all"></i>
+                            <span>Return the goods</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-share-square"></i>
+                            <span>Goods receipt</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-reply-all"></i>
+                            <span>Tra hang nhap</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/report']">
+                    <i class="fas fa-chart-bar"></i>Report
+                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>End day</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-clipboard"></i>
+                            <span>Sell</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-inbox"></i>
+                            <span>Order</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-cube"></i>
+                            <span>merchandise</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>

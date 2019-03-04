@@ -1,0 +1,24 @@
+@import "./assets/scss/devextreme-override.scss";
+@import "./assets/scss/shared.scss";
+@import "./assets/scss/variables.scss";
+
+html, body, app {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body.popup-opened {
+	overflow: hidden;
+	margin-right: 8px;
+}
+
+app {
+	display: block;
+}
+
+.error-message {
+	color: #D9534F;
+	font-size: 12px;
+}

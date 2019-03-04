@@ -1,0 +1,80 @@
+.loading-panel {
+	position: absolute;
+	width: calc(100% - 1px);
+	height: 100%;
+	left: 1px;
+	background: white;
+	opacity: 0.95;
+	z-index: 1;
+
+	.loading-text {
+		font-size: 18px;
+		margin-left: -10px;
+		color: #c22642;
+	}
+
+	.sk-wave {
+		margin: -27px auto 0;
+		width: 50px;
+		height: 40px;
+		text-align: center;
+		font-size: 10px;
+
+		.sk-rect {
+			background-color: #c22642;
+			height: 100%;
+			margin: 0 1px;
+			width: 6px;
+			display: inline-block;
+			-webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+			animation: sk-waveStretchDelay 1.2s infinite ease-in-out
+		}
+
+		.sk-rect1 {
+			-webkit-animation-delay: -1.2s;
+			animation-delay: -1.2s
+		}
+
+		.sk-rect2 {
+			-webkit-animation-delay: -1.1s;
+			animation-delay: -1.1s
+		}
+
+		.sk-rect3 {
+			-webkit-animation-delay: -1s;
+			animation-delay: -1s
+		}
+
+		.sk-rect4 {
+			-webkit-animation-delay: -.9s;
+			animation-delay: -.9s
+		}
+
+		.sk-rect5 {
+			-webkit-animation-delay: -.8s;
+			animation-delay: -.8s
+		}
+	}
+}
+
+@-webkit-keyframes sk-waveStretchDelay {
+	0%, 40%, 100% {
+		-webkit-transform: scaleY(.4);
+		transform: scaleY(.4)
+	}
+	20% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1)
+	}
+}
+
+@keyframes sk-waveStretchDelay {
+	0%, 40%, 100% {
+		-webkit-transform: scaleY(.4);
+		transform: scaleY(.4)
+	}
+	20% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1)
+	}
+}

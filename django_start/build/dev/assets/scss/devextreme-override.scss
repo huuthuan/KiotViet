@@ -1,0 +1,121 @@
+@import "./variables";
+
+.dxm-tooltip,
+.dxc-tooltip {
+	z-index: 2;
+}
+
+// Should create a theme instead of overriding
+.dx-texteditor {
+	border-radius: 2px;
+}
+
+// Validation messages
+.dx-invalid {
+	margin-bottom: 20px;
+	&.dx-dropdowneditor-active {
+		.dx-invalid-message {
+			display: none;
+			.dx-overlay-content {
+				display: none;
+			}
+		}
+	}
+	.dx-invalid-message {
+		.dx-overlay-content {
+			background: transparent;
+			color: #d9534f;
+			padding: 0;
+			position: relative;
+			visibility: visible;
+		}
+	}
+}
+
+// Grid
+.dx-datagrid {
+	.dx-datagrid-headers {
+		//border: none;
+	}
+	.dx-header-row {
+		td {
+			.dx-datagrid-text-content {
+				color: $text-color;
+				font-weight: 500;
+			}
+		}
+	}
+	.dx-datagrid-pager {
+		border-top: 1px solid #ddd;
+	}
+}
+
+// Popup
+.dx-popup-wrapper:not(.dx-dropdowneditor-overlay) {
+	.dx-overlay-content {
+		.dx-popup-title.dx-toolbar {
+			color: $cy-risk-color;
+
+			.dx-toolbar-label {
+				font-size: 18px;
+			}
+		}
+		.dx-popup-content {
+			max-height: calc(100vh - 170px);
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding: 10px 20px;
+		}
+	}
+}
+
+.dx-popup-wrapper:not(.dx-dropdowneditor-overlay).center-popup {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	align-items: center;
+	.dx-overlay-content {
+		position: relative !important;
+		top: unset !important;
+		left: unset !important;
+		transform: none !important;
+		margin: 0 auto !important;
+	}
+}
+
+// Dialog
+.dx-dialog {
+	.dx-dialog-buttons {
+		.dx-button[aria-label="Yes"] {
+			background-color: #d9534f;
+			border-color: #d43f3a;
+			color: #fff;
+			&:hover {
+				background-color: #c9302c;
+				border-color: #ac2925;
+			}
+		}
+	}
+}
+
+// Chart
+dx-chart.chart-drilldown {
+	.dxc-markers {
+		rect {
+			cursor: zoom-in;
+		}
+	}
+}
+
+/* Medium devices, Small devices and Extra small devices */
+@media (max-width: 991.98px) {
+	.dx-popup-wrapper:not(.dx-dropdowneditor-overlay) {
+		.dx-overlay-content {
+			.dx-popup-content {
+				max-height: calc(100vh - 100px);
+			}
+		}
+	}
+}

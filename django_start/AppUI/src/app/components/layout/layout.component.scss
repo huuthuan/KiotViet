@@ -1,0 +1,422 @@
+@import '../../../assets/scss/variables';
+
+::ng-deep app-layout {
+  display: block;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  position: relative;
+
+  // Header
+  app-header {
+    > header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 76px;
+      padding-left: 28px;
+      border-bottom: solid 1px $border-color;
+      background-color: white;
+      color: $text-color;
+      z-index: 2;
+
+      &:after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+
+      > h4 {
+        display: none;
+        float: left;
+        margin: 0;
+        line-height: 76px;
+        color: $text-color;
+      }
+
+      > nav.user-menu {
+        float: right;
+        padding-right: 25px;
+        line-height: 76px;
+
+        ul {
+          margin: 0;
+          padding: 0 10px 0 0;
+          list-style: none;
+          display: inline-block;
+
+          li {
+            position: relative;
+            display: inline-block;
+            line-height: normal;
+            margin: 0;
+            padding: 0;
+
+            .avatar {
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 10px;
+              }
+            }
+
+            .user-name {
+              margin-right: 2px;
+              font-weight: 500;
+              &:hover {
+                color: $cy-risk-color;
+              }
+            }
+
+            .dropdown-menu {
+              top: 50px;
+              border-radius: 0 0 0.25rem 0.25rem;
+            }
+
+            a {
+              padding: 10px 20px;
+              -webkit-transition: color .15s ease;
+              -moz-transition: color .15s ease;
+              transition: color .15s ease;
+              color: inherit;
+              text-decoration: none;
+
+              &:active,
+              &:hover {
+                color: $cy-risk-color !important;
+                cursor: pointer;
+                text-decoration: none;
+                background-color: #f8f9fa;
+              }
+
+              > i {
+                margin-right: 6px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Sidebar
+  app-sidebar {
+    > aside {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 250px;
+      padding-top: 76px;
+      background: white;
+      color: #404E67;
+      -webkit-box-shadow: 1px 0 6px $shadow-color;
+      box-shadow: 1px 0 6px $shadow-color;
+      -webkit-transition: left .2s ease, width .2s ease;
+      -moz-transition: left .2s ease, width .2s ease;
+      transition: left .2s ease, width .2s ease;
+      z-index: 3;
+
+      > a.logo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 210px;
+        height: 76px;
+        display: block;
+        border-bottom: solid 1px $border-color;
+        background: url('../../../assets/images/logo.png') no-repeat 22px 20px;
+        background-size: auto 42px;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        transition: all .2s ease;
+      }
+
+      > div.toggle-icon {
+        position: absolute;
+        top: 23px;
+        right: -16px;
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+        cursor: pointer;
+
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+
+        transition: background-color 0.2s ease, right .2s ease;
+        -moz-transition: background-color 0.2s ease, right .2s ease;
+        -webkit-transition: background-color 0.2s ease, right .2s ease;
+
+        &:hover {
+          background-color: #1a21614a;
+        }
+
+        > div {
+          font-size: 14px;
+          text-align: center;
+          width: 22px;
+          height: 22px;
+          line-height: 20px;
+
+          background-color: white;
+          color: $cy-risk-color;
+          border: solid 1px $cy-risk-color;
+
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          -webkit-box-shadow: 0 0 3px #00000080;
+          -moz-box-shadow: 0 0 3px $content-bg-color;
+          box-shadow: 0 0 3px #00000080;
+        }
+      }
+
+      > nav {
+        position: absolute;
+        top: 76px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: #343434;
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          > li {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            border: 0.1px solid #e3e3e3;
+
+            > ul > li > a {
+              margin-left: 15px;
+            }
+
+            &.navigation-header {
+              padding-left: 27px;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              font-weight: 500;
+              text-transform: uppercase;
+              font-size: 15px;
+              > i {
+                display: none;
+              }
+            }
+
+            > a {
+              position: relative;
+              color: #343434;
+              text-decoration: none;
+              font-size: 15px;
+              display: block;
+              line-height: 18px;
+
+              width: 100%;
+              padding-top: 15px;
+              padding-bottom: 15px;
+              padding-left: 12px;
+              white-space: nowrap;
+              overflow: hidden;
+
+              -webkit-transition: color .15s ease, background-color .15s ease;
+              -moz-transition: color .15s ease, background-color .15s ease;
+              transition: color .15s ease, background-color .15s ease;
+
+              span.circle-down {
+                right: 8px;
+                position: absolute;
+              }
+
+              &:hover {
+                text-decoration: none;
+                color: #c22642;
+                background: #f8f9fa;
+              }
+
+              &.active {
+                color: #c22642;
+                font-weight: 500;
+                background: #f8f9fa;
+              }
+
+              > i {
+                margin: 0 15px;
+              }
+            }
+          }
+        }
+        //
+        // Second level
+        ul > li > ul > li {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Main
+  > main {
+    position: absolute;
+    top: 76px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    //overflow: auto;
+    z-index: 1;
+    background: white;
+    padding: 15px 10px 15px 0;
+    .content-wrapper {
+      border-left: 1px solid #E4E7ED;
+      min-height: calc(100vh - 100px);
+    }
+  }
+
+  &.minimized {
+    app-header {
+      > header {
+        margin-left: 70px;
+      }
+    }
+
+    app-sidebar {
+      > aside {
+        left: -250px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+        > a.logo {
+          right: -70px;
+          width: 70px;
+          border-right: solid 1px $border-color;
+          background: transparent url('../../../assets/images/logo.png') center center no-repeat;
+          background-size: auto 36px;
+        }
+
+        > div.toggle-icon {
+          right: -86px;
+
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  ::ng-deep app-layout {
+    app-header {
+      > header {
+        > h4 {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  ::ng-deep app-layout {
+    position: relative;
+    app-header {
+      > header {
+        left: 250px;
+      }
+    }
+
+    app-sidebar {
+      > aside {
+        left: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+
+    > main {
+      left: 250px;
+    }
+
+    &.minimized {
+      > main {
+        left: 70px;
+      }
+
+      app-header {
+        > header {
+          margin-left: 0;
+          left: 70px;
+        }
+      }
+
+      app-sidebar {
+        > aside {
+          left: 0;
+          width: 70px;
+
+          > a.logo {
+            right: 0;
+            border-right: 0;
+            background: transparent url('../../../assets/images/logo.png') center center no-repeat;
+            background-size: auto 36px;
+          }
+
+          > div.toggle-icon {
+            right: -20px;
+          }
+
+          > nav {
+            ul > li {
+              &.navigation-header {
+                span {
+                  display: none;
+                }
+                i {
+                  display: inline-block;
+                }
+              }
+              > a > span {
+                display: none;
+              }
+              //
+              // Second level
+              > ul > li > a {
+                padding-left: 12px;
+
+                > span {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
+// Super large devices
+@media (min-width: 1500px) {
+
+}

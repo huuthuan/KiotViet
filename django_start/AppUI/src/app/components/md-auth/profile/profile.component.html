@@ -1,0 +1,101 @@
+<div class="d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mb-5">
+                    <div class="logo-wrap mb-5 text-center profile_title">
+                        Cập nhật thông của bạn
+                    </div>
+                    <div class="form-wrap">
+                        <dx-validation-group>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col text-lg-left mt-2">
+                                    <div class="label text-left">First name</div>
+                                    <dx-text-box [(value)]="editing_profile.first_name">
+                                        <dx-validator>
+                                            <dxi-validation-rule type="required"
+                                                                 message="First name is required"></dxi-validation-rule>
+                                        </dx-validator>
+                                    </dx-text-box>
+                                </div>
+                                <div class="col text-lg-right mt-2">
+                                    <div class="label text-left">Last name</div>
+                                    <dx-text-box [(value)]="editing_profile.last_name">
+                                        <dx-validator>
+                                            <dxi-validation-rule type="required"
+                                                                 message="Last name is required"></dxi-validation-rule>
+                                        </dx-validator>
+                                    </dx-text-box>
+                                </div>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">User name</div>
+                                <dx-text-box [(value)]="editing_profile.username">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="User name is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Role</div>
+                                <span>{{ editing_profile.is_superuser }}</span>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Phone</div>
+                                <dx-text-box [(value)]="editing_profile.phone">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Phone is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Email</div>
+                                <dx-text-box [(value)]="editing_profile.email">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Email is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Address</div>
+                                <dx-text-box [(value)]="editing_profile.address">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Address is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Date of birth</div>
+                                <dx-date-box [(value)]="editing_profile.dare_birth"
+                                             [dateSerializationFormat]="'yyyy-MM-dd'"
+                                             type="date">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Date of birth is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-date-box>
+                            </div>
+                            <div class="row text-left mt-2">
+                                <div class="field col-12 change-password-link" routerLinkActive="active"
+                                     [routerLink]="['/change-password']">
+                                    <small class="text-danger">Change your password</small>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col text-lg-left mt-2">
+                                    <dx-button width="150" text="Save" type="danger" [(disabled)]="isSubmitting"
+                                               (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
+                                    <dx-button text="Cancel"></dx-button>
+                                </div>
+                            </div>
+                        </dx-validation-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

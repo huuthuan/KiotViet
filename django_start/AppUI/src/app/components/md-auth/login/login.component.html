@@ -1,0 +1,56 @@
+<div class="login-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="login-form">
+                    <div class="logo-wrap mb-5">
+                        <a [routerLink]="['/']">
+                            <img src="/static/app/assets/images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="form-wrap">
+                        <dx-validation-group>
+                            <div class="field">
+                                <div class="label">Username</div>
+                                <dx-text-box [(value)]="user.username">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Username is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-2">
+                                <div class="label">Password</div>
+                                <dx-text-box [(value)]="user.password" mode="password">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Password is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col-md-12 col-lg-8"><a [routerLink]="['/forgot-password/']">Forgot your
+                                    password?</a></div>
+                                <div class="col text-lg-left mt-2">
+                                    <dx-button width="150" text="Manage" icon="fields" type="danger"></dx-button>
+                                </div>
+                                <div class="col text-lg-right mt-2">
+                                    <dx-button width="150" icon="cart" text="Sell goods" type="danger"
+                                               [(disabled)]="isSubmitting"
+                                               (onClick)="onLogin($event)"></dx-button>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <h6>Don't have an account?
+                                        <a [routerLink]="['/register/']">Register now!</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </dx-validation-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

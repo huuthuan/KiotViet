@@ -1,0 +1,107 @@
+<div class="login-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mb-5">
+                    <div class="logo-wrap mb-5 text-center register_head">
+                        Tạo tài khoản Electronics Shop của bạn
+                    </div>
+                    <div class="form-wrap">
+                        <dx-validation-group>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col text-lg-left mt-2">
+                                    <div class="label text-left">First name</div>
+                                    <dx-text-box [(value)]="register.first_name">
+                                        <dx-validator>
+                                            <dxi-validation-rule type="required"
+                                                                 message="Username is required"></dxi-validation-rule>
+                                        </dx-validator>
+                                    </dx-text-box>
+                                </div>
+                                <div class="col text-lg-right mt-2">
+                                    <div class="label text-left">Last name</div>
+                                    <dx-text-box [(value)]="register.last_name">
+                                        <dx-validator>
+                                            <dxi-validation-rule type="required"
+                                                                 message="Username is required"></dxi-validation-rule>
+                                        </dx-validator>
+                                    </dx-text-box>
+                                </div>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Phone</div>
+                                <dx-text-box [(value)]="register.phone">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Password is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field  mt-3">
+                                <div class="label">Shop name</div>
+                                <dx-text-box [(value)]="register.shop_name">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Username is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Address</div>
+                                <dx-text-box [(value)]="register.address">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Password is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Email</div>
+                                <dx-text-box [(value)]="register.email">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Username is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">User name</div>
+                                <dx-text-box [(value)]="register.username">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Password is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Password</div>
+                                <dx-text-box [(value)]="register.password" mode="password">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Username is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Confirm password</div>
+                                <dx-text-box [(value)]="register.confirm_password" mode="password">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Password is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col text-lg-left mt-2">
+                                    <dx-button width="150" text="Sign up" type="danger"
+                                               [(disabled)]="isSubmitting"
+                                               (onClick)="onSaveClick($event)"></dx-button>
+                                </div>
+                            </div>
+                        </dx-validation-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
