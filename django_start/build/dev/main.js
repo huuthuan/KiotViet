@@ -193,13 +193,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
-/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-permissions */ "./node_modules/ngx-permissions/ngx-permissions.umd.js");
-/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(ngx_permissions__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _modules_shared_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/shared.module */ "./src/app/modules/shared.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
-/* harmony import */ var _services_gaurds__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/gaurds */ "./src/app/services/gaurds/index.ts");
+/* harmony import */ var ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-malihu-scrollbar */ "./node_modules/ngx-malihu-scrollbar/fesm5/ngx-malihu-scrollbar.js");
+/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-permissions */ "./node_modules/ngx-permissions/ngx-permissions.umd.js");
+/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(ngx_permissions__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _modules_shared_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/shared.module */ "./src/app/modules/shared.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
+/* harmony import */ var _services_gaurds__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/gaurds */ "./src/app/services/gaurds/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -218,8 +219,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 function tokenGetter() {
-    return localStorage.getItem(_services__WEBPACK_IMPORTED_MODULE_10__["TOKEN_KEY"]);
+    return localStorage.getItem(_services__WEBPACK_IMPORTED_MODULE_11__["TOKEN_KEY"]);
 }
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -227,7 +229,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -239,19 +241,21 @@ var AppModule = /** @class */ (function () {
                         authScheme: 'JWT '
                     }
                 }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
-                ngx_permissions__WEBPACK_IMPORTED_MODULE_6__["NgxPermissionsModule"].forRoot(),
-                _modules_shared_module__WEBPACK_IMPORTED_MODULE_8__["SharedModule"].forRoot()
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                ngx_permissions__WEBPACK_IMPORTED_MODULE_7__["NgxPermissionsModule"].forRoot(),
+                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__["MalihuScrollbarModule"].forRoot(),
+                _modules_shared_module__WEBPACK_IMPORTED_MODULE_9__["SharedModule"].forRoot(),
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
             providers: [
-                _services__WEBPACK_IMPORTED_MODULE_10__["ApiService"],
-                _services__WEBPACK_IMPORTED_MODULE_10__["UserService"],
-                _services__WEBPACK_IMPORTED_MODULE_10__["AuthenticationService"],
-                _services__WEBPACK_IMPORTED_MODULE_10__["SharedService"],
-                _services__WEBPACK_IMPORTED_MODULE_10__["RouterService"],
-                _services_gaurds__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"],
-                _services_gaurds__WEBPACK_IMPORTED_MODULE_11__["GuestGuard"],
+                _services__WEBPACK_IMPORTED_MODULE_11__["ApiService"],
+                _services__WEBPACK_IMPORTED_MODULE_11__["UserService"],
+                _services__WEBPACK_IMPORTED_MODULE_11__["AuthenticationService"],
+                _services__WEBPACK_IMPORTED_MODULE_11__["SharedService"],
+                _services__WEBPACK_IMPORTED_MODULE_11__["RouterService"],
+                _services_gaurds__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"],
+                _services_gaurds__WEBPACK_IMPORTED_MODULE_12__["GuestGuard"],
+                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__["MalihuScrollbarService"],
                 { provide: _angular_common__WEBPACK_IMPORTED_MODULE_0__["APP_BASE_HREF"], useValue: '/' }
             ],
         })
@@ -618,7 +622,7 @@ var LoadingPanelComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<aside>\n    <a class=\"logo\" routerLink=\"/\"></a>\n\n    <div class=\"toggle-icon\" (click)=\"toggleMinimize()\">\n        <div>\n            <i class=\"fa fa-angle-left\"></i>\n        </div>\n    </div>\n\n    <nav *ngIf=\"user\">\n        <ul>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"fas fa-tachometer-alt\"></i>\n                    <span>Dashboard</span>\n                </a>\n            </li>\n            <li (click)=\"onToggleMenuProduct()\">\n                <a routerLinkActive=\"active\" (clickOutside)=\"onCloseMenuProduct()\">\n                    <i class=\"fas fa-cube\"></i>Product\n                    <span class=\"fas fa-chevron-circle-down circle-down\"></span>\n                </a>\n                <ul [class.show]=\"isOpenMenuProduct\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-th\"></i>\n                            <span>Product portfolio</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-tags\"></i>\n                            <span>Set prices</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/exchange']\">\n                    <i class=\"fas fa-exchange-alt\"></i>Exchange\n                    <span class=\"fas fa-chevron-circle-down circle-down\"></span>\n                </a>\n                <ul>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-file\"></i>\n                            <span>Bill</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Return the goods</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-share-square\"></i>\n                            <span>Goods receipt</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Tra hang nhap</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/report']\">\n                    <i class=\"fas fa-chart-bar\"></i>Report\n                    <span class=\"fas fa-chevron-circle-down circle-down\"></span>\n                </a>\n                <ul>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-chart-pie\"></i>\n                            <span>End day</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-clipboard\"></i>\n                            <span>Sell</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-inbox\"></i>\n                            <span>Order</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-cube\"></i>\n                            <span>merchandise</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n</aside>\n"
+module.exports = "<aside>\n    <a class=\"logo\" routerLink=\"/\"></a>\n\n    <div class=\"toggle-icon\" (click)=\"toggleMinimize()\">\n        <div>\n            <i class=\"fa fa-angle-left\"></i>\n        </div>\n    </div>\n\n    <nav *ngIf=\"user\">\n        <ul>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"fas fa-tachometer-alt\"></i>\n                    <span>Dashboard</span>\n                </a>\n            </li>\n            <li (click)=\"onToggleMenuProduct()\">\n                <a routerLinkActive=\"active\" (click)=\"onShowProductItem()\">\n                    <i class=\"fas fa-cube\"></i>Product\n                    <span *ngIf=\"!isProductItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isProductItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isProductItem\">\n                    <li>\n                        <a routerLinkActive=\"active\" [routerLink]=\"['/product']\">\n                            <i class=\"fas fa-th\"></i>\n                            <span>Product portfolio</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-tags\"></i>\n                            <span>Set prices</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowExchangeItem()\">\n                    <i class=\"fas fa-exchange-alt\"></i>Exchange\n                    <span *ngIf=\"!isExchangeItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isExchangeItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isExchangeItem\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-file\"></i>\n                            <span>Bill</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Return the goods</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-share-square\"></i>\n                            <span>Goods receipt</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Tra hang nhap</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowReportItem\">\n                    <i class=\"fas fa-chart-bar\"></i>Report\n                    <span *ngIf=\"!isReportItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isReportItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isReportItem\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-chart-pie\"></i>\n                            <span>End day</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-clipboard\"></i>\n                            <span>Sell</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-inbox\"></i>\n                            <span>Order</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-cube\"></i>\n                            <span>merchandise</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n</aside>\n"
 
 /***/ }),
 
@@ -662,8 +666,11 @@ var SidebarComponent = /** @class */ (function () {
     function SidebarComponent(userService) {
         this.userService = userService;
         this.onSidebarToggle = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.isOpenMenuProduct = false;
         this.user = new _models__WEBPACK_IMPORTED_MODULE_2__["LoggedUser"]();
+        this.isOpenMenuProduct = false;
+        this.isProductItem = true;
+        this.isReportItem = true;
+        this.isExchangeItem = true;
     }
     SidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -681,10 +688,14 @@ var SidebarComponent = /** @class */ (function () {
     SidebarComponent.prototype.onToggleMenuProduct = function () {
         this.isOpenMenuProduct = !this.isOpenMenuProduct;
     };
-    SidebarComponent.prototype.onCloseMenuProduct = function () {
-        if (this.isOpenMenuProduct) {
-            this.isOpenMenuProduct = false;
-        }
+    SidebarComponent.prototype.onShowProductItem = function () {
+        this.isProductItem = !this.isProductItem;
+    };
+    SidebarComponent.prototype.onShowReportItem = function () {
+        this.isReportItem = !this.isReportItem;
+    };
+    SidebarComponent.prototype.onShowExchangeItem = function () {
+        this.isExchangeItem = !this.isExchangeItem;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
@@ -779,11 +790,51 @@ var RegisterInput = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/category.model.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/category.model.ts ***!
+  \******************************************/
+/*! exports provided: CategoryLookupModel, UpdateCategoryModel, ProductDetailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryLookupModel", function() { return CategoryLookupModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateCategoryModel", function() { return UpdateCategoryModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductDetailModel", function() { return ProductDetailModel; });
+/**
+ * Created by Thuan Le on 03/14/2019.
+ */
+var CategoryLookupModel = /** @class */ (function () {
+    function CategoryLookupModel(init) {
+        Object.assign(this, init);
+    }
+    return CategoryLookupModel;
+}());
+
+var UpdateCategoryModel = /** @class */ (function () {
+    function UpdateCategoryModel(init) {
+        Object.assign(this, init);
+    }
+    return UpdateCategoryModel;
+}());
+
+var ProductDetailModel = /** @class */ (function () {
+    function ProductDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return ProductDetailModel;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/index.ts":
 /*!*********************************!*\
   !*** ./src/app/models/index.ts ***!
   \*********************************/
-/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput */
+/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput, UpdateProductModel, CategoryLookupModel, UpdateCategoryModel, ProductDetailModel, SearchFilterModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -805,6 +856,70 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RegisterInput", function() { return _account_model__WEBPACK_IMPORTED_MODULE_0__["RegisterInput"]; });
 
+/* harmony import */ var _product_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product.model */ "./src/app/models/product.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateProductModel", function() { return _product_model__WEBPACK_IMPORTED_MODULE_1__["UpdateProductModel"]; });
+
+/* harmony import */ var _category_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category.model */ "./src/app/models/category.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoryLookupModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["CategoryLookupModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateCategoryModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["UpdateCategoryModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductDetailModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["ProductDetailModel"]; });
+
+/* harmony import */ var _search_models__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search.models */ "./src/app/models/search.models.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchFilterModel", function() { return _search_models__WEBPACK_IMPORTED_MODULE_3__["SearchFilterModel"]; });
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/product.model.ts":
+/*!*****************************************!*\
+  !*** ./src/app/models/product.model.ts ***!
+  \*****************************************/
+/*! exports provided: UpdateProductModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateProductModel", function() { return UpdateProductModel; });
+/**
+ * Created by Thuan Le on 03/13/2019.
+ */
+var UpdateProductModel = /** @class */ (function () {
+    function UpdateProductModel(init) {
+        Object.assign(this, init);
+    }
+    return UpdateProductModel;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/search.models.ts":
+/*!*****************************************!*\
+  !*** ./src/app/models/search.models.ts ***!
+  \*****************************************/
+/*! exports provided: SearchFilterModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchFilterModel", function() { return SearchFilterModel; });
+/**
+ * Created by Thuan Le on 03/30/2019.
+ */
+var SearchFilterModel = /** @class */ (function () {
+    function SearchFilterModel(init) {
+        Object.assign(this, init);
+    }
+    return SearchFilterModel;
+}());
 
 
 
@@ -1769,7 +1884,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Thuan Le\Desktop\django_start\AppUI\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Thuan Le\Desktop\Git\KiotViet\django_start\AppUI\src\main.ts */"./src/main.ts");
 
 
 /***/ })

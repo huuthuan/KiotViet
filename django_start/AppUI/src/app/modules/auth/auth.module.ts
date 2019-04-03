@@ -8,6 +8,7 @@ import {
   LoginComponent,
   ProfileComponent,
   RegisterComponent,
+  ChangePasswordComponent,
 } from '../../components/md-auth';
 
 
@@ -24,6 +25,11 @@ import {
             path: 'profile',
             component: ProfileComponent,
             data: {title: 'Profile'}
+          },
+          {
+            path: 'change-password',
+            component: ChangePasswordComponent,
+            data: {title: 'Change Password'}
           }
         ]
       },
@@ -44,7 +50,8 @@ import {
   declarations: [
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChangePasswordComponent,
   ]
 })
 export class AuthModule {

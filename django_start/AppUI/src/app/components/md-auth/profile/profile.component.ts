@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SubsccloneDeepription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {cloneDeep, isEqual} from 'lodash';
 
 import {Utils} from '../../../utils/utilities';
@@ -21,12 +21,24 @@ export class ProfileComponent implements OnInit, OnDestroy {
               private apiService: ApiService) {
   }
 
-
   ngOnInit() {
     this.profileSubscription = this.userService.currentUser.subscribe((user) => {
       this.profile = user;
     });
-    this.editing_profile = cloneDeep(this.userService.loggedUser);
+    this.apiService.get(`${this.apiService.apiUrl}/auth/profile`).subscribe((data) => {
+      this.profile = data;
+      this.editing_profile = cloneDeep(data);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+  get isFormDirty() {
+    return !isEqual(this.editing_profile, this.profile);
+  }
+
+  onCancelClick() {
+    this.userService.redirectToPanel();
   }
 
   onSaveClick(e) {
@@ -40,7 +52,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.profile = cloneDeep(this.editing_profile);
       this.isSubmitting = false;
     }, (error) => {
-      debugger
       this.isSubmitting = false;
       Utils.notifyError('An error has occurred.');
     });

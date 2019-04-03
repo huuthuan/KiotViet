@@ -4,6 +4,12 @@ import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared.module';
 import {ClientModuleComponent} from './client.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {
+  ProductComponent,
+  ProductDetailComponent,
+  SearchFormComponent,
+  CategoryComponent
+} from '../../components/md-product';
 
 @NgModule({
   imports: [
@@ -20,12 +26,21 @@ import {DashboardComponent} from './dashboard/dashboard.component';
             data: {title: 'Dashboard'}
           }
         ]
-      }
+      },
+      {
+        path: 'product',
+        component: ProductComponent,
+        data: {title: 'Product'}
+      },
     ])
   ],
   declarations: [
     ClientModuleComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductComponent,
+    ProductDetailComponent,
+    SearchFormComponent,
+    CategoryComponent
   ]
 })
 export class ClientModule {

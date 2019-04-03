@@ -1,10 +1,128 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["modules-auth-auth-module"],{
 
+/***/ "./src/app/components/md-auth/change-password/change-password.component.html":
+/*!***********************************************************************************!*\
+  !*** ./src/app/components/md-auth/change-password/change-password.component.html ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"d-flex flex-row align-items-center\">\n    <div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-6\">\n                <div class=\"form-wrap col-12\">\n                    <dx-validation-group>\n                        <div class=\"row d-flex align-items-center mt-3\">\n                            <div class=\"col-md-12 mt-3\">\n                                <div class=\"field\">\n                                    <div class=\"label\">Old password</div>\n                                    <dx-text-box [(value)]=\"changePassword.old_password\"\n                                                 mode=\"password\" valueChangeEvent=\"keyup\"\n                                                 placeholder=\"Enter old password\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\" message=\"Old password is required\">\n                                            </dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"col-md-12 mt-3\">\n                                <div class=\"field\">\n                                    <div class=\"label\">New password</div>\n                                    <dx-text-box mode=\"password\" placeholder=\"Enter new password\"\n                                                 valueChangeEvent=\"keyup\" [(value)]=\"changePassword.new_password1\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\" message=\"New password is required\">\n                                            </dxi-validation-rule>\n                                            <dxi-validation-rule\n                                                    type=\"stringLength\"\n                                                    [min]=\"8\"\n                                                    message=\"Password must be at least 8 characters.\">\n                                            </dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"col-md-12 mt-3\">\n                                <div class=\"field\">\n                                    <div class=\"label\">Confirm new password</div>\n                                    <dx-text-box mode=\"password\" placeholder=\"Confirm new password\"\n                                                 valueChangeEvent=\"keyup\" [(value)]=\"changePassword.new_password2\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Confirm new password is required\">\n                                            </dxi-validation-rule>\n                                            <dxi-validation-rule type=\"compare\" [comparisonTarget]=\"passwordComparison\"\n                                                                 message=\"New password and Confirm password do not match\">\n                                            </dxi-validation-rule>\n                                            <dxi-validation-rule\n                                                    type=\"stringLength\"\n                                                    [min]=\"8\"\n                                                    message=\"Password must be at least 8 characters.\">\n                                            </dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"row text-left mt-3\">\n                            <div class=\"col\">\n                                <dx-button text=\"Save\" type=\"danger\" (onClick)=\"onSaveClick($event)\"\n\t\t\t\t\t\t\t\t[(disabled)]=\"!isFormDirty || isSubmitting\"></dx-button>\n                                <dx-button class=\"ml-3\" text=\"Cancel\" (onClick)=\"onCancelClick()\"></dx-button>\n                            </div>\n                        </div>\n                    </dx-validation-group>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/components/md-auth/change-password/change-password.component.scss":
+/*!***********************************************************************************!*\
+  !*** ./src/app/components/md-auth/change-password/change-password.component.scss ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/md-auth/change-password/change-password.component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/components/md-auth/change-password/change-password.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: ChangePasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordComponent", function() { return ChangePasswordComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _utils_utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/utilities */ "./src/app/utils/utilities.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ChangePasswordComponent = /** @class */ (function () {
+    function ChangePasswordComponent(userService, apiService) {
+        var _this = this;
+        this.userService = userService;
+        this.apiService = apiService;
+        this.changePassword = new _models__WEBPACK_IMPORTED_MODULE_2__["ChangePasswordModel"]();
+        this.isSubmitting = false;
+        this.passwordComparison = function () { return _this.changePassword.new_password1; };
+    }
+    ChangePasswordComponent.prototype.ngOnInit = function () {
+    };
+    ChangePasswordComponent.prototype.onCancelClick = function () {
+        this.userService.redirectToPanel();
+    };
+    ChangePasswordComponent.prototype.onSaveClick = function (e) {
+        var _this = this;
+        debugger;
+        if (!e.validationGroup.validate().isValid) {
+            return false;
+        }
+        this.isSubmitting = true;
+        this.apiService.post(this.apiService.apiUrl + "/auth/password/change", this.changePassword).subscribe(function (data) {
+            _this.changePassword = new _models__WEBPACK_IMPORTED_MODULE_2__["ChangePasswordModel"]();
+            e.validationGroup.reset();
+            if (data.token) {
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifySuccess('Your password has been changed successfully.');
+                _this.userService.setAccessToken(data.token);
+                _this.userService.redirectToPanel();
+            }
+            else {
+                _this.isSubmitting = false;
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifyError('An error has occurred. Please try again.');
+            }
+        }, function (error) {
+            _this.isSubmitting = false;
+            if (error.message) {
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifyError(error.message);
+            }
+            else {
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifyError('An error has occurred. Please try again.');
+            }
+        }, function () {
+            _this.isSubmitting = false;
+        });
+    };
+    Object.defineProperty(ChangePasswordComponent.prototype, "isFormDirty", {
+        // TODO: refactor
+        get: function () {
+            return Object.values(this.changePassword).some(function (p) { return p != null; });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ChangePasswordComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-change-password',
+            template: __webpack_require__(/*! ./change-password.component.html */ "./src/app/components/md-auth/change-password/change-password.component.html"),
+            styles: [__webpack_require__(/*! ./change-password.component.scss */ "./src/app/components/md-auth/change-password/change-password.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_3__["UserService"],
+            _services__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
+    ], ChangePasswordComponent);
+    return ChangePasswordComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/md-auth/index.ts":
 /*!*********************************************!*\
   !*** ./src/app/components/md-auth/index.ts ***!
   \*********************************************/
-/*! exports provided: LoginComponent, ProfileComponent, RegisterComponent */
+/*! exports provided: LoginComponent, ProfileComponent, RegisterComponent, ChangePasswordComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17,6 +135,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./register/register.component */ "./src/app/components/md-auth/register/register.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return _register_register_component__WEBPACK_IMPORTED_MODULE_2__["RegisterComponent"]; });
+
+/* harmony import */ var _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change-password/change-password.component */ "./src/app/components/md-auth/change-password/change-password.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordComponent", function() { return _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_3__["ChangePasswordComponent"]; });
+
 
 
 
@@ -145,7 +267,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"d-flex flex-row align-items-center\">\n    <div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-10\">\n                <div class=\"mb-5\">\n                    <div class=\"logo-wrap mb-5 text-center profile_title\">\n                        Cập nhật thông của bạn\n                    </div>\n                    <div class=\"form-wrap\">\n                        <dx-validation-group>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <div class=\"label text-left\">First name</div>\n                                    <dx-text-box [(value)]=\"editing_profile.first_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"First name is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                                <div class=\"col text-lg-right mt-2\">\n                                    <div class=\"label text-left\">Last name</div>\n                                    <dx-text-box [(value)]=\"editing_profile.last_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Last name is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">User name</div>\n                                <dx-text-box [(value)]=\"editing_profile.username\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"User name is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Role</div>\n                                <span>{{ editing_profile.is_superuser }}</span>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Phone</div>\n                                <dx-text-box [(value)]=\"editing_profile.phone\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Phone is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Email</div>\n                                <dx-text-box [(value)]=\"editing_profile.email\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Email is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Address</div>\n                                <dx-text-box [(value)]=\"editing_profile.address\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Address is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Date of birth</div>\n                                <dx-date-box [(value)]=\"editing_profile.dare_birth\"\n                                             [dateSerializationFormat]=\"'yyyy-MM-dd'\"\n                                             type=\"date\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Date of birth is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-date-box>\n                            </div>\n                            <div class=\"row text-left mt-2\">\n                                <div class=\"field col-12 change-password-link\" routerLinkActive=\"active\"\n                                     [routerLink]=\"['/change-password']\">\n                                    <small class=\"text-danger\">Change your password</small>\n                                </div>\n                            </div>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <dx-button width=\"150\" text=\"Save\" type=\"danger\" [(disabled)]=\"isSubmitting\"\n                                               (onClick)=\"onSaveClick($event)\" class=\"mr-3\"></dx-button>\n                                    <dx-button text=\"Cancel\"></dx-button>\n                                </div>\n                            </div>\n                        </dx-validation-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"d-flex flex-row align-items-center\">\n    <div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-10\">\n                <div class=\"mb-5\">\n                    <div class=\"logo-wrap mb-5 text-center profile_title\">\n                       Update your information\n                    </div>\n                    <div class=\"form-wrap\">\n                        <dx-validation-group>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <div class=\"label text-left\">First name</div>\n                                    <dx-text-box [(value)]=\"editing_profile.first_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"First name is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                                <div class=\"col text-lg-right mt-2\">\n                                    <div class=\"label text-left\">Last name</div>\n                                    <dx-text-box [(value)]=\"editing_profile.last_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Last name is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">User name</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"editing_profile.username\" >\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Phone</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"editing_profile.phone\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Phone is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Email</div>\n                                <dx-text-box [(value)]=\"editing_profile.email\" valueChangeEvent=\"keyup\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\" message=\"Email is required\">\n                                        </dxi-validation-rule>\n                                        <dxi-validation-rule type=\"email\" message=\"Invalid email\">\n                                        </dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Address</div>\n                                <dx-text-box [(value)]=\"editing_profile.address\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Address is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"row text-left mt-2\">\n                                <div class=\"field col-12 change-password-link\" routerLinkActive=\"active\"\n                                     [routerLink]=\"['/change-password']\">\n                                    <small class=\"text-danger\">Change your password</small>\n                                </div>\n                            </div>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <dx-button width=\"150\" text=\"Save\" type=\"danger\"\n                                               [(disabled)]=\"!isFormDirty || isSubmitting\"\n                                               (onClick)=\"onSaveClick($event)\" class=\"mr-3\"></dx-button>\n                                    <dx-button text=\"Cancel\" (onClick)=\"onCancelClick()\"></dx-button>\n                                </div>\n                            </div>\n                        </dx-validation-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -156,7 +278,7 @@ module.exports = "<div class=\"d-flex flex-row align-items-center\">\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".profile_title {\n  font-size: 25px; }\n"
+module.exports = ".profile_title {\n  font-size: 25px; }\n\n.change-password-link {\n  cursor: pointer;\n  color: #c22642; }\n"
 
 /***/ }),
 
@@ -203,7 +325,22 @@ var ProfileComponent = /** @class */ (function () {
         this.profileSubscription = this.userService.currentUser.subscribe(function (user) {
             _this.profile = user;
         });
-        this.editing_profile = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["cloneDeep"])(this.userService.loggedUser);
+        this.apiService.get(this.apiService.apiUrl + "/auth/profile").subscribe(function (data) {
+            _this.profile = data;
+            _this.editing_profile = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["cloneDeep"])(data);
+        }, function (error) {
+            console.error(error);
+        });
+    };
+    Object.defineProperty(ProfileComponent.prototype, "isFormDirty", {
+        get: function () {
+            return !Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isEqual"])(this.editing_profile, this.profile);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProfileComponent.prototype.onCancelClick = function () {
+        this.userService.redirectToPanel();
     };
     ProfileComponent.prototype.onSaveClick = function (e) {
         var _this = this;
@@ -217,7 +354,6 @@ var ProfileComponent = /** @class */ (function () {
             _this.profile = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["cloneDeep"])(_this.editing_profile);
             _this.isSubmitting = false;
         }, function (error) {
-            debugger;
             _this.isSubmitting = false;
             _utils_utilities__WEBPACK_IMPORTED_MODULE_2__["Utils"].notifyError('An error has occurred.');
         });
@@ -248,7 +384,7 @@ var ProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-wrap d-flex flex-row align-items-center\">\n    <div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-10\">\n                <div class=\"mb-5\">\n                    <div class=\"logo-wrap mb-5 text-center register_head\">\n                        Tạo tài khoản Electronics Shop của bạn\n                    </div>\n                    <div class=\"form-wrap\">\n                        <dx-validation-group>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <div class=\"label text-left\">First name</div>\n                                    <dx-text-box [(value)]=\"register.first_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Username is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                                <div class=\"col text-lg-right mt-2\">\n                                    <div class=\"label text-left\">Last name</div>\n                                    <dx-text-box [(value)]=\"register.last_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Username is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Phone</div>\n                                <dx-text-box [(value)]=\"register.phone\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field  mt-3\">\n                                <div class=\"label\">Shop name</div>\n                                <dx-text-box [(value)]=\"register.shop_name\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Username is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Address</div>\n                                <dx-text-box [(value)]=\"register.address\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Email</div>\n                                <dx-text-box [(value)]=\"register.email\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Username is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">User name</div>\n                                <dx-text-box [(value)]=\"register.username\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Password</div>\n                                <dx-text-box [(value)]=\"register.password\" mode=\"password\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Username is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Confirm password</div>\n                                <dx-text-box [(value)]=\"register.confirm_password\" mode=\"password\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <dx-button width=\"150\" text=\"Sign up\" type=\"danger\"\n                                               [(disabled)]=\"isSubmitting\"\n                                               (onClick)=\"onSaveClick($event)\"></dx-button>\n                                </div>\n                            </div>\n                        </dx-validation-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"login-wrap d-flex flex-row align-items-center\">\n    <div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-10\">\n                <div class=\"mb-5\">\n                    <div class=\"logo-wrap mb-5 text-center register_head\">\n                        Create your account\n                    </div>\n                    <div class=\"form-wrap\">\n                        <dx-validation-group>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <div class=\"label text-left\">First name</div>\n                                    <dx-text-box [(value)]=\"register.first_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Username is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                                <div class=\"col text-lg-right mt-2\">\n                                    <div class=\"label text-left\">Last name</div>\n                                    <dx-text-box [(value)]=\"register.last_name\">\n                                        <dx-validator>\n                                            <dxi-validation-rule type=\"required\"\n                                                                 message=\"Username is required\"></dxi-validation-rule>\n                                        </dx-validator>\n                                    </dx-text-box>\n                                </div>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Phone</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"register.phone\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field  mt-3\">\n                                <div class=\"label\">Shop name</div>\n                                <dx-text-box [(value)]=\"register.shop_name\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Username is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Address</div>\n                                <dx-text-box [(value)]=\"register.address\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Email</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"register.email\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\" message=\"Email is required.\">\n                                        </dxi-validation-rule>\n                                        <dxi-validation-rule type=\"email\" message=\"Invalid email\">\n                                        </dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">User name</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"register.username\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Password</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"register.password\" mode=\"password\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Username is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"field mt-3\">\n                                <div class=\"label\">Confirm password</div>\n                                <dx-text-box valueChangeEvent=\"keyup\" [(value)]=\"register.confirm_password\" mode=\"password\">\n                                    <dx-validator>\n                                        <dxi-validation-rule type=\"required\"\n                                                             message=\"Password is required\"></dxi-validation-rule>\n                                    </dx-validator>\n                                </dx-text-box>\n                            </div>\n                            <div class=\"row d-flex align-items-center mt-3\">\n                                <div class=\"col text-lg-left mt-2\">\n                                    <dx-button width=\"150\" text=\"Sign up\" type=\"danger\"\n                                               [(disabled)]=\"isSubmitting\"\n                                               (onClick)=\"onSaveClick($event)\"></dx-button>\n                                </div>\n                            </div>\n                        </dx-validation-group>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -274,9 +410,10 @@ module.exports = ".register_head {\n  background: 0 0;\n  color: #111;\n  font-s
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _utils_utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/utilities */ "./src/app/utils/utilities.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
-/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _utils_utilities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/utilities */ "./src/app/utils/utilities.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -290,11 +427,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(userService, apiService) {
-        this.userService = userService;
+    function RegisterComponent(router, apiService) {
+        this.router = router;
         this.apiService = apiService;
-        this.register = new _models__WEBPACK_IMPORTED_MODULE_3__["RegisterInput"]();
+        this.register = new _models__WEBPACK_IMPORTED_MODULE_4__["RegisterInput"]();
         this.isSubmitting = false;
     }
     RegisterComponent.prototype.ngOnInit = function () {
@@ -307,11 +445,19 @@ var RegisterComponent = /** @class */ (function () {
         this.isSubmitting = true;
         this.apiService.post(this.apiService.apiUrl + "/auth/register", this.register).subscribe(function (data) {
             // this.userService.setAccessToken(data.token);
-            _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifySuccess('You have successfully registered.');
+            _utils_utilities__WEBPACK_IMPORTED_MODULE_2__["Utils"].notifySuccess('Caregory product has been added successfully.');
+            _this.router.navigate(['/login']);
             _this.isSubmitting = false;
         }, function (error) {
             _this.isSubmitting = false;
-            _utils_utilities__WEBPACK_IMPORTED_MODULE_1__["Utils"].notifyError('An error has occurred.');
+            if (error.message) {
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_2__["Utils"].notifyError(error.message);
+            }
+            else {
+                _utils_utilities__WEBPACK_IMPORTED_MODULE_2__["Utils"].notifyError('An error has occurred. Please try again.');
+            }
+        }, function () {
+            _this.isSubmitting = false;
         });
     };
     RegisterComponent = __decorate([
@@ -320,8 +466,8 @@ var RegisterComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/components/md-auth/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.scss */ "./src/app/components/md-auth/register/register.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_2__["UserService"],
-            _services__WEBPACK_IMPORTED_MODULE_2__["ApiService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -375,6 +521,11 @@ var AuthModule = /** @class */ (function () {
                                 path: 'profile',
                                 component: _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["ProfileComponent"],
                                 data: { title: 'Profile' }
+                            },
+                            {
+                                path: 'change-password',
+                                component: _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordComponent"],
+                                data: { title: 'Change Password' }
                             }
                         ]
                     },
@@ -395,7 +546,8 @@ var AuthModule = /** @class */ (function () {
             declarations: [
                 _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"],
                 _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["ProfileComponent"],
-                _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"]
+                _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"],
+                _components_md_auth__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordComponent"],
             ]
         })
     ], AuthModule);

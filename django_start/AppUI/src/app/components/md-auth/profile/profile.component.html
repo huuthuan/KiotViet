@@ -4,7 +4,7 @@
             <div class="col-md-12 col-lg-10">
                 <div class="mb-5">
                     <div class="logo-wrap mb-5 text-center profile_title">
-                        Cập nhật thông của bạn
+                       Update your information
                     </div>
                     <div class="form-wrap">
                         <dx-validation-group>
@@ -30,20 +30,12 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">User name</div>
-                                <dx-text-box [(value)]="editing_profile.username">
-                                    <dx-validator>
-                                        <dxi-validation-rule type="required"
-                                                             message="User name is required"></dxi-validation-rule>
-                                    </dx-validator>
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="editing_profile.username" >
                                 </dx-text-box>
                             </div>
                             <div class="field mt-3">
-                                <div class="label">Role</div>
-                                <span>{{ editing_profile.is_superuser }}</span>
-                            </div>
-                            <div class="field mt-3">
                                 <div class="label">Phone</div>
-                                <dx-text-box [(value)]="editing_profile.phone">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="editing_profile.phone">
                                     <dx-validator>
                                         <dxi-validation-rule type="required"
                                                              message="Phone is required"></dxi-validation-rule>
@@ -52,10 +44,12 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">Email</div>
-                                <dx-text-box [(value)]="editing_profile.email">
+                                <dx-text-box [(value)]="editing_profile.email" valueChangeEvent="keyup">
                                     <dx-validator>
-                                        <dxi-validation-rule type="required"
-                                                             message="Email is required"></dxi-validation-rule>
+                                        <dxi-validation-rule type="required" message="Email is required">
+                                        </dxi-validation-rule>
+                                        <dxi-validation-rule type="email" message="Invalid email">
+                                        </dxi-validation-rule>
                                     </dx-validator>
                                 </dx-text-box>
                             </div>
@@ -68,17 +62,6 @@
                                     </dx-validator>
                                 </dx-text-box>
                             </div>
-                            <div class="field mt-3">
-                                <div class="label">Date of birth</div>
-                                <dx-date-box [(value)]="editing_profile.dare_birth"
-                                             [dateSerializationFormat]="'yyyy-MM-dd'"
-                                             type="date">
-                                    <dx-validator>
-                                        <dxi-validation-rule type="required"
-                                                             message="Date of birth is required"></dxi-validation-rule>
-                                    </dx-validator>
-                                </dx-date-box>
-                            </div>
                             <div class="row text-left mt-2">
                                 <div class="field col-12 change-password-link" routerLinkActive="active"
                                      [routerLink]="['/change-password']">
@@ -87,9 +70,10 @@
                             </div>
                             <div class="row d-flex align-items-center mt-3">
                                 <div class="col text-lg-left mt-2">
-                                    <dx-button width="150" text="Save" type="danger" [(disabled)]="isSubmitting"
+                                    <dx-button width="150" text="Save" type="danger"
+                                               [(disabled)]="!isFormDirty || isSubmitting"
                                                (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
-                                    <dx-button text="Cancel"></dx-button>
+                                    <dx-button text="Cancel" (onClick)="onCancelClick()"></dx-button>
                                 </div>
                             </div>
                         </dx-validation-group>

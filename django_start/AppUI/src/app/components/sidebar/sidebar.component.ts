@@ -11,9 +11,12 @@ import {LoggedUser} from '../../models';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   @Output() onSidebarToggle: EventEmitter<any> = new EventEmitter();
-  isOpenMenuProduct: boolean = false;
   userSubscription: Subscription;
   user: LoggedUser = new LoggedUser();
+  isOpenMenuProduct: boolean = false;
+  isProductItem: boolean = true;
+  isReportItem:boolean = true;
+  isExchangeItem:boolean = true;
 
   constructor(private userService: UserService) {
   }
@@ -38,9 +41,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.isOpenMenuProduct = !this.isOpenMenuProduct;
   }
 
-  onCloseMenuProduct() {
-    if (this.isOpenMenuProduct) {
-      this.isOpenMenuProduct = false;
-    }
+  onShowProductItem() {
+    this.isProductItem = !this.isProductItem;
+  }
+
+  onShowReportItem() {
+    this.isReportItem = !this.isReportItem;
+  }
+
+  onShowExchangeItem() {
+    this.isExchangeItem = !this.isExchangeItem;
   }
 }

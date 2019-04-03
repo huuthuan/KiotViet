@@ -71,11 +71,13 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'rest_framework',
-    'djoser'
+    'djoser',
+    'rest_auth'
 ]
 LOCAL_APPS = [
     'django_start.apps.shop',
-    'django_start.apps.account'
+    'django_start.apps.account',
+    'django_start.apps.product'
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

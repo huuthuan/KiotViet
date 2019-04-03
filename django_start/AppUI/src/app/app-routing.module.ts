@@ -1,8 +1,6 @@
 import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
-import {NgxPermissionsGuard} from 'ngx-permissions';
-
 import {AuthGuard} from './services/gaurds';
 import {ErrorComponent, LayoutComponent} from './components';
 

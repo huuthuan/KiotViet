@@ -5,8 +5,8 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
 import {JwtModule} from '@auth0/angular-jwt';
+import {MalihuScrollbarModule, MalihuScrollbarService} from 'ngx-malihu-scrollbar';
 import {NgxPermissionsModule} from 'ngx-permissions';
-
 import {AppRoutingModule} from './app-routing.module';
 import {SharedModule} from './modules/shared.module';
 
@@ -41,7 +41,8 @@ export function tokenGetter() {
     }),
     AppRoutingModule,
     NgxPermissionsModule.forRoot(),
-    SharedModule.forRoot()
+    MalihuScrollbarModule.forRoot(),
+    SharedModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -52,6 +53,7 @@ export function tokenGetter() {
     RouterService,
     AuthGuard,
     GuestGuard,
+    MalihuScrollbarService,
     {provide: APP_BASE_HREF, useValue: '/'}
   ],
 })

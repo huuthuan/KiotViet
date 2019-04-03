@@ -4,7 +4,7 @@
             <div class="col-md-12 col-lg-10">
                 <div class="mb-5">
                     <div class="logo-wrap mb-5 text-center register_head">
-                        Tạo tài khoản Electronics Shop của bạn
+                        Create your account
                     </div>
                     <div class="form-wrap">
                         <dx-validation-group>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">Phone</div>
-                                <dx-text-box [(value)]="register.phone">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="register.phone">
                                     <dx-validator>
                                         <dxi-validation-rule type="required"
                                                              message="Password is required"></dxi-validation-rule>
@@ -57,16 +57,18 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">Email</div>
-                                <dx-text-box [(value)]="register.email">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="register.email">
                                     <dx-validator>
-                                        <dxi-validation-rule type="required"
-                                                             message="Username is required"></dxi-validation-rule>
+                                        <dxi-validation-rule type="required" message="Email is required.">
+                                        </dxi-validation-rule>
+                                        <dxi-validation-rule type="email" message="Invalid email">
+                                        </dxi-validation-rule>
                                     </dx-validator>
                                 </dx-text-box>
                             </div>
                             <div class="field mt-3">
                                 <div class="label">User name</div>
-                                <dx-text-box [(value)]="register.username">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="register.username">
                                     <dx-validator>
                                         <dxi-validation-rule type="required"
                                                              message="Password is required"></dxi-validation-rule>
@@ -75,7 +77,7 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">Password</div>
-                                <dx-text-box [(value)]="register.password" mode="password">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="register.password" mode="password">
                                     <dx-validator>
                                         <dxi-validation-rule type="required"
                                                              message="Username is required"></dxi-validation-rule>
@@ -84,7 +86,7 @@
                             </div>
                             <div class="field mt-3">
                                 <div class="label">Confirm password</div>
-                                <dx-text-box [(value)]="register.confirm_password" mode="password">
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="register.confirm_password" mode="password">
                                     <dx-validator>
                                         <dxi-validation-rule type="required"
                                                              message="Password is required"></dxi-validation-rule>

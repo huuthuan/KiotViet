@@ -16,13 +16,14 @@
                 </a>
             </li>
             <li (click)="onToggleMenuProduct()">
-                <a routerLinkActive="active" (clickOutside)="onCloseMenuProduct()">
+                <a routerLinkActive="active" (click)="onShowProductItem()">
                     <i class="fas fa-cube"></i>Product
-                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                    <span *ngIf="!isProductItem" class="fas fa-chevron-circle-down showhideicon"></span>
+                    <span *ngIf="isProductItem" class="fas fa-chevron-circle-up showhideicon"></span>
                 </a>
-                <ul [class.show]="isOpenMenuProduct">
+                <ul *ngIf="isProductItem">
                     <li>
-                        <a href="#">
+                        <a routerLinkActive="active" [routerLink]="['/product']">
                             <i class="fas fa-th"></i>
                             <span>Product portfolio</span>
                         </a>
@@ -36,11 +37,12 @@
                 </ul>
             </li>
             <li>
-                <a routerLinkActive="active" [routerLink]="['/exchange']">
+                <a routerLinkActive="active" (click)="onShowExchangeItem()">
                     <i class="fas fa-exchange-alt"></i>Exchange
-                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                    <span *ngIf="!isExchangeItem" class="fas fa-chevron-circle-down showhideicon"></span>
+                    <span *ngIf="isExchangeItem" class="fas fa-chevron-circle-up showhideicon"></span>
                 </a>
-                <ul>
+                <ul *ngIf="isExchangeItem">
                     <li>
                         <a href="#">
                             <i class="fas fa-file"></i>
@@ -68,11 +70,12 @@
                 </ul>
             </li>
             <li>
-                <a routerLinkActive="active" [routerLink]="['/report']">
+                <a routerLinkActive="active" (click)="onShowReportItem">
                     <i class="fas fa-chart-bar"></i>Report
-                    <span class="fas fa-chevron-circle-down circle-down"></span>
+                    <span *ngIf="!isReportItem" class="fas fa-chevron-circle-down showhideicon"></span>
+                    <span *ngIf="isReportItem" class="fas fa-chevron-circle-up showhideicon"></span>
                 </a>
-                <ul>
+                <ul *ngIf="isReportItem">
                     <li>
                         <a href="#">
                             <i class="fas fa-chart-pie"></i>

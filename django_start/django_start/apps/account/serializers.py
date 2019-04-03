@@ -1,4 +1,7 @@
 from django.contrib.auth.models import User
+from django.db import transaction
+
+from rest_framework_jwt.settings import api_settings
 from rest_framework import serializers
 
 from django_start.apps.account.models import Profile
@@ -13,14 +16,14 @@ class RegisterSerializer(serializers.Serializer):
     address = serializers.CharField(max_length=255)
     email = serializers.EmailField()
     username = serializers.CharField(max_length=50)
-    password = serializers.CharField(max_length=50)
-    confirm_password = serializers.CharField(max_length=50)
+    password = serializers.CharField(write_only=True, max_length=50)
+    confirm_password = serializers.CharField(write_only=True, max_length=50)
 
     def validate(self, data):
         if data.get('password') != data.get('confirm_password'):
             raise serializers.ValidationError('Passwords do not match.')
         if User.objects.filter(email=data.get('email')).exists():
-            raise serializers.ValidationError('Email already exist.')
+            raise serializers.ValidationError({"email": "Email already exist."})
         if User.objects.filter(username=data.get('username')).exists():
             raise serializers.ValidationError('User name already exist.')
         if Profile.objects.filter(phone=data.get('phone')).exists():
@@ -28,24 +31,31 @@ class RegisterSerializer(serializers.Serializer):
         return data
 
     def create(self, validated_data):
-        user = User.objects.create(
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            username=validated_data['username'],
-            password=validated_data['password']
-        )
-        shop = Shop.objects.create(
-            name=validated_data['shop_name'],
-            phone=validated_data['phone'],
-            email=validated_data['email'],
-            address=validated_data['address']
-        )
-        profile = Profile.objects.create(
-            name=validated_data['first_name'] + validated_data['last_name'],
-            phone=validated_data['phone'],
-            shop=shop,
-            user=user
-        )
+        with transaction.atomic():
+            try:
+                # Create account
+                user = User.objects.create_user(username=validated_data['username'],
+                                                password=validated_data['password'],
+                                                email=validated_data['email'],
+                                                first_name=validated_data['first_name'],
+                                                last_name=validated_data['last_name']
+                                                )
+                # Create shop
+                shop = Shop.objects.create(
+                    name=validated_data['shop_name'],
+                    phone=validated_data['phone'],
+                    email=validated_data['email'],
+                    address=validated_data['address']
+                )
+                # Create profile
+                Profile.objects.create(
+                    name=validated_data['first_name'] + validated_data['last_name'],
+                    phone=validated_data['phone'],
+                    shop=shop,
+                    user=user
+                )
+            except Exception as e:
+                raise e
 
 
 class UserProfileSerializer(serializers.Serializer):
@@ -54,7 +64,18 @@ class UserProfileSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=50, allow_null=True, allow_blank=True)
     address = serializers.CharField(max_length=255)
     email = serializers.EmailField()
-    dare_birth = serializers.DateField(format('%Y/%m/%d'))
+
+    def validate(self, data):
+        exclude_id = None
+        if self.instance:
+            exclude_id = self.instance.id
+        if User.objects.filter(email=data.get('email')).exclude(id=exclude_id).exists():
+            raise serializers.ValidationError({"email": "Email already exist."})
+        if User.objects.filter(username=data.get('username')).exclude(id=exclude_id).exists():
+            raise serializers.ValidationError('User name already exist.')
+        if Profile.objects.filter(phone=data.get('phone')).exclude(id=exclude_id).exists():
+            raise serializers.ValidationError('Phone already exist.')
+        return data
 
     def update(self, instance, validated_data):
         instance.user.first_name = validated_data.get('first_name', instance.user.first_name)
@@ -63,5 +84,11 @@ class UserProfileSerializer(serializers.Serializer):
         instance.user.save()
         instance.address = validated_data.get('address', instance.address)
         instance.phone = validated_data.get('phone', instance.phone)
-        instance.dare_birth = validated_data.get('dare_birth', instance.dare_birth)
         instance.save()
+
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+        payload = jwt_payload_handler(instance.user)
+        token = jwt_encode_handler(payload)
+
+        return token

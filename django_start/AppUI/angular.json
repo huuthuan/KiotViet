@@ -37,9 +37,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "baseHref": "/",
-						"deployUrl": "/static/app/",
-						"outputPath": "../build/app",
-						"index": "src/index.html",
+            "deployUrl": "/static/app/",
+            "outputPath": "../build/app",
+            "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -49,11 +49,15 @@
             ],
             "styles": [
               "node_modules/devextreme/dist/css/dx.common.css",
-							"src/assets/scss/generic.light.custom.scss",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+              "src/assets/scss/generic.light.custom.scss",
               "src/assets/scss/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+            ]
           },
           "configurations": {
             "production": {

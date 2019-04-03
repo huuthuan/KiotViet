@@ -31,7 +31,7 @@ export class LoggedUser {
   is_superuser: boolean;
   name: string;
   address: string;
-  dare_birth: DateRange;
+  dare_birth: Date;
   title: string;
   department: number;
   type: string;
