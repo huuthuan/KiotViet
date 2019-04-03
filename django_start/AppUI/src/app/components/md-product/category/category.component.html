@@ -1,0 +1,57 @@
+<dx-validation-group>
+    <div class="form-wrap">
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="label mt-lg-2">Category name</div>
+            </div>
+            <div class="col-lg-8">
+                <dx-text-box [(value)]="editing_Category.name">
+                    <dx-validator>
+                        <dxi-validation-rule type="required"
+                                             message="Category name is required"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="label mt-lg-2">Parent</div>
+            </div>
+            <div class="col-lg-8">
+                <dx-drop-down-box
+                        [(value)]="treeBoxValue"
+                        valueExpr="id"
+                        displayExpr="name"
+                        placeholder="Category"
+                        [dataSource]="lookupCategories"
+                        [showClearButton]="true"
+                        (onValueChanged)="syncTreeViewSelection($event)">
+                    <div *dxTemplate="let data of 'content'">
+                        <dx-tree-view #serviceCategoryTree
+                                      [dataSource]="lookupCategories"
+                                      dataStructure="plain"
+                                      keyExpr="id"
+                                      displayExpr="name"
+                                      parentIdExpr="parentId"
+                                      selectionMode="single"
+                                      [selectByClick]="true"
+                                      (onContentReady)="$event.component.selectItem(treeBoxValue)"
+                                      (onItemSelectionChanged)="treeView_itemSelectionChanged($event)">
+                        </dx-tree-view>
+                    </div>
+                </dx-drop-down-box>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center mt-3">
+            <div class="col text-lg-right mt-2">
+                <dx-button width="85" text="Save" type="danger"
+                           [(disabled)]="isSubmitting"
+                           (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
+                <dx-button *ngIf="isShowBtnDelete" width="85" text="Delete" type="danger"
+                           [(disabled)]="isSubmitting"
+                           (onClick)="onDeleteCategory($event)" class="mr-3"></dx-button>
+                <dx-button text="Cancel" (onClick)="onCancelClick()"></dx-button>
+            </div>
+        </div>
+    </div>
+</dx-validation-group>

@@ -1,0 +1,61 @@
+.detail {
+  dx-tab-panel {
+    padding: 0px;
+  }
+}
+
+.dx-datagrid-rowsview .dx-row > .dx-master-detail-cell {
+    padding: 0px;
+}
+
+.product-detail {
+  border: none;
+  padding: 25px 30px 30px;
+  box-sizing: border-box;
+  background: #fff;
+  margin: 0;
+  position: relative;
+  overflow: visible;
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #006fa9;
+    margin-bottom: 12px;
+    padding: 0;
+  }
+  ul {
+    padding: 0;
+    margin: 0 0 15px;
+    list-style: none;
+    li {
+      box-sizing: border-box;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      line-height: 1.8;
+      .txtGreen {
+        color: #4bac4d;
+      }
+    }
+  }
+
+  .form-group {
+    border-top: 1px solid #eee;
+    margin: 0;
+    .form-label {
+      float: left;
+      width: 110px;
+      padding: 8px 10px 0;
+      margin: 0;
+      line-height: 17px;
+    }
+    .form-wrap {
+      margin-bottom: 0;
+      padding: 9px 0 5px;
+      min-height: 32px;
+      word-break: break-word;
+      line-height: 17px;
+      margin-left: 110px;
+    }
+  }
+}
