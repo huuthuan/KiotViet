@@ -77,7 +77,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'django_start.apps.shop',
     'django_start.apps.account',
-    'django_start.apps.product'
+    'django_start.apps.product',
+    'django_start.apps.customer',
+    'django_start.apps.invoice'
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -150,6 +152,14 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(ROOT_DIR('media'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
+
+#MAIL SETTINGS
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lehuuthuan292@gmail.com'
+EMAIL_HOST_PASSWORD = 'ruzxgjeahoalohcd'
+EMAIL_PORT = 587
 
 # TEMPLATES
 # ------------------------------------------------------------------------------

@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-md-10 col-lg-10">
+        <div class="row mb-3">
+            <div class="col text-lg-right">
+                <dx-button class="mr-1" type="default" (onClick)="onAddProduct()">
+                    <i class="fas fa-plus mr-2"></i>Add new product
+                </dx-button>
+            </div>
+        </div>
+        <app-loading-panel *ngIf="isLoading"></app-loading-panel>
+        <div class="row">
+            <div class="col">
+                <dx-data-grid [dataSource]="dataSource"
+                              [filterRow]="true"
+                              [showBorders]="true"
+                              [showColumnLines]="true"
+                              [hoverStateEnabled]="true"
+                              [rowAlternationEnabled]="true"
+                              [allowColumnReordering]="true"
+                              [allowColumnResizing]="true"
+                              [masterDetail]="{ enabled: false, template: 'masterTemplate' }">
+                    <dxo-selection [mode]="'row'"></dxo-selection>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxi-column caption="#" [allowFiltering]="false" alignment="center" width="40"
+                                cellTemplate="cellTemplateNumberOfRow">
+                        <div *dxTemplate="let cellData of 'cellTemplateNumberOfRow'">
+                            {{ cellData.row.rowIndex + 1 }}
+                        </div>
+                    </dxi-column>
+
+                    <dxi-column dataField="product_code" caption="Product code" [width]="100" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="name" caption="Name" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="category.name" caption="Category" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="price_cost" caption="Price cost" format="$ #,##0.##" [width]="100"
+                                [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="price_sale" caption="Price sale" format="$ #,##0.##" [width]="100"
+                                [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="on_hand" caption="On hand" [width]="100" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="allows_sale" caption="Allows sale" [width]="80" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="describe" caption="Describe" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="id" [width]="80" caption="Action" alignment="center"
+                                cellTemplate="cellTemplateAction"
+                                [allowSorting]="false">
+                        <div *dxTemplate="let cellData of 'cellTemplateAction'" class="d-flex">
+                            <div class="btn-action btn-trash pointer" (click)="onEditProductTemplate(cellData.data)">
+                                <i class="fas fa-pencil-alt" aria-hidden="true" title="Edit product"></i>
+                            </div>
+                            <div class="btn-action btn-trash pointer" (click)="onDeleteProductTemplate(cellData.data)">
+                                <i class="fa fa-times" aria-hidden="true" title="Delete"></i>
+                            </div>
+                        </div>
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2 border-left">
+        <app-search-form (onFilter)="onFilterGrid($event)"
+                         [search_options]="search_options"
+        ></app-search-form>
+    </div>
+</div>
+
+<!--Detail product-->
+<div class="popup-container" *ngIf="isProductPopup">
+    <dx-popup [title]="productPopupTitle" [width]="900" height="auto" [(visible)]="isProductPopup"
+              [dragEnabled]="false" class="center-popup">
+        <div *dxTemplate="let data of 'content'">
+            <app-product-detail
+                    [(product)]="selectedProduct"
+                    (onSuccess)="onSavedProduct($event)"
+                    (onCancel)="onCancelProduct()">
+            </app-product-detail>
+        </div>
+    </dx-popup>
+</div>

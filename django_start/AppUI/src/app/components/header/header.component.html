@@ -1,44 +1,44 @@
 <header>
-	<h4 class="title">
+    <h4 class="title">
 		<span *ngIf="loggedUser && loggedUser.company_name">
 			{{ loggedUser.company_name }}<i class="material-icons" style="opacity: 0.6">chevron_right</i>
 		</span>{{ title }}
-	</h4>
-	<nav class="user-menu" (clickOutside)="onCloseMenu()">
-		<ul>
-			<li class="dropdown" (click)="onToggleMenu()">
-				<div class="dropdown-toggle pointer">
-					<span class="user-name"
-						  *ngIf="loggedUser">{{ loggedUser.username }}</span>
-				</div>
-				<div class="dropdown-menu dropdown-menu-right" [class.show]="isOpenMenu">
-					<a class="dropdown-item" [routerLink]="['/profile']">
-						<i class="far fa-user"></i> Edit Profile
-					</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item pointer" (click)="onLogout()">
-						<i class="fas fa-power-off"></i> Logout
-					</a>
-				</div>
-			</li>
-		</ul>
-	</nav>
-    <nav class="user-menu" (clickOutside)="onCloseMenuSetting()">
-		<ul>
-			<li class="dropdown" (click)="onToggleMenuSetting()">
-                <div class="dropdown-toggle pointer">
-					<span class="user-name">Setting</span>
-				</div>
-                <div class="dropdown-menu dropdown-menu-right" [class.show]="isOpenMenuSetting">
-					<a class="dropdown-item" [routerLink]="['/settingshop']">
-						<i class="far fa-user"></i> Setting Shop
-					</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item pointer" [routerLink]="['/user']">
-						<i class="fas fa-power-off"></i> User Management
-					</a>
-				</div>
-			</li>
-		</ul>
-	</nav>
+    </h4>
+    <div class="header-right">
+        <nav class="user-menu" (clickOutside)="onCloseMenu()">
+            <ul>
+                <li class="dropdown" (click)="onToggleMenu()">
+                    <div class="dropdown-toggle pointer">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="user-name"
+                              *ngIf="loggedUser">{{ loggedUser.username }}</span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right" [class.show]="isOpenMenu">
+                        <a class="dropdown-item" [routerLink]="['/profile']">
+                            <i class="fa fa-unlock-alt"></i> Edit Profile
+                        </a>
+                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['/shop']">
+                            <i class="fa fa-wrench"></i> Setting Shop
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item pointer" [routerLink]="['/employees']">
+                            <i class="fa fa-male"></i> User Management
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item pointer" (click)="onLogout()">
+                            <i class="fas fa-power-off"></i> Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="sell-goods">
+            <a [routerLink]="['/sell-goods']">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Sell goods</span>
+            </a>
+        </div>
+    </div>
+
 </header>

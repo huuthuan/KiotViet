@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-10 col-lg-10">
+        <div class="row mb-3">
+            <div class="col text-lg-right">
+                <dx-button class="mr-1" type="default" (onClick)="onAddEmployee()">
+                    <i class="fas fa-plus mr-2"></i>Add new employee
+                </dx-button>
+            </div>
+        </div>
+        <app-loading-panel *ngIf="isLoading"></app-loading-panel>
+        <div class="row">
+            <div class="col">
+                <dx-data-grid [dataSource]="dataSource"
+                              [showBorders]="true"
+                              [showColumnLines]="true"
+                              [rowAlternationEnabled]="true"
+                              [allowColumnReordering]="true"
+                              [allowColumnResizing]="true"
+                              [columnAutoWidth]="true"
+                              [filterRow]="true"
+                              [hoverStateEnabled]="true">
+                    <dxo-selection [mode]="'row'"></dxo-selection>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxi-column caption="#" [allowFiltering]="false" [fixed]="true" alignment="center" width="40"
+                                cellTemplate="cellTemplateNumberOfRow">
+                        <div *dxTemplate="let cellData of 'cellTemplateNumberOfRow'">
+                            {{ cellData.row.rowIndex + 1 }}
+                        </div>
+                    </dxi-column>
+                    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+                    <dxi-column dataField="name" caption="User name" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="phone" caption="Full name" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="birthday" width="100" caption="Birthday"
+                                cellTemplate="cellTemplateStartTime">
+                        <div *dxTemplate="let cellData of 'cellTemplateStartTime'">
+                            {{ (cellData.value) | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </dxi-column>
+                    <dxi-column dataField="phone" caption="Phone" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="email" caption="Email" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="address" caption="Address" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true" width="150">
+                    </dxi-column>
+                    <dxi-column dataField="address" caption="Status" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true" width="150">
+                    </dxi-column>
+                    <dxi-column dataField="id" [width]="80" caption="Action" alignment="center"
+                                cellTemplate="cellTemplateAction"
+                                [allowSorting]="false">
+                        <div *dxTemplate="let cellData of 'cellTemplateAction'" class="d-flex">
+                            <div class="btn-action btn-trash pointer" (click)="onEditEmployeeTemplate(cellData.data)">
+                                <i class="fas fa-pencil-alt" aria-hidden="true" title="Edit employee"></i>
+                            </div>
+                            <div class="btn-action btn-trash pointer" (click)="onDeleteEmployeeTemplate(cellData.data)">
+                                <i class="fa fa-times" aria-hidden="true" title="Delete"></i>
+                            </div>
+                        </div>
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2 border-left">
+
+    </div>
+</div>
+
+<!--Detail product-->
+<div class="popup-container" *ngIf="isEmployeePopup">
+    <dx-popup [title]="employeePopupTitle" [width]="900" height="auto" [(visible)]="isEmployeePopup"
+              [dragEnabled]="false" class="center-popup">
+        <div *dxTemplate="let data of 'content'">
+            <app-employees-detail
+                    [(employee)]="selectedEmployee"
+                    (onSuccess)="onSavedEmployee($event)"
+                    (onCancel)="onCancelEmployee()">
+            </app-employees-detail>
+        </div>
+    </dx-popup>
+</div>

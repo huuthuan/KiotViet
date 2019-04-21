@@ -1,0 +1,177 @@
+.invoice {
+  height: 100%;
+
+  @media screen and (max-width: 1599px) {
+    .header {
+      height: 55px;
+      background-color: #0090DA;
+
+      .search-wrapper {
+        width: 540px;
+        float: left;
+        position: relative;
+        padding: 11px 0px 0px 12px;
+      }
+
+      .header-tab {
+        margin: 0 370px 0 540px;
+        padding-top: 11px;
+        .header-tab-wrap {
+          width: 100%;
+          overflow: hidden;
+          .content-tab {
+            float: left;
+            overflow: hidden;
+            width: 626px;
+            .scroll-lane {
+              ul {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+                li {
+                  float: left;
+                  position: relative;
+                  margin-left: 4px;
+                  a {
+                    padding: 11px 10px 11px;
+                    color: #ffffff;
+                    font-size: 13px;
+                    padding-right: 24px;
+                    background-color: #0077b4;
+                    border-top: 3px solid transparent;
+                    text-decoration: none;
+                    display: block;
+                    border-top-right-radius: 2px;
+                    border-top-left-radius: 2px;
+
+                    &:active {
+                      background-color: #ffffff;
+                      color: #0077b4;
+                    }
+                  }
+                }
+                .add-btn {
+                  a {
+                    background-color: transparent;
+                    cursor: pointer;
+                    padding-top: 11px;
+                    padding-bottom: 11px;
+                    padding-right: 17px;
+                    i {
+                      color: #ffffff;
+                      margin-left: 7px;
+                    }
+                    &:hover {
+                      background-color: #006da4;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .header-right {
+        width: 363px;
+        float: right;
+        ul {
+          list-style: none;
+          text-align: right;
+          float: right !important;
+          margin-top: 7px;
+          margin-bottom: 7px;
+          li {
+            float: left;
+            padding-top: 6px;
+            margin-left: 5px;
+            a {
+              color: white;
+              float: left;
+              line-height: 1.4;
+              padding: 5px;
+            }
+          }
+
+          li.user-name {
+            width: 70px;
+            a {
+              float: right;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              width: 100%;
+              padding-left: 0;
+              padding-right: 0;
+              cursor: default;
+              span {
+                padding: 0;
+                text-align: left;
+                font-size: 13px;
+              }
+            }
+          }
+          li.menu-bar {
+            padding: 0;
+            position: relative;
+            width: 50px;
+            a.list-bar {
+              padding: 11px 12px;
+              i {
+                font-size: 18px;
+                width: 18px;
+                text-align: center;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .wrap-content {
+    height: calc(100% - 55px);
+    background-color: #ebebeb;
+    clear: both;
+
+    .col-right {
+      width: 363px;
+      background-color: #fff;
+      height: 100%;
+      float: right;
+      border-left: 1px solid #e1e1e1;
+    }
+    .col-left {
+      margin-right: 363px;
+      padding-right: 7px;
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+
+      .report-wrapper {
+        height: calc(100% - 330px);
+        transition: height 200ms ease-out;
+        overflow: auto;
+        background-color: white;
+        border-bottom: 1px solid #e1e1e1;
+        padding: 10px 12px 4px 20px;
+
+        .product-cart {
+
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1599px) {
+  .wrap-content {
+    height: calc(100% - 55px);
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .col-right {
+    width: 313px;
+  }
+}

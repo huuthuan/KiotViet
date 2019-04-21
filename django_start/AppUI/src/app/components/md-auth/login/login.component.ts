@@ -36,7 +36,12 @@ export class LoginComponent implements OnInit {
       (data: LoginTokenModel) => {
         if (data.token) {
           this.userService.setAccessToken(data.token);
-          this.userService.redirectToPanel();
+          if (e.element.innerText == 'Manage') {
+            this.userService.redirectToPanel();
+          }
+          if (e.element.innerText == 'Sell goods') {
+            this.userService.redirectToSalesPage();
+          }
         } else {
           this.isSubmitting = false;
           Utils.notifyError('Unable to log in with provided credentials.');

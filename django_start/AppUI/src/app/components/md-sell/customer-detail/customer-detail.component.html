@@ -1,0 +1,115 @@
+<dx-validation-group>
+    <div class="form-wrap">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row mt-3">
+                    <div class="col-lg-4">
+                        <div class="label mt-lg-2">Customer name</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-box [(value)]="editing_Customer.name">
+                            <dx-validator>
+                                <dxi-validation-rule type="required"
+                                                     message="Product name is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-4">
+                        <div class="label mt-lg-2">Birthday</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-date-box type="date" width="100%"
+                                     [dateSerializationFormat]="'yyyy-MM-dd'"
+                                     [(value)]="editing_Customer.birthday">
+                        </dx-date-box>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-4">
+                        <div class="label mt-lg-2">Gender</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-check-box [(value)]="genderMale"
+                                      [width]="80"
+                                      text="Male"
+                                      (onValueChanged)="genderMaleChanged()"></dx-check-box>
+                        <dx-check-box [(value)]="genderFemale"
+                                      [width]="80"
+                                      text="Female"
+                                      (onValueChanged)="genderFemaleChanged()"></dx-check-box>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-4">
+                        <div class="label mt-lg-2">Phone</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-box
+                                [(value)]="editing_Customer.phone"
+                                mask="+1 (X00) 000-000"
+                                [maskRules]="phoneRules"
+                                maskInvalidMessage="The phone must have a correct USA phone format"
+                                [useMaskedValue]="true">
+                            <dx-validator>
+                                <dxi-validation-rule type="pattern" [pattern]="phonePattern"
+                                                     message="The phone must have a correct USA phone format"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-4">
+                        <div class="label mt-lg-2">Email</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-box valueChangeEvent="keyup" [(value)]="editing_Customer.email">
+                            <dx-validator>
+                                <dxi-validation-rule type="email" message="Invalid email">
+                                </dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row mt-3">
+                    <div class="col-lg-3">
+                        <div class="label mt-lg-2">Tax code</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-box [(value)]="editing_Customer.tax_code">
+                        </dx-text-box>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-3">
+                        <div class="label mt-lg-2">Address</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-box [(value)]="editing_Customer.address">
+                        </dx-text-box>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-3">
+                        <div class="label mt-lg-2">Note</div>
+                    </div>
+                    <div class="col-lg-8">
+                        <dx-text-area height="100" [(value)]="editing_Customer.note" maxLength="255">
+                        </dx-text-area>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center mt-3">
+            <div class="col text-lg-right mt-5 mr-5 mb-3">
+                <dx-button width="85" text="Save" type="danger"
+                           [(disabled)]="isSubmitting"
+                           (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
+                <dx-button text="Cancel" (onClick)="onCancelCustomer()"></dx-button>
+            </div>
+        </div>
+    </div>
+</dx-validation-group>

@@ -7,13 +7,17 @@ import {ErrorComponent, LayoutComponent} from './components';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {
         path: '',
+        component: LayoutComponent,
         loadChildren: './modules/client/client.module#ClientModule'
-      }
+      },
+      {
+        path: 'sell-goods',
+        loadChildren: './modules/sell-goods/sell-goods.module#SellGoodsModule'
+      },
     ]
   },
   {path: '', loadChildren: './modules/auth/auth.module#AuthModule'},

@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@auth0/angular-jwt": "^2.1.0",
+    "angular2-useful-swiper": "^5.0.1",
     "core-js": "^2.5.4",
     "devextreme": "^18.2.4",
     "devextreme-angular": "^18.2.4",
@@ -30,8 +31,10 @@
     "ngx-editor": "^4.1.0",
     "ngx-malihu-scrollbar": "^7.0.0",
     "ngx-permissions": "^6.0.4",
+    "ngx-swiper-wrapper": "^7.2.1",
     "rxjs": "~6.2.0",
     "stream": "0.0.2",
+    "swiper": "^4.5.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

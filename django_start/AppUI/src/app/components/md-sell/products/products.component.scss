@@ -1,0 +1,110 @@
+.product-list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 7px 0 12px;
+  .productListWrapper {
+    .action-toolbar {
+      height: 28px;
+      padding-top: 6px;
+      overflow: hidden;
+      .action-left {
+        float: left;
+        a {
+          line-height: 0;
+          float: left;
+          padding: 2px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(194, 194, 194);
+          border-image: initial;
+          border-radius: 2px;
+        }
+      }
+      .action-right {
+        float: right;
+      }
+    }
+
+    .product-price {
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 300px;
+      max-width: 1500px;
+      .swiper-slide {
+        flex-shrink: 0;
+        position: relative;
+        ul {
+          padding: 0px;
+
+          li {
+            width: 140px;
+            height: 132px;
+            float: left;
+            list-style: none;
+            padding: 10px;
+            margin: 2px 0;
+            a {
+              display: block;
+              .product-img {
+                width: 100%;
+                height: 77px;
+                text-align: center;
+                white-space: nowrap;
+                position: relative;
+                img {
+                  max-width: 100%;
+                  max-height: 100%;
+                  vertical-align: middle;
+                  margin-left: -3px;
+                }
+                .product-price {
+                  font-weight: bold;
+                  color: #0090DA;
+                  display: inline-block;
+                  padding: 2px 3px;
+                  background-color: #ebebeb;
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                }
+              }
+              .product-info {
+                padding: 5px 0 0;
+                line-height: 1.4;
+                .product-name {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  height: 33px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1133px) and (min-width: 944px) {
+  .product-list .swiper-slide ul li {
+    width: 20%;
+  }
+}
+
+.product-list .swiper-slide ul li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
+}
+
+.product-list .swiper-slide ul li a .product-img:not(.error-img) {
+  overflow: hidden;
+}

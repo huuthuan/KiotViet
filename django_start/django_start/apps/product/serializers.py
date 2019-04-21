@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.db import transaction
 from django_start.apps.product.models import Category, Product, ImageProduct
 
-
 class CategoryLookupSerializer(serializers.ModelSerializer):
     parentId = serializers.SerializerMethodField()
 
@@ -89,3 +88,33 @@ class ProductSerializer(serializers.ModelSerializer):
                     )
             except Exception as e:
                 raise e
+
+    def update(self, instance, validated_data):
+        data = self.initial_data
+        category = Category.objects.get(id=data.get('category'))
+        with transaction.atomic():
+            try:
+                urls = data.get('urls', [])
+
+                # Update product
+                instance.name = validated_data.get('name')
+                instance.category = category
+                instance.price_cost = validated_data.get('price_cost')
+                instance.price_sale = validated_data.get('price_sale')
+                instance.on_hand = validated_data.get('on_hand')
+                instance.min_quantity = validated_data.get('min_quantity')
+                instance.max_quantity = validated_data.get('max_quantity')
+                instance.describe = validated_data.get('describe')
+                instance.allows_sale = validated_data.get('allows_sale')
+                instance.save()
+
+                # Update image product
+                # for url in urls:
+                #     instance.ima = ImageProduct.objects.create(
+                #         product = product,
+                #         url=url
+                #     )
+            except Exception as e:
+                raise e
+
+        return ProductSerializer(instance=instance).data

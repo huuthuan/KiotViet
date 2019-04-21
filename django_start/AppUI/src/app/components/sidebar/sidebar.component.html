@@ -28,12 +28,6 @@
                             <span>Product portfolio</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-tags"></i>
-                            <span>Set prices</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li>
@@ -44,7 +38,7 @@
                 </a>
                 <ul *ngIf="isExchangeItem">
                     <li>
-                        <a href="#">
+                        <a  routerLinkActive="active" [routerLink]="['/invoices']">
                             <i class="fas fa-file"></i>
                             <span>Bill</span>
                         </a>
@@ -55,22 +49,16 @@
                             <span>Return the goods</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-share-square"></i>
-                            <span>Goods receipt</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-reply-all"></i>
-                            <span>Tra hang nhap</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
+             <li>
+                <a routerLinkActive="active" [routerLink]="['/customers']">
+                    <i class="fas fa-user"></i>
+                    <span>Customer</span>
+                </a>
+            </li>
             <li>
-                <a routerLinkActive="active" (click)="onShowReportItem">
+                <a routerLinkActive="active" (click)="onShowReportItem()">
                     <i class="fas fa-chart-bar"></i>Report
                     <span *ngIf="!isReportItem" class="fas fa-chevron-circle-down showhideicon"></span>
                     <span *ngIf="isReportItem" class="fas fa-chevron-circle-up showhideicon"></span>
@@ -85,13 +73,7 @@
                     <li>
                         <a href="#">
                             <i class="fas fa-clipboard"></i>
-                            <span>Sell</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-inbox"></i>
-                            <span>Order</span>
+                            <span>Sell goods</span>
                         </a>
                     </li>
                     <li>

@@ -15,6 +15,10 @@ var map = {
 	"./modules/client/client.module": [
 		"./src/app/modules/client/client.module.ts",
 		"modules-client-client-module"
+	],
+	"./modules/sell-goods/sell-goods.module": [
+		"./src/app/modules/sell-goods/sell-goods.module.ts",
+		"modules-sell-goods-sell-goods-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -66,13 +70,17 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var routes = [
     {
         path: '',
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"],
         canActivate: [_services_gaurds__WEBPACK_IMPORTED_MODULE_2__["AuthGuard"]],
         children: [
             {
                 path: '',
+                component: _components__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"],
                 loadChildren: './modules/client/client.module#ClientModule'
-            }
+            },
+            {
+                path: 'sell-goods',
+                loadChildren: './modules/sell-goods/sell-goods.module#SellGoodsModule'
+            },
         ]
     },
     { path: '', loadChildren: './modules/auth/auth.module#AuthModule' },
@@ -192,15 +200,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
-/* harmony import */ var ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-malihu-scrollbar */ "./node_modules/ngx-malihu-scrollbar/fesm5/ngx-malihu-scrollbar.js");
-/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-permissions */ "./node_modules/ngx-permissions/ngx-permissions.umd.js");
-/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(ngx_permissions__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _modules_shared_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/shared.module */ "./src/app/modules/shared.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
-/* harmony import */ var _services_gaurds__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/gaurds */ "./src/app/services/gaurds/index.ts");
+/* harmony import */ var ngx_swiper_wrapper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-swiper-wrapper */ "./node_modules/ngx-swiper-wrapper/dist/ngx-swiper-wrapper.es5.js");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-malihu-scrollbar */ "./node_modules/ngx-malihu-scrollbar/fesm5/ngx-malihu-scrollbar.js");
+/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-permissions */ "./node_modules/ngx-permissions/ngx-permissions.umd.js");
+/* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(ngx_permissions__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _modules_shared_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/shared.module */ "./src/app/modules/shared.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
+/* harmony import */ var _services_gaurds__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/gaurds */ "./src/app/services/gaurds/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -220,43 +229,50 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 function tokenGetter() {
-    return localStorage.getItem(_services__WEBPACK_IMPORTED_MODULE_11__["TOKEN_KEY"]);
+    return localStorage.getItem(_services__WEBPACK_IMPORTED_MODULE_12__["TOKEN_KEY"]);
 }
+var DEFAULT_SWIPER_CONFIG = {
+    direction: 'horizontal',
+    slidesPerView: 'auto'
+};
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_5__["JwtModule"].forRoot({
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__["JwtModule"].forRoot({
                     config: {
                         tokenGetter: tokenGetter,
                         authScheme: 'JWT '
                     }
                 }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-                ngx_permissions__WEBPACK_IMPORTED_MODULE_7__["NgxPermissionsModule"].forRoot(),
-                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__["MalihuScrollbarModule"].forRoot(),
-                _modules_shared_module__WEBPACK_IMPORTED_MODULE_9__["SharedModule"].forRoot(),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
+                ngx_permissions__WEBPACK_IMPORTED_MODULE_8__["NgxPermissionsModule"].forRoot(),
+                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_7__["MalihuScrollbarModule"].forRoot(),
+                _modules_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"].forRoot(),
+                ngx_swiper_wrapper__WEBPACK_IMPORTED_MODULE_5__["SwiperModule"],
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]],
             providers: [
-                _services__WEBPACK_IMPORTED_MODULE_11__["ApiService"],
-                _services__WEBPACK_IMPORTED_MODULE_11__["UserService"],
-                _services__WEBPACK_IMPORTED_MODULE_11__["AuthenticationService"],
-                _services__WEBPACK_IMPORTED_MODULE_11__["SharedService"],
-                _services__WEBPACK_IMPORTED_MODULE_11__["RouterService"],
-                _services_gaurds__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"],
-                _services_gaurds__WEBPACK_IMPORTED_MODULE_12__["GuestGuard"],
-                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_6__["MalihuScrollbarService"],
-                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_0__["APP_BASE_HREF"], useValue: '/' }
+                _services__WEBPACK_IMPORTED_MODULE_12__["ApiService"],
+                _services__WEBPACK_IMPORTED_MODULE_12__["UserService"],
+                _services__WEBPACK_IMPORTED_MODULE_12__["AuthenticationService"],
+                _services__WEBPACK_IMPORTED_MODULE_12__["SharedService"],
+                _services__WEBPACK_IMPORTED_MODULE_12__["RouterService"],
+                _services_gaurds__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"],
+                _services_gaurds__WEBPACK_IMPORTED_MODULE_13__["GuestGuard"],
+                ngx_malihu_scrollbar__WEBPACK_IMPORTED_MODULE_7__["MalihuScrollbarService"],
+                { provide: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["APP_BASE_HREF"], ngx_swiper_wrapper__WEBPACK_IMPORTED_MODULE_5__["SWIPER_CONFIG"]], useValue: ['/', DEFAULT_SWIPER_CONFIG] }
             ],
         })
     ], AppModule);
@@ -337,7 +353,7 @@ var ErrorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n\t<h4 class=\"title\">\n\t\t<span *ngIf=\"loggedUser && loggedUser.company_name\">\n\t\t\t{{ loggedUser.company_name }}<i class=\"material-icons\" style=\"opacity: 0.6\">chevron_right</i>\n\t\t</span>{{ title }}\n\t</h4>\n\t<nav class=\"user-menu\" (clickOutside)=\"onCloseMenu()\">\n\t\t<ul>\n\t\t\t<li class=\"dropdown\" (click)=\"onToggleMenu()\">\n\t\t\t\t<div class=\"dropdown-toggle pointer\">\n\t\t\t\t\t<span class=\"user-name\"\n\t\t\t\t\t\t  *ngIf=\"loggedUser\">{{ loggedUser.username }}</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"dropdown-menu dropdown-menu-right\" [class.show]=\"isOpenMenu\">\n\t\t\t\t\t<a class=\"dropdown-item\" [routerLink]=\"['/profile']\">\n\t\t\t\t\t\t<i class=\"far fa-user\"></i> Edit Profile\n\t\t\t\t\t</a>\n\t\t\t\t\t<div class=\"dropdown-divider\"></div>\n\t\t\t\t\t<a class=\"dropdown-item pointer\" (click)=\"onLogout()\">\n\t\t\t\t\t\t<i class=\"fas fa-power-off\"></i> Logout\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t</nav>\n    <nav class=\"user-menu\" (clickOutside)=\"onCloseMenuSetting()\">\n\t\t<ul>\n\t\t\t<li class=\"dropdown\" (click)=\"onToggleMenuSetting()\">\n                <div class=\"dropdown-toggle pointer\">\n\t\t\t\t\t<span class=\"user-name\">Setting</span>\n\t\t\t\t</div>\n                <div class=\"dropdown-menu dropdown-menu-right\" [class.show]=\"isOpenMenuSetting\">\n\t\t\t\t\t<a class=\"dropdown-item\" [routerLink]=\"['/settingshop']\">\n\t\t\t\t\t\t<i class=\"far fa-user\"></i> Setting Shop\n\t\t\t\t\t</a>\n\t\t\t\t\t<div class=\"dropdown-divider\"></div>\n\t\t\t\t\t<a class=\"dropdown-item pointer\" [routerLink]=\"['/user']\">\n\t\t\t\t\t\t<i class=\"fas fa-power-off\"></i> User Management\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t</nav>\n</header>\n"
+module.exports = "<header>\n    <h4 class=\"title\">\n\t\t<span *ngIf=\"loggedUser && loggedUser.company_name\">\n\t\t\t{{ loggedUser.company_name }}<i class=\"material-icons\" style=\"opacity: 0.6\">chevron_right</i>\n\t\t</span>{{ title }}\n    </h4>\n    <div class=\"header-right\">\n        <nav class=\"user-menu\" (clickOutside)=\"onCloseMenu()\">\n            <ul>\n                <li class=\"dropdown\" (click)=\"onToggleMenu()\">\n                    <div class=\"dropdown-toggle pointer\">\n                        <i class=\"fas fa-user-circle\"></i>\n                        <span class=\"user-name\"\n                              *ngIf=\"loggedUser\">{{ loggedUser.username }}</span>\n                    </div>\n                    <div class=\"dropdown-menu dropdown-menu-right\" [class.show]=\"isOpenMenu\">\n                        <a class=\"dropdown-item\" [routerLink]=\"['/profile']\">\n                            <i class=\"fa fa-unlock-alt\"></i> Edit Profile\n                        </a>\n                         <div class=\"dropdown-divider\"></div>\n                        <a class=\"dropdown-item\" [routerLink]=\"['/shop']\">\n                            <i class=\"fa fa-wrench\"></i> Setting Shop\n                        </a>\n                        <div class=\"dropdown-divider\"></div>\n                        <a class=\"dropdown-item pointer\" [routerLink]=\"['/employees']\">\n                            <i class=\"fa fa-male\"></i> User Management\n                        </a>\n                        <div class=\"dropdown-divider\"></div>\n                        <a class=\"dropdown-item pointer\" (click)=\"onLogout()\">\n                            <i class=\"fas fa-power-off\"></i> Logout\n                        </a>\n                    </div>\n                </li>\n            </ul>\n        </nav>\n        <div class=\"sell-goods\">\n            <a [routerLink]=\"['/sell-goods']\">\n                <i class=\"fa fa-shopping-cart\"></i>\n                <span>Sell goods</span>\n            </a>\n        </div>\n    </div>\n\n</header>\n"
 
 /***/ }),
 
@@ -384,7 +400,6 @@ var HeaderComponent = /** @class */ (function () {
         this.authService = authService;
         this.loggedUser = new _models__WEBPACK_IMPORTED_MODULE_2__["LoggedUser"]();
         this.isOpenMenu = false;
-        this.isOpenMenuSetting = false;
         this.title = '';
     }
     HeaderComponent.prototype.ngOnInit = function () {
@@ -397,21 +412,11 @@ var HeaderComponent = /** @class */ (function () {
         });
     };
     HeaderComponent.prototype.onToggleMenu = function () {
-        this.onCloseMenuSetting();
         this.isOpenMenu = !this.isOpenMenu;
     };
     HeaderComponent.prototype.onCloseMenu = function () {
         if (this.isOpenMenu) {
             this.isOpenMenu = false;
-        }
-    };
-    HeaderComponent.prototype.onToggleMenuSetting = function () {
-        this.onCloseMenu();
-        this.isOpenMenuSetting = !this.isOpenMenuSetting;
-    };
-    HeaderComponent.prototype.onCloseMenuSetting = function () {
-        if (this.isOpenMenuSetting) {
-            this.isOpenMenuSetting = false;
         }
     };
     HeaderComponent.prototype.onLogout = function () {
@@ -442,7 +447,7 @@ var HeaderComponent = /** @class */ (function () {
 /*!*************************************!*\
   !*** ./src/app/components/index.ts ***!
   \*************************************/
-/*! exports provided: LayoutComponent, HeaderComponent, SidebarComponent, ErrorComponent, LoadingPanelComponent */
+/*! exports provided: LayoutComponent, SellGoodsComponent, HeaderComponent, SidebarComponent, ErrorComponent, LoadingPanelComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -450,17 +455,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_layout_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout/layout.component */ "./src/app/components/layout/layout.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayoutComponent", function() { return _layout_layout_component__WEBPACK_IMPORTED_MODULE_0__["LayoutComponent"]; });
 
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header/header.component */ "./src/app/components/header/header.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return _header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"]; });
+/* harmony import */ var _md_sell_sell_goods_sell_goods_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./md-sell/sell-goods/sell-goods.component */ "./src/app/components/md-sell/sell-goods/sell-goods.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SellGoodsComponent", function() { return _md_sell_sell_goods_sell_goods_component__WEBPACK_IMPORTED_MODULE_1__["SellGoodsComponent"]; });
 
-/* harmony import */ var _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidebar/sidebar.component */ "./src/app/components/sidebar/sidebar.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SidebarComponent", function() { return _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_2__["SidebarComponent"]; });
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header/header.component */ "./src/app/components/header/header.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return _header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"]; });
 
-/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error/error.component */ "./src/app/components/error/error.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorComponent", function() { return _error_error_component__WEBPACK_IMPORTED_MODULE_3__["ErrorComponent"]; });
+/* harmony import */ var _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sidebar/sidebar.component */ "./src/app/components/sidebar/sidebar.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SidebarComponent", function() { return _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_3__["SidebarComponent"]; });
 
-/* harmony import */ var _loading_panel_loading_panel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./loading-panel/loading-panel.component */ "./src/app/components/loading-panel/loading-panel.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadingPanelComponent", function() { return _loading_panel_loading_panel_component__WEBPACK_IMPORTED_MODULE_4__["LoadingPanelComponent"]; });
+/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./error/error.component */ "./src/app/components/error/error.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorComponent", function() { return _error_error_component__WEBPACK_IMPORTED_MODULE_4__["ErrorComponent"]; });
+
+/* harmony import */ var _loading_panel_loading_panel_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loading-panel/loading-panel.component */ "./src/app/components/loading-panel/loading-panel.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoadingPanelComponent", function() { return _loading_panel_loading_panel_component__WEBPACK_IMPORTED_MODULE_5__["LoadingPanelComponent"]; });
+
 
 
 
@@ -489,7 +498,7 @@ module.exports = "<app-header></app-header>\n<app-sidebar (onSidebarToggle)=\"on
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "::ng-deep app-layout {\n  display: block;\n  padding: 0;\n  margin: 0;\n  height: 100%;\n  position: relative; }\n  ::ng-deep app-layout app-header > header {\n    position: absolute;\n    top: 0;\n    right: 0;\n    left: 0;\n    height: 76px;\n    padding-left: 28px;\n    border-bottom: solid 1px rgba(0, 0, 0, 0.125);\n    background-color: white;\n    color: #343434;\n    z-index: 2; }\n  ::ng-deep app-layout app-header > header:after {\n      display: block;\n      clear: both;\n      content: \"\"; }\n  ::ng-deep app-layout app-header > header > h4 {\n      display: none;\n      float: left;\n      margin: 0;\n      line-height: 76px;\n      color: #343434; }\n  ::ng-deep app-layout app-header > header > nav.user-menu {\n      float: right;\n      padding-right: 25px;\n      line-height: 76px; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul {\n        margin: 0;\n        padding: 0 10px 0 0;\n        list-style: none;\n        display: inline-block; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li {\n          position: relative;\n          display: inline-block;\n          line-height: normal;\n          margin: 0;\n          padding: 0; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li .avatar img {\n            width: 30px;\n            height: 30px;\n            border-radius: 50%;\n            margin-right: 10px; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li .user-name {\n            margin-right: 2px;\n            font-weight: 500; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li .user-name:hover {\n              color: #c22642; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li .dropdown-menu {\n            top: 50px;\n            border-radius: 0 0 0.25rem 0.25rem; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li a {\n            padding: 10px 20px;\n            transition: color .15s ease;\n            color: inherit;\n            text-decoration: none; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li a:active, ::ng-deep app-layout app-header > header > nav.user-menu ul li a:hover {\n              color: #c22642 !important;\n              cursor: pointer;\n              text-decoration: none;\n              background-color: #f8f9fa; }\n  ::ng-deep app-layout app-header > header > nav.user-menu ul li a > i {\n              margin-right: 6px; }\n  ::ng-deep app-layout app-sidebar > aside {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    width: 250px;\n    padding-top: 76px;\n    background: white;\n    color: #404E67;\n    box-shadow: 1px 0 6px #0c0c0c;\n    transition: left .2s ease, width .2s ease;\n    z-index: 3; }\n  ::ng-deep app-layout app-sidebar > aside > a.logo {\n      position: absolute;\n      top: 0;\n      right: 0;\n      width: 210px;\n      height: 76px;\n      display: block;\n      border-bottom: solid 1px rgba(0, 0, 0, 0.125);\n      background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAAAz1BMVEUAAADUBy/DDi7dAzDdAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDDDi7DDi7dAzDdAzDDDi7DDi7dAzDDDi7fEz3HHTvugZjhh5f97/L78PLqYn7////aaHz74OX44eXmQmTSSmL3wMvww8vhI0rLLEjyobHppbHdAzDDDi7jMlfOO1XoUnHWWW/50Nj00tjscYvdd4nwkaTllqT0sL7stL7hRGPXBjDWBi/FDS4+JsiBAAAARXRSTlMAMDAwj9///9+PIHDPz3AgEGC/v2AQUK+vUJ/v75+AgP////////////////////////9AQP//////////////////r6+TKVt1AAAH7ElEQVR4AezUtaHDUBTA0I9mZtx/zHDMWOY+nQ3U6AsAAAAAAAAAAAAA8Em+f9Ts/v3713TDVK7esh3tRr9xPV+d7iCMtCf9KU5SJcKzXOvonaIU313VmjZK7zRtKXtsY/qI1OlZ9rN7Jb2rlza9IHS0JfoSV9D0wlxboa8oElljO5HeTU/C2E6kC5heN7Yz6QKm143tTLqA6QXrYzub/pxeKmFsV2buQllxZQ3DcJZ1jwuMS7AYGmx84Jy97/+exjNGWLv+zvst+O7gKfnrha6Kna4/ethhq9wUvdIf99G7EV8407xp1zpHevTuff8JrqN//3H/8PgPG0/njx5/2Hg6f/T4w8bTj/bo3ahKNWjdXpC76ty7B/9vMXz9Qbic+0cTOGz2JanRChw94LC55svyvPDNd5VH7+zrQQc2zPORJ/bi5ekhD5t94/zLJoAcOHrEYTNs+pU+M/CAowccNmBl/m1zD646evxhQ7f4Tl96cvzRW1WHjVs3/7HfswY6emv+v0Vy/Yo+oOnUP5rVT1F8SUVPeTnz8/bMaZZV8ipr+J1GDSeiD3/RRyJ61HTW+2bImWoTifxFY3pLQp/+Tp9J6G2eDuZMtflx0mMFffEnfamgd0g6nzNk1vD0R8qcUWZN86BdKXNGmTXr5jknzBlp1gC/4YQ5I82aqPkuZDkjzZprAL0lyxlp1rQB+mNY/iqv3WuY/gSgx6qc0WZNB6DflDWstGbvAPSVKGfEWbM+Ono32UdPezAdmCZn1FkTERPlDJ81PP0WKH+TX7K3oPw2Qm8pckadNW2Efi7IGXnWXEfosSBn5FnTQej3+ZzRZ80DhL7ic0afNWuEfsbnjD5rTiNkfM7osyZi9pzOGX3WvIDoLTpn9FnTJul8zvBZw9NjOmf0WdNh6XzOLJZs1vD0R6qcGU9UWfMUoq9EOfPO+feirFlD9HuinMmcL4CsYZ9e+Kb5sGtMus730nxnH4mioXYhyZmNc95vJVlzDaO3JA1bfqXPJTXbxuiPFTkzdV/pfqbImicYPVa8ML75Tn+reHvsYPSbgpwZuu90PxJkzR2MvhLkTL+iDwRZsz4a+qZG163ovXx3W4AOjc+ZhavofslnTcQNz5l8/Is+ybms4em36Jx5537R/Xs6a26D9BadM9nv9ILOmjZIfwbnTNL9nd5L4ax5CdJjOGcW7ne6X8JZ0wHp9+HHpvJP+hx+hHoA0ldszkzdn3Q/Y7NmDdLP2JzJ/qYXbNacRuDQnBnufrVghGZNRA7Nmf4ufUBlDU9vkY9N5S59Tj5CtVk6mDMLt0v3SyhreHoMPjaN6+gT8BGqw9K5nBm6OrofAVmD0YEHmP/VeLJ6epHv7v/804t9Kyxnkm49vZdiWbNG6Tewhl24erpfYjV7N0JH5Uxe7qPPcyprInYXzAtjle+79PqQH/BPL+a1oJzJ9tMLKGvaMP0xkzNDt5/uR0zWPIHpsZ3+ri7f6+n7Q/69nd6h6UjO5OVl9HkOZA1PXyE5s3CX0f0SyZo1TSdyJh9fTp/kQNbg9IjImaG7nO5HRNZE9Iicyf6LXgBZw9NvWXMG2wB9etE3zZCjj/RFQz7AZDm4wvj0Qi825gw4W9Z0cPp9W86gm9ieXuitbDmDzpQ1a5x+ZsoZeHP+6cUye85ws2RNdEh6N8fXOyi9pc8ZImvaB6UnPD09KD3W5wyRNR09nW9YpmYV9Ed8zlg24Z9e8KaZaugzumgMu6HPGSJr7kaC6XOGyJpIsQs+Z/isuSaht4Jzpj+u3z+TPRsEZ01bQn8cmjOJ27N/9wrS0Kx5IqHHoTmzsdO3oVnT0dMtOVPa6XN71ijpq8CcmTo73c8Cs2atpxtyJguhF/asEdKjsJxJXAjdp2FZE2kWljObMPrWnjVC+q2gnCnD6HN71tBPL4am6RuOXEU3HroBXzTIA0xiOHIV3XjoUvLpxbA4IGcSF0r3aUDWdET0+wE5swmnbwOy5oGIvgr42FAZTp8HfK5oLaKf2XNm6sLpfmbPmtNINPvHhrIm9ML+uaJINXPOJK4J3afmrJHRW8aGzTfN6NvcWLNtHd362FQ2o8+tj1A6emz8duLUNaP7mfErjJ0D0DPDkTPQC+MjlI7+yJYziWtK96kta57K6Ctbzmya07e2rFnL6Ddsj01lc/rc9gh1N5LNlDNT15zuZ6asiXS7sDw2ZQS9sDxCXRPSW4acSRxB96kha9pC+mNDzmwY+taQNU+E9NjwKeiSoc8NH5fuXDW97NctcwzdF4O6za+avvrcnl3Y6A5DQRS+PzMzF5FUMO/139KSeJmONdLe08EIvsR29+e9Of3n1TkdyXt6kI1OvtPP00CbX12n3zZBNzw6Tr/MokTV0m36qo5SbTtO0/uHYAO8k79ulHfy143yTv66Ud6J183VO/G6uXonWDfeu1P56WdWN9478brhtZYlp6+a4VTVKTW9X4dbi1OJ6ed1/DwD78Tr5uqdeN1cvROvm6t34nVz9U68bq7eidfN1Tvxurl6J0A3h6rxb0yfELrxLTo/nd5ndDPwTj66AeOP359+YYfzDZffm74CWTfwTrxurt6J183VO/G6uXonXjdX78Tr5uqdeN1cvROvm6t3ctYNGN9+ffoAGG7XcPdy+t5aN+BxWvxjsat3InTz79E7PekWQPbeyV83qOG//7PI/mhZlmVZlmVZlmVZlmXZPZmSvHpA7pEOAAAAAElFTkSuQmCC\") no-repeat 22px 20px;\n      background-size: auto 42px;\n      transition: all .2s ease; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon {\n      position: absolute;\n      top: 23px;\n      right: -16px;\n      width: 34px;\n      height: 34px;\n      padding: 6px;\n      cursor: pointer;\n      border-radius: 50%;\n      transition: background-color 0.2s ease, right .2s ease;\n      -moz-transition: background-color 0.2s ease, right .2s ease;\n      -webkit-transition: background-color 0.2s ease, right .2s ease; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon:hover {\n        background-color: #1a21614a; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon > div {\n        font-size: 14px;\n        text-align: center;\n        width: 22px;\n        height: 22px;\n        line-height: 20px;\n        background-color: white;\n        color: #c22642;\n        border: solid 1px #c22642;\n        border-radius: 50%;\n        box-shadow: 0 0 3px #00000080; }\n  ::ng-deep app-layout app-sidebar > aside > nav {\n      position: absolute;\n      top: 76px;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      overflow-x: hidden;\n      overflow-y: auto;\n      color: #343434; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul {\n        margin: 0;\n        padding: 0; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li {\n          position: relative;\n          margin: 0;\n          padding: 0;\n          border: 0.1px solid #e3e3e3; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > ul > li > a {\n            margin-left: 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li.navigation-header {\n            padding-left: 27px;\n            margin-top: 10px;\n            margin-bottom: 10px;\n            font-weight: 500;\n            text-transform: uppercase;\n            font-size: 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li.navigation-header > i {\n              display: none; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a {\n            position: relative;\n            color: #343434;\n            text-decoration: none;\n            font-size: 15px;\n            display: block;\n            line-height: 18px;\n            width: 100%;\n            padding-top: 15px;\n            padding-bottom: 15px;\n            padding-left: 12px;\n            white-space: nowrap;\n            overflow: hidden;\n            transition: color .15s ease, background-color .15s ease; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a span.circle-down {\n              right: 8px;\n              position: absolute; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a:hover {\n              text-decoration: none;\n              color: #c22642;\n              background: #f8f9fa; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a.active {\n              color: #c22642;\n              font-weight: 500;\n              background: #f8f9fa; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a > i {\n              margin: 0 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > ul > li:after {\n        display: none; }\n  ::ng-deep app-layout > main {\n    position: absolute;\n    top: 76px;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 1;\n    background: white;\n    padding: 15px 10px 15px 0; }\n  ::ng-deep app-layout > main .content-wrapper {\n      border-left: 1px solid #E4E7ED;\n      min-height: calc(100vh - 100px); }\n  ::ng-deep app-layout.minimized app-header > header {\n    margin-left: 70px; }\n  ::ng-deep app-layout.minimized app-sidebar > aside {\n    left: -250px;\n    box-shadow: none; }\n  ::ng-deep app-layout.minimized app-sidebar > aside > a.logo {\n      right: -70px;\n      width: 70px;\n      border-right: solid 1px rgba(0, 0, 0, 0.125);\n      background: transparent url(\"data:image/png;base64,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\") center center no-repeat;\n      background-size: auto 36px; }\n  ::ng-deep app-layout.minimized app-sidebar > aside > div.toggle-icon {\n      right: -86px;\n      -webkit-transform: rotate(180deg);\n              transform: rotate(180deg); }\n  @media (min-width: 576px) {\n  ::ng-deep app-layout app-header > header > h4 {\n    display: block; } }\n  @media (min-width: 992px) {\n  ::ng-deep app-layout {\n    position: relative; }\n    ::ng-deep app-layout app-header > header {\n      left: 250px; }\n    ::ng-deep app-layout app-sidebar > aside {\n      left: 0;\n      box-shadow: none; }\n    ::ng-deep app-layout > main {\n      left: 250px; }\n    ::ng-deep app-layout.minimized > main {\n      left: 70px; }\n    ::ng-deep app-layout.minimized app-header > header {\n      margin-left: 0;\n      left: 70px; }\n    ::ng-deep app-layout.minimized app-sidebar > aside {\n      left: 0;\n      width: 70px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > a.logo {\n        right: 0;\n        border-right: 0;\n        background: transparent url(\"data:image/png;base64,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\") center center no-repeat;\n        background-size: auto 36px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > div.toggle-icon {\n        right: -20px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li.navigation-header span {\n        display: none; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li.navigation-header i {\n        display: inline-block; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > a > span {\n        display: none; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > ul > li > a {\n        padding-left: 12px; }\n        ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > ul > li > a > span {\n          display: none; } }\n"
+module.exports = "::ng-deep app-layout {\n  display: block;\n  padding: 0;\n  margin: 0;\n  height: 100%;\n  position: relative; }\n  ::ng-deep app-layout app-header > header {\n    position: absolute;\n    top: 0;\n    right: 0;\n    left: 0;\n    height: 76px;\n    padding-left: 28px;\n    border-bottom: solid 1px rgba(0, 0, 0, 0.125);\n    background-color: white;\n    color: #343434;\n    z-index: 2; }\n  ::ng-deep app-layout app-header > header:after {\n      display: block;\n      clear: both;\n      content: \"\"; }\n  ::ng-deep app-layout app-header > header > h4 {\n      display: none;\n      float: left;\n      margin: 0;\n      line-height: 76px;\n      color: #343434; }\n  ::ng-deep app-layout app-header > header .header-right {\n      float: right;\n      padding-right: 25px;\n      line-height: 76px; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu {\n        float: right; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul {\n          margin: 0;\n          padding: 0 10px 0 0;\n          list-style: none;\n          display: inline-block; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li {\n            position: relative;\n            display: inline-block;\n            line-height: normal;\n            margin: 0;\n            padding: 0; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li:hover {\n              color: #c22642; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li .avatar img {\n              width: 30px;\n              height: 30px;\n              border-radius: 50%;\n              margin-right: 10px; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li .user-name {\n              margin-right: 2px;\n              font-weight: 500;\n              margin-left: 3px; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li .dropdown-menu {\n              top: 50px;\n              border-radius: 0 0 0.25rem 0.25rem; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li a {\n              padding: 10px 20px;\n              transition: color .15s ease;\n              color: inherit;\n              text-decoration: none; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li a:active, ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li a:hover {\n                color: #c22642 !important;\n                cursor: pointer;\n                text-decoration: none;\n                background-color: #f8f9fa; }\n  ::ng-deep app-layout app-header > header .header-right > nav.user-menu ul li a > i {\n                margin-right: 6px; }\n  ::ng-deep app-layout app-header > header .header-right .sell-goods {\n        float: left;\n        margin-right: 10px; }\n  ::ng-deep app-layout app-header > header .header-right .sell-goods a {\n          color: #0c0c0c; }\n  ::ng-deep app-layout app-header > header .header-right .sell-goods a span {\n            margin-right: 2px;\n            font-weight: 500;\n            margin-left: 3px; }\n  ::ng-deep app-layout app-header > header .header-right .sell-goods a:hover {\n            color: #c22642; }\n  ::ng-deep app-layout app-sidebar > aside {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    width: 250px;\n    padding-top: 76px;\n    background: white;\n    color: #404E67;\n    box-shadow: 1px 0 6px #0c0c0c;\n    transition: left .2s ease, width .2s ease;\n    z-index: 3; }\n  ::ng-deep app-layout app-sidebar > aside > a.logo {\n      position: absolute;\n      top: 0;\n      right: 0;\n      width: 210px;\n      height: 76px;\n      display: block;\n      border-bottom: solid 1px rgba(0, 0, 0, 0.125);\n      background: url(\"data:image/png;base64,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\") no-repeat 22px 20px;\n      background-size: auto 42px;\n      transition: all .2s ease; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon {\n      position: absolute;\n      top: 23px;\n      right: -16px;\n      width: 34px;\n      height: 34px;\n      padding: 6px;\n      cursor: pointer;\n      border-radius: 50%;\n      transition: background-color 0.2s ease, right .2s ease;\n      -moz-transition: background-color 0.2s ease, right .2s ease;\n      -webkit-transition: background-color 0.2s ease, right .2s ease; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon:hover {\n        background-color: #1a21614a; }\n  ::ng-deep app-layout app-sidebar > aside > div.toggle-icon > div {\n        font-size: 14px;\n        text-align: center;\n        width: 22px;\n        height: 22px;\n        line-height: 20px;\n        background-color: white;\n        color: #c22642;\n        border: solid 1px #c22642;\n        border-radius: 50%;\n        box-shadow: 0 0 3px #00000080; }\n  ::ng-deep app-layout app-sidebar > aside > nav {\n      position: absolute;\n      top: 76px;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      overflow-x: hidden;\n      overflow-y: auto;\n      color: #343434; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul {\n        margin: 0;\n        padding: 0; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li {\n          position: relative;\n          margin: 0;\n          padding: 0;\n          border: 0.1px solid #e3e3e3; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > ul > li > a {\n            margin-left: 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li.navigation-header {\n            padding-left: 27px;\n            margin-top: 10px;\n            margin-bottom: 10px;\n            font-weight: 500;\n            text-transform: uppercase;\n            font-size: 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li.navigation-header > i {\n              display: none; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a {\n            position: relative;\n            color: #343434;\n            text-decoration: none;\n            font-size: 15px;\n            display: block;\n            line-height: 18px;\n            width: 100%;\n            padding-top: 15px;\n            padding-bottom: 15px;\n            padding-left: 12px;\n            white-space: nowrap;\n            overflow: hidden;\n            transition: color .15s ease, background-color .15s ease; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a span.showhideicon {\n              right: 8px;\n              position: absolute; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a:hover {\n              text-decoration: none;\n              color: #c22642;\n              background: #f8f9fa; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a.active {\n              color: #c22642;\n              font-weight: 500;\n              background: #f8f9fa; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > a > i {\n              margin: 0 15px; }\n  ::ng-deep app-layout app-sidebar > aside > nav ul > li > ul > li:after {\n        display: none; }\n  ::ng-deep app-layout > main {\n    position: absolute;\n    top: 76px;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 1;\n    background: white;\n    padding: 15px 10px 15px 0; }\n  ::ng-deep app-layout > main .content-wrapper {\n      border-left: 1px solid #E4E7ED;\n      min-height: calc(100vh - 100px); }\n  ::ng-deep app-layout.minimized app-header > header {\n    margin-left: 70px; }\n  ::ng-deep app-layout.minimized app-sidebar > aside {\n    left: -250px;\n    box-shadow: none; }\n  ::ng-deep app-layout.minimized app-sidebar > aside > a.logo {\n      right: -70px;\n      width: 70px;\n      border-right: solid 1px rgba(0, 0, 0, 0.125);\n      background: transparent url(\"data:image/png;base64,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\") center center no-repeat;\n      background-size: auto 36px; }\n  ::ng-deep app-layout.minimized app-sidebar > aside > div.toggle-icon {\n      right: -86px;\n      -webkit-transform: rotate(180deg);\n              transform: rotate(180deg); }\n  @media (min-width: 576px) {\n  ::ng-deep app-layout app-header > header > h4 {\n    display: block; } }\n  @media (min-width: 992px) {\n  ::ng-deep app-layout {\n    position: relative; }\n    ::ng-deep app-layout app-header > header {\n      left: 250px; }\n    ::ng-deep app-layout app-sidebar > aside {\n      left: 0;\n      box-shadow: none; }\n    ::ng-deep app-layout > main {\n      left: 250px; }\n    ::ng-deep app-layout.minimized > main {\n      left: 70px; }\n    ::ng-deep app-layout.minimized app-header > header {\n      margin-left: 0;\n      left: 70px; }\n    ::ng-deep app-layout.minimized app-sidebar > aside {\n      left: 0;\n      width: 70px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > a.logo {\n        right: 0;\n        border-right: 0;\n        background: transparent url(\"data:image/png;base64,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\") center center no-repeat;\n        background-size: auto 36px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > div.toggle-icon {\n        right: -20px; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li.navigation-header span {\n        display: none; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li.navigation-header i {\n        display: inline-block; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > a > span {\n        display: none; }\n      ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > ul > li > a {\n        padding-left: 12px; }\n        ::ng-deep app-layout.minimized app-sidebar > aside > nav ul > li > ul > li > a > span {\n          display: none; } }\n"
 
 /***/ }),
 
@@ -615,6 +624,115 @@ var LoadingPanelComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/md-sell/sell-goods/sell-goods.component.html":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/md-sell/sell-goods/sell-goods.component.html ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"invoice\">\n    <div class=\"header\">\n        <div class=\"header-right\">\n            <ul>\n                <li class=\"user-name\">\n                    <a>\n                        <i class=\"fas fa-user-circle\"></i>\n                        <span class=\"user-name ml-2\"\n                              *ngIf=\"loggedUser\">{{ loggedUser.username }}</span>\n                    </a>\n                </li>\n                <li class=\"menu-bar\">\n                    <a class=\"list-bar\">\n                        <i class=\"fas fa-bars\"></i>\n                    </a>\n                </li>\n            </ul>\n        </div>\n        <div class=\"search-wrapper\">\n            <dx-text-box>\n            </dx-text-box>\n        </div>\n        <div class=\"header-tab\">\n            <div class=\"header-tab-wrap\">\n                <div class=\"content-tab\">\n                    <div class=\"scroll-lane\">\n                        <ul>\n                            <li routerLinkActive=\"active\" *ngFor=\"let report of invoiceReports\">\n                                <a (click)=\"onSelectTab(report)\">\n                                    <span>{{ report.invoice_code }}</span>\n                                </a>\n                            </li>\n                            <li class=\"add-btn\" (click)=\"onAddReport($event)\">\n                                <a>\n                                    <i class=\"fas fa-plus\"></i>\n                                </a>\n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"wrap-content\">\n        <div class=\"col-right\">\n            <app-payment></app-payment>\n        </div>\n        <div class=\"col-left\">\n            <div class=\"\">\n\n            </div>\n            <div class=\"report-wrapper\" *ngFor=\"let report of invoiceReports\" >\n                <div class=\"product-cart\">\n                    <ul>\n                        <li *ngFor=\"let product of report.products\" class=\"float-left mr-3\">{{ product.id }}\n                            - {{ product.name }}</li>\n                    </ul>\n                </div>\n            </div>\n            <app-sell-products (onAddProduct)=\"addProductInvoiceReport($event, report)\"></app-sell-products>\n        </div>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/md-sell/sell-goods/sell-goods.component.scss":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/md-sell/sell-goods/sell-goods.component.scss ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".invoice {\n  height: 100%; }\n  @media screen and (max-width: 1599px) {\n    .invoice .header {\n      height: 55px;\n      background-color: #0090DA; }\n      .invoice .header .search-wrapper {\n        width: 540px;\n        float: left;\n        position: relative;\n        padding: 11px 0px 0px 12px; }\n      .invoice .header .header-tab {\n        margin: 0 370px 0 540px;\n        padding-top: 11px; }\n        .invoice .header .header-tab .header-tab-wrap {\n          width: 100%;\n          overflow: hidden; }\n          .invoice .header .header-tab .header-tab-wrap .content-tab {\n            float: left;\n            overflow: hidden;\n            width: 626px; }\n            .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul {\n              list-style: none;\n              padding: 0px;\n              margin: 0px; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li {\n                float: left;\n                position: relative;\n                margin-left: 4px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a {\n                  padding: 11px 10px 11px;\n                  color: #ffffff;\n                  font-size: 13px;\n                  padding-right: 24px;\n                  background-color: #0077b4;\n                  border-top: 3px solid transparent;\n                  text-decoration: none;\n                  display: block;\n                  border-top-right-radius: 2px;\n                  border-top-left-radius: 2px; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a:active {\n                    background-color: #ffffff;\n                    color: #0077b4; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a {\n                background-color: transparent;\n                cursor: pointer;\n                padding-top: 11px;\n                padding-bottom: 11px;\n                padding-right: 17px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a i {\n                  color: #ffffff;\n                  margin-left: 7px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a:hover {\n                  background-color: #006da4; }\n      .invoice .header .header-right {\n        width: 363px;\n        float: right; }\n        .invoice .header .header-right ul {\n          list-style: none;\n          text-align: right;\n          float: right !important;\n          margin-top: 7px;\n          margin-bottom: 7px; }\n          .invoice .header .header-right ul li {\n            float: left;\n            padding-top: 6px;\n            margin-left: 5px; }\n            .invoice .header .header-right ul li a {\n              color: white;\n              float: left;\n              line-height: 1.4;\n              padding: 5px; }\n          .invoice .header .header-right ul li.user-name {\n            width: 70px; }\n            .invoice .header .header-right ul li.user-name a {\n              float: right;\n              overflow: hidden;\n              white-space: nowrap;\n              text-overflow: ellipsis;\n              width: 100%;\n              padding-left: 0;\n              padding-right: 0;\n              cursor: default; }\n              .invoice .header .header-right ul li.user-name a span {\n                padding: 0;\n                text-align: left;\n                font-size: 13px; }\n          .invoice .header .header-right ul li.menu-bar {\n            padding: 0;\n            position: relative;\n            width: 50px; }\n            .invoice .header .header-right ul li.menu-bar a.list-bar {\n              padding: 11px 12px; }\n              .invoice .header .header-right ul li.menu-bar a.list-bar i {\n                font-size: 18px;\n                width: 18px;\n                text-align: center;\n                color: white; } }\n  .invoice .wrap-content {\n    height: calc(100% - 55px);\n    background-color: #ebebeb;\n    clear: both; }\n  .invoice .wrap-content .col-right {\n      width: 363px;\n      background-color: #fff;\n      height: 100%;\n      float: right;\n      border-left: 1px solid #e1e1e1; }\n  .invoice .wrap-content .col-left {\n      margin-right: 363px;\n      padding-right: 7px;\n      position: relative;\n      height: 100%;\n      overflow: hidden; }\n  .invoice .wrap-content .col-left .report-wrapper {\n        height: calc(100% - 330px);\n        transition: height 200ms ease-out;\n        overflow: auto;\n        background-color: white;\n        border-bottom: 1px solid #e1e1e1;\n        padding: 10px 12px 4px 20px; }\n  @media screen and (max-width: 1599px) {\n  .wrap-content {\n    height: calc(100% - 55px); } }\n  @media only screen and (max-width: 1023px) {\n  .col-right {\n    width: 313px; } }\n"
+
+/***/ }),
+
+/***/ "./src/app/components/md-sell/sell-goods/sell-goods.component.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/md-sell/sell-goods/sell-goods.component.ts ***!
+  \***********************************************************************/
+/*! exports provided: SellGoodsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellGoodsComponent", function() { return SellGoodsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SellGoodsComponent = /** @class */ (function () {
+    function SellGoodsComponent(userService, authService) {
+        this.userService = userService;
+        this.authService = authService;
+        this.loggedUser = new _models__WEBPACK_IMPORTED_MODULE_2__["LoggedUser"]();
+        this.isCustomerPopup = false;
+        this.customerPopupTitle = 'New Customer';
+        this.selectedTab = 'Hoa don 1';
+        this.invoiceReports = [
+            new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceReportModel"]({
+                invoice_code: 'Hoa don 1'
+            })
+        ];
+    }
+    SellGoodsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userSubscription = this.userService.currentUser.subscribe(function (user) {
+            _this.loggedUser = user;
+        });
+    };
+    SellGoodsComponent.prototype.onAddReport = function (e) {
+        var report = new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceReportModel"]({
+            invoice_code: 'Hoa don ' + (this.invoiceReports.length + 1)
+        });
+        this.invoiceReports.push(report);
+    };
+    SellGoodsComponent.prototype.onAddCustomer = function () {
+        this.customerPopupTitle = 'Add New Customer';
+        this.selectedCustomer = new _models__WEBPACK_IMPORTED_MODULE_2__["CustomerDetailModel"]();
+        this.isCustomerPopup = true;
+    };
+    SellGoodsComponent.prototype.onSelectTab = function (report) {
+        debugger;
+        this.selectedTab = report.invoice_code;
+    };
+    SellGoodsComponent.prototype.addProductInvoiceReport = function (product, report) {
+        report.products.push(new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceDetailModel"]({
+            product: product
+        }));
+    };
+    SellGoodsComponent.prototype.onSavedCustomer = function () {
+        this.isCustomerPopup = false;
+    };
+    SellGoodsComponent.prototype.onCancelCustomer = function () {
+        this.isCustomerPopup = false;
+    };
+    SellGoodsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-sell-goods',
+            template: __webpack_require__(/*! ./sell-goods.component.html */ "./src/app/components/md-sell/sell-goods/sell-goods.component.html"),
+            styles: [__webpack_require__(/*! ./sell-goods.component.scss */ "./src/app/components/md-sell/sell-goods/sell-goods.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["UserService"],
+            _services__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"]])
+    ], SellGoodsComponent);
+    return SellGoodsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/sidebar/sidebar.component.html":
 /*!***********************************************************!*\
   !*** ./src/app/components/sidebar/sidebar.component.html ***!
@@ -622,7 +740,7 @@ var LoadingPanelComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<aside>\n    <a class=\"logo\" routerLink=\"/\"></a>\n\n    <div class=\"toggle-icon\" (click)=\"toggleMinimize()\">\n        <div>\n            <i class=\"fa fa-angle-left\"></i>\n        </div>\n    </div>\n\n    <nav *ngIf=\"user\">\n        <ul>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"fas fa-tachometer-alt\"></i>\n                    <span>Dashboard</span>\n                </a>\n            </li>\n            <li (click)=\"onToggleMenuProduct()\">\n                <a routerLinkActive=\"active\" (click)=\"onShowProductItem()\">\n                    <i class=\"fas fa-cube\"></i>Product\n                    <span *ngIf=\"!isProductItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isProductItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isProductItem\">\n                    <li>\n                        <a routerLinkActive=\"active\" [routerLink]=\"['/product']\">\n                            <i class=\"fas fa-th\"></i>\n                            <span>Product portfolio</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-tags\"></i>\n                            <span>Set prices</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowExchangeItem()\">\n                    <i class=\"fas fa-exchange-alt\"></i>Exchange\n                    <span *ngIf=\"!isExchangeItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isExchangeItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isExchangeItem\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-file\"></i>\n                            <span>Bill</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Return the goods</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-share-square\"></i>\n                            <span>Goods receipt</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Tra hang nhap</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowReportItem\">\n                    <i class=\"fas fa-chart-bar\"></i>Report\n                    <span *ngIf=\"!isReportItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isReportItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isReportItem\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-chart-pie\"></i>\n                            <span>End day</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-clipboard\"></i>\n                            <span>Sell</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-inbox\"></i>\n                            <span>Order</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-cube\"></i>\n                            <span>merchandise</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n</aside>\n"
+module.exports = "<aside>\n    <a class=\"logo\" routerLink=\"/\"></a>\n\n    <div class=\"toggle-icon\" (click)=\"toggleMinimize()\">\n        <div>\n            <i class=\"fa fa-angle-left\"></i>\n        </div>\n    </div>\n\n    <nav *ngIf=\"user\">\n        <ul>\n            <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"fas fa-tachometer-alt\"></i>\n                    <span>Dashboard</span>\n                </a>\n            </li>\n            <li (click)=\"onToggleMenuProduct()\">\n                <a routerLinkActive=\"active\" (click)=\"onShowProductItem()\">\n                    <i class=\"fas fa-cube\"></i>Product\n                    <span *ngIf=\"!isProductItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isProductItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isProductItem\">\n                    <li>\n                        <a routerLinkActive=\"active\" [routerLink]=\"['/product']\">\n                            <i class=\"fas fa-th\"></i>\n                            <span>Product portfolio</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowExchangeItem()\">\n                    <i class=\"fas fa-exchange-alt\"></i>Exchange\n                    <span *ngIf=\"!isExchangeItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isExchangeItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isExchangeItem\">\n                    <li>\n                        <a  routerLinkActive=\"active\" [routerLink]=\"['/invoices']\">\n                            <i class=\"fas fa-file\"></i>\n                            <span>Bill</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-reply-all\"></i>\n                            <span>Return the goods</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n             <li>\n                <a routerLinkActive=\"active\" [routerLink]=\"['/customers']\">\n                    <i class=\"fas fa-user\"></i>\n                    <span>Customer</span>\n                </a>\n            </li>\n            <li>\n                <a routerLinkActive=\"active\" (click)=\"onShowReportItem()\">\n                    <i class=\"fas fa-chart-bar\"></i>Report\n                    <span *ngIf=\"!isReportItem\" class=\"fas fa-chevron-circle-down showhideicon\"></span>\n                    <span *ngIf=\"isReportItem\" class=\"fas fa-chevron-circle-up showhideicon\"></span>\n                </a>\n                <ul *ngIf=\"isReportItem\">\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-chart-pie\"></i>\n                            <span>End day</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-clipboard\"></i>\n                            <span>Sell goods</span>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"#\">\n                            <i class=\"fas fa-cube\"></i>\n                            <span>merchandise</span>\n                        </a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n</aside>\n"
 
 /***/ }),
 
@@ -830,11 +948,64 @@ var ProductDetailModel = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/customer.model.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/customer.model.ts ***!
+  \******************************************/
+/*! exports provided: CustomerDetailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerDetailModel", function() { return CustomerDetailModel; });
+var CustomerDetailModel = /** @class */ (function () {
+    function CustomerDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return CustomerDetailModel;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/employee.model.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/employee.model.ts ***!
+  \******************************************/
+/*! exports provided: RoleDetailModel, EmployeeDetailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleDetailModel", function() { return RoleDetailModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeDetailModel", function() { return EmployeeDetailModel; });
+/**
+ * Created by Thuan Le on 04/18/2019.
+ */
+var RoleDetailModel = /** @class */ (function () {
+    function RoleDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return RoleDetailModel;
+}());
+
+var EmployeeDetailModel = /** @class */ (function () {
+    function EmployeeDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return EmployeeDetailModel;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/index.ts":
 /*!*********************************!*\
   !*** ./src/app/models/index.ts ***!
   \*********************************/
-/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput, UpdateProductModel, CategoryLookupModel, UpdateCategoryModel, ProductDetailModel, SearchFilterModel */
+/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput, RoleDetailModel, EmployeeDetailModel, UpdateProductModel, CategoryLookupModel, UpdateCategoryModel, ProductDetailModel, SearchOptions, SearchFilterModel, CustomerDetailModel, InvoiceReportModel, InvoiceDetailModel, ShopDetailModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -856,22 +1027,77 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RegisterInput", function() { return _account_model__WEBPACK_IMPORTED_MODULE_0__["RegisterInput"]; });
 
-/* harmony import */ var _product_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product.model */ "./src/app/models/product.model.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateProductModel", function() { return _product_model__WEBPACK_IMPORTED_MODULE_1__["UpdateProductModel"]; });
+/* harmony import */ var _employee_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./employee.model */ "./src/app/models/employee.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RoleDetailModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["RoleDetailModel"]; });
 
-/* harmony import */ var _category_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category.model */ "./src/app/models/category.model.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoryLookupModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["CategoryLookupModel"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmployeeDetailModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["EmployeeDetailModel"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateCategoryModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["UpdateCategoryModel"]; });
+/* harmony import */ var _product_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product.model */ "./src/app/models/product.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateProductModel", function() { return _product_model__WEBPACK_IMPORTED_MODULE_2__["UpdateProductModel"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductDetailModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_2__["ProductDetailModel"]; });
+/* harmony import */ var _category_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./category.model */ "./src/app/models/category.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoryLookupModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_3__["CategoryLookupModel"]; });
 
-/* harmony import */ var _search_models__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search.models */ "./src/app/models/search.models.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchFilterModel", function() { return _search_models__WEBPACK_IMPORTED_MODULE_3__["SearchFilterModel"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateCategoryModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_3__["UpdateCategoryModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductDetailModel", function() { return _category_model__WEBPACK_IMPORTED_MODULE_3__["ProductDetailModel"]; });
+
+/* harmony import */ var _search_models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./search.models */ "./src/app/models/search.models.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchOptions", function() { return _search_models__WEBPACK_IMPORTED_MODULE_4__["SearchOptions"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchFilterModel", function() { return _search_models__WEBPACK_IMPORTED_MODULE_4__["SearchFilterModel"]; });
+
+/* harmony import */ var _customer_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./customer.model */ "./src/app/models/customer.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CustomerDetailModel", function() { return _customer_model__WEBPACK_IMPORTED_MODULE_5__["CustomerDetailModel"]; });
+
+/* harmony import */ var _invoice_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./invoice.model */ "./src/app/models/invoice.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InvoiceReportModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["InvoiceReportModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InvoiceDetailModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["InvoiceDetailModel"]; });
+
+/* harmony import */ var _shop_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shop.model */ "./src/app/models/shop.model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ShopDetailModel", function() { return _shop_model__WEBPACK_IMPORTED_MODULE_7__["ShopDetailModel"]; });
 
 
 
 
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/invoice.model.ts":
+/*!*****************************************!*\
+  !*** ./src/app/models/invoice.model.ts ***!
+  \*****************************************/
+/*! exports provided: InvoiceReportModel, InvoiceDetailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceReportModel", function() { return InvoiceReportModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceDetailModel", function() { return InvoiceDetailModel; });
+/**
+ * Created by Thuan Le on 04/12/2019.
+ */
+var InvoiceReportModel = /** @class */ (function () {
+    function InvoiceReportModel(init) {
+        this.products = [];
+        Object.assign(this, init);
+    }
+    return InvoiceReportModel;
+}());
+
+var InvoiceDetailModel = /** @class */ (function () {
+    function InvoiceDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return InvoiceDetailModel;
+}());
 
 
 
@@ -905,20 +1131,54 @@ var UpdateProductModel = /** @class */ (function () {
 /*!*****************************************!*\
   !*** ./src/app/models/search.models.ts ***!
   \*****************************************/
-/*! exports provided: SearchFilterModel */
+/*! exports provided: SearchOptions, SearchFilterModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchOptions", function() { return SearchOptions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchFilterModel", function() { return SearchFilterModel; });
 /**
  * Created by Thuan Le on 03/30/2019.
  */
+var SearchOptions = /** @class */ (function () {
+    function SearchOptions(init) {
+        this.customer = false;
+        this.product = false;
+        Object.assign(this, init);
+    }
+    return SearchOptions;
+}());
+
 var SearchFilterModel = /** @class */ (function () {
     function SearchFilterModel(init) {
         Object.assign(this, init);
     }
     return SearchFilterModel;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/shop.model.ts":
+/*!**************************************!*\
+  !*** ./src/app/models/shop.model.ts ***!
+  \**************************************/
+/*! exports provided: ShopDetailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopDetailModel", function() { return ShopDetailModel; });
+/**
+ * Created by Thuan Le on 04/18/2019.
+ */
+var ShopDetailModel = /** @class */ (function () {
+    function ShopDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return ShopDetailModel;
 }());
 
 
@@ -1720,6 +1980,15 @@ var UserService = /** @class */ (function () {
     UserService.prototype.redirectToPanel = function () {
         if (this.loggedUser) {
             this.router.navigate(['/']);
+        }
+        else {
+            // TODO: Check this for other cases
+            // this.logout();
+        }
+    };
+    UserService.prototype.redirectToSalesPage = function () {
+        if (this.loggedUser) {
+            this.router.navigate(['/sell-goods']);
         }
         else {
             // TODO: Check this for other cases

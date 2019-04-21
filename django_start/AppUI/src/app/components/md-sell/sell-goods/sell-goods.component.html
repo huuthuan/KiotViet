@@ -1,0 +1,63 @@
+<div class="invoice">
+    <div class="header">
+        <div class="header-right">
+            <ul>
+                <li class="user-name">
+                    <a>
+                        <i class="fas fa-user-circle"></i>
+                        <span class="user-name ml-2"
+                              *ngIf="loggedUser">{{ loggedUser.username }}</span>
+                    </a>
+                </li>
+                <li class="menu-bar">
+                    <a class="list-bar">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="search-wrapper">
+            <dx-text-box>
+            </dx-text-box>
+        </div>
+        <div class="header-tab">
+            <div class="header-tab-wrap">
+                <div class="content-tab">
+                    <div class="scroll-lane">
+                        <ul>
+                            <li routerLinkActive="active" *ngFor="let report of invoiceReports">
+                                <a (click)="onSelectTab(report)">
+                                    <span>{{ report.invoice_code }}</span>
+                                </a>
+                            </li>
+                            <li class="add-btn" (click)="onAddReport($event)">
+                                <a>
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-content">
+        <div class="col-right">
+            <app-payment></app-payment>
+        </div>
+        <div class="col-left">
+            <div class="">
+
+            </div>
+            <div class="report-wrapper" *ngFor="let report of invoiceReports" >
+                <div class="product-cart">
+                    <ul>
+                        <li *ngFor="let product of report.products" class="float-left mr-3">{{ product.id }}
+                            - {{ product.name }}</li>
+                    </ul>
+                </div>
+            </div>
+            <app-sell-products (onAddProduct)="addProductInvoiceReport($event, report)"></app-sell-products>
+        </div>
+    </div>
+</div>

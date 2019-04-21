@@ -1,0 +1,65 @@
+<div class="d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mb-5">
+                    <div class="logo-wrap mb-5 text-center profile_title">
+                        Update information shop
+                    </div>
+                    <div class="form-wrap">
+                        <dx-validation-group>
+                            <div class="field mt-3">
+                                <div class="label">Name</div>
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="editing_shop.name">
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Phone</div>
+                                <dx-text-box valueChangeEvent="keyup" [(value)]="editing_shop.phone">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required"
+                                                             message="Phone is required"></dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Email</div>
+                                <dx-text-box [(value)]="editing_shop.email" valueChangeEvent="keyup">
+                                    <dx-validator>
+                                        <dxi-validation-rule type="required" message="Email is required">
+                                        </dxi-validation-rule>
+                                        <dxi-validation-rule type="email" message="Invalid email">
+                                        </dxi-validation-rule>
+                                    </dx-validator>
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Website</div>
+                                <dx-text-box [(value)]="editing_shop.website">
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Address</div>
+                                <dx-text-box [(value)]="editing_shop.address">
+                                </dx-text-box>
+                            </div>
+                            <div class="field mt-3">
+                                <div class="label">Description</div>
+                                <dx-text-area height="100" [(value)]="editing_shop.description" maxLength="255">
+                                </dx-text-area>
+                            </div>
+                            <div class="row d-flex align-items-center mt-3">
+                                <div class="col text-lg-left mt-2">
+                                    <dx-button width="150" text="Save" type="danger"
+                                               [(disabled)]="!isFormDirty || isSubmitting"
+                                               (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
+                                    <dx-button text="Cancel" (onClick)="onCancelClick()"></dx-button>
+                                </div>
+                            </div>
+                        </dx-validation-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="product-list">
+    <div class="productListWrapper">
+        <div class="action-toolbar">
+            <div class="action-left">
+                <a>
+                    <i class="fa fa-arrow-up"></i>
+                </a>
+                <a>
+                    <i class="fas fa-list"></i>
+                </a>
+            </div>
+            <div class="action-right">
+                asdasdsdfhgl,.
+            </div>
+        </div>
+        <div class="product-price">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <ul>
+                        <li *ngFor="let product of products" (click)="addProduct(product)">
+                            <a>
+                                <div class="product-img">
+                                    <img src="https://cdn-app.kiotviet.vn/sample/machine/1.png">
+                                    <span class="product-price">{{ product.price_sale }}</span>
+                                </div>
+                                <div class="product-info">
+                                    <span class="product-name">{{ product.name }}</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import {JwtModule} from '@auth0/angular-jwt';
 import {MalihuScrollbarModule, MalihuScrollbarService} from 'ngx-malihu-scrollbar';
@@ -25,6 +28,11 @@ export function tokenGetter() {
   return localStorage.getItem(TOKEN_KEY);
 }
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +51,7 @@ export function tokenGetter() {
     NgxPermissionsModule.forRoot(),
     MalihuScrollbarModule.forRoot(),
     SharedModule.forRoot(),
+    SwiperModule,
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -54,7 +63,7 @@ export function tokenGetter() {
     AuthGuard,
     GuestGuard,
     MalihuScrollbarService,
-    {provide: APP_BASE_HREF, useValue: '/'}
+    {provide: [APP_BASE_HREF, SWIPER_CONFIG ], useValue: ['/', DEFAULT_SWIPER_CONFIG]}
   ],
 })
 export class AppModule {

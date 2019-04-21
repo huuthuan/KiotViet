@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-10 col-lg-10">
+        <div class="row mb-3">
+            <div class="col text-lg-right">
+                <dx-button class="mr-1" type="default" (onClick)="onAddCustomer()">
+                    <i class="fas fa-plus mr-2"></i>Add new customer
+                </dx-button>
+            </div>
+        </div>
+        <app-loading-panel *ngIf="isLoading"></app-loading-panel>
+        <div class="row">
+            <div class="col">
+                <dx-data-grid [dataSource]="dataSource"
+                              [showBorders]="true"
+                              [showColumnLines]="true"
+                              [rowAlternationEnabled]="true"
+                              [allowColumnReordering]="true"
+                              [allowColumnResizing]="true"
+                              [columnAutoWidth]="true"
+                              [filterRow]="true"
+                              [hoverStateEnabled]="true">
+                    <dxo-selection [mode]="'row'"></dxo-selection>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxi-column caption="#" [allowFiltering]="false" [fixed]="true" alignment="center" width="40"
+                                cellTemplate="cellTemplateNumberOfRow">
+                        <div *dxTemplate="let cellData of 'cellTemplateNumberOfRow'">
+                            {{ cellData.row.rowIndex + 1 }}
+                        </div>
+                    </dxi-column>
+                    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+
+                    <dxi-column dataField="customer_code" caption="Customer code" [fixed]="true" [width]="120" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="name" caption="Name" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="phone" caption="Phone" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="gender" caption="Gender" format="$ #,##0.##" [width]="75"
+                                [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="birthday" width="100" caption="Birthday"
+                                cellTemplate="cellTemplateStartTime">
+                        <div *dxTemplate="let cellData of 'cellTemplateStartTime'">
+                            {{ (cellData.value) | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </dxi-column>
+                    <dxi-column dataField="email" caption="Email" [width]="150" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="created_date" width="100" caption="Created date"
+                                cellTemplate="cellTemplateStartTime">
+                        <div *dxTemplate="let cellData of 'cellTemplateStartTime'">
+                            {{ (cellData.value) | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </dxi-column>
+                    <dxi-column dataField="address" caption="Address" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true" width="150">
+                    </dxi-column>
+                    <dxi-column dataField="total_quantity" caption="Total quantity" format="$ #,##0.##" [width]="110"
+                                [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="total" caption="Total" format="$ #,##0.##" [width]="130"
+                                [allowFiltering]="true"
+                                [allowHeaderFiltering]="true">
+                    </dxi-column>
+                    <dxi-column dataField="id" [width]="80" caption="Action" alignment="center"
+                                cellTemplate="cellTemplateAction"
+                                [allowSorting]="false">
+                        <div *dxTemplate="let cellData of 'cellTemplateAction'" class="d-flex">
+                            <div class="btn-action btn-trash pointer" (click)="onEditCustomerTemplate(cellData.data)">
+                                <i class="fas fa-pencil-alt" aria-hidden="true" title="Edit product"></i>
+                            </div>
+                            <div class="btn-action btn-trash pointer" (click)="onDeleteCustomerTemplate(cellData.data)">
+                                <i class="fa fa-times" aria-hidden="true" title="Delete"></i>
+                            </div>
+                        </div>
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2 border-left">
+        <app-search-form
+                (onFilter)="onFilterGrid($event)"
+                [search_options]="search_options">
+        </app-search-form>
+    </div>
+</div>
+
+<!--Detail product-->
+<div class="popup-container" *ngIf="isCustomerPopup">
+    <dx-popup [title]="customerPopupTitle" [width]="900" height="auto" [(visible)]="isCustomerPopup"
+              [dragEnabled]="false" class="center-popup">
+        <div *dxTemplate="let data of 'content'">
+            <app-customer-detail
+                    [(customer)]="selectedCustomer"
+                    (onSuccess)="onSavedCustomer($event)"
+                    (onCancel)="onCancelCustomer()">
+            </app-customer-detail>
+        </div>
+    </dx-popup>
+</div>

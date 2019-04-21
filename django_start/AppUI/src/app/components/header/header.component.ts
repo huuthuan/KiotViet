@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   titleSubscription: Subscription;
   loggedUser: LoggedUser = new LoggedUser();
   isOpenMenu: boolean = false;
-  isOpenMenuSetting: boolean = false;
   title = '';
 
   constructor(private routerService: RouterService,
@@ -32,24 +31,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onToggleMenu() {
-    this.onCloseMenuSetting();
     this.isOpenMenu = !this.isOpenMenu;
   }
 
   onCloseMenu() {
     if (this.isOpenMenu) {
       this.isOpenMenu = false;
-    }
-  }
-
-  onToggleMenuSetting() {
-    this.onCloseMenu();
-    this.isOpenMenuSetting = !this.isOpenMenuSetting;
-  }
-
-  onCloseMenuSetting() {
-    if (this.isOpenMenuSetting) {
-      this.isOpenMenuSetting = false;
     }
   }
 

@@ -81,6 +81,15 @@ export class UserService {
     }
   }
 
+  redirectToSalesPage() {
+    if (this.loggedUser) {
+      this.router.navigate(['/sell-goods']);
+    } else {
+      // TODO: Check this for other cases
+      // this.logout();
+    }
+  }
+
   logout() {
     this.setLoggedUser(null);
     this.router.navigate(['/login']);

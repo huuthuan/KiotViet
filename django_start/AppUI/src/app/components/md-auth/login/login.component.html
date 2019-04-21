@@ -32,7 +32,9 @@
                                 <div class="col-md-12 col-lg-8"><a [routerLink]="['/forgot-password/']">Forgot your
                                     password?</a></div>
                                 <div class="col text-lg-left mt-2">
-                                    <dx-button width="150" text="Manage" icon="fields" type="danger"></dx-button>
+                                    <dx-button width="150" text="Manage" icon="fields" type="danger"
+                                               [(disabled)]="isSubmitting"
+                                               (onClick)="onLogin($event)"></dx-button>
                                 </div>
                                 <div class="col text-lg-right mt-2">
                                     <dx-button width="150" icon="cart" text="Sell goods" type="danger"

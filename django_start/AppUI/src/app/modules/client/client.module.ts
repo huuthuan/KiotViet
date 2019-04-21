@@ -5,11 +5,18 @@ import {SharedModule} from '../shared.module';
 import {ClientModuleComponent} from './client.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {
+  ShopDetailComponent,
+  EmployeesComponent,
+  EmployeesDetailComponent,
+  CategoryComponent,
   ProductComponent,
   ProductDetailComponent,
   SearchFormComponent,
-  CategoryComponent
-} from '../../components/md-product';
+  CustomerComponent,
+  CustomerDetailComponent,
+  InvoicesComponent,
+  InvoiceDetailComponent
+} from '../../components/md-admin';
 
 @NgModule({
   imports: [
@@ -28,19 +35,46 @@ import {
         ]
       },
       {
+        path: 'shop',
+        component: ShopDetailComponent,
+        data: {title: 'Shop setting'}
+      },
+      {
+        path: 'employees',
+        component: EmployeesComponent,
+        data: {title: 'Employees'}
+      },
+      {
         path: 'product',
         component: ProductComponent,
-        data: {title: 'Product'}
+        data: {title: 'Products'}
+      },
+      {
+        path: 'customers',
+        component: CustomerComponent,
+        data: {title: 'Customers'}
+      },
+      {
+        path: 'invoices',
+        component: InvoicesComponent,
+        data: {title: 'invoices'}
       },
     ])
   ],
   declarations: [
     ClientModuleComponent,
     DashboardComponent,
+    ShopDetailComponent,
+    EmployeesComponent,
+    EmployeesDetailComponent,
     ProductComponent,
     ProductDetailComponent,
     SearchFormComponent,
-    CategoryComponent
+    CategoryComponent,
+    CustomerComponent,
+    CustomerDetailComponent,
+    InvoicesComponent,
+    InvoiceDetailComponent
   ]
 })
 export class ClientModule {

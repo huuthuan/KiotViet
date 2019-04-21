@@ -1,0 +1,107 @@
+<div class="sale-user">
+    <div class="form-inline">
+        <div class="form-group sales-man">
+            <i class="far fa-user-circle"></i>
+            <div class="form-output">
+                <span>asdasdasdas</span>
+            </div>
+        </div>
+        <div class="form-group pull-right">
+            <label>
+                12/03/2019 08:30
+            </label>
+        </div>
+    </div>
+</div>
+<div class="col-right-content">
+    <div class="col-right-container">
+        <div class="col-right-inside">
+            <div class="customer-search">
+                <i class="fas fa-search"></i>
+                <dx-autocomplete
+                        placeholder="Finding customers">
+                </dx-autocomplete>
+                <dx-button height="26" width="29" (onClick)="onAddCustomer()">
+                    <i class="fas fa-plus"></i>
+                </dx-button>
+            </div>
+            <div class="wraper-payment-content mt-9">
+                <div class="wraper-payment">
+                    <ul class="payment-tab">
+                        <li>
+                            <a>
+                                Invoice
+                            </a>
+                        </li>
+                    </ul>
+                    <div>
+                        <div class="payment-component">
+                            <div class="payment-component-child">
+                                <div class="form-group">
+                                    <div class="form-label">
+                                        Total money
+                                        <span class="badge">4</span>
+                                    </div>
+                                    <div class="form-output">
+                                        23123123213
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label">
+                                        Discount
+                                    </div>
+                                    <div class="form-output pt-0">
+                                        <div class="popup-anchor">
+                                            <button class="form-control">2131232123</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label">
+                                        <strong>
+                                            <span>Customers need to pay</span>
+                                        </strong>
+                                    </div>
+                                    <div class="form-output text-hightlight">
+                                        23123123213
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-refun payment-component-child">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-right-inside">
+            <div class="form-note-wrap">
+                <div class="form-note">
+                    <i class="fas fa-pencil-alt"></i>
+                    <dx-text-area
+                            [height]="100"
+                            placeholder="Note">
+                    </dx-text-area>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-button">
+        <dx-button width="100%" height="60" text="Payment (F9)" type="danger"></dx-button>
+    </div>
+</div>
+
+<!--Detail product-->
+<div class="popup-container" *ngIf="isCustomerPopup">
+    <dx-popup [title]="customerPopupTitle" [width]="950" height="auto" [(visible)]="isCustomerPopup"
+              [dragEnabled]="false" class="center-popup">
+        <div *dxTemplate="let data of 'content'">
+            <app-sell-customer-detail
+                    [(customer)]="selectedCustomer"
+                    (onSuccess)="onSavedCustomer($event)"
+                    (onCancel)="onCancelCustomer()">
+            </app-sell-customer-detail>
+        </div>
+    </dx-popup>
+</div>

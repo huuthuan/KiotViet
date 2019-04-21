@@ -55,3 +55,23 @@
 @media (min-width: 992px) {
 
 }
+
+.pointer {
+	cursor: pointer;
+}
+
+.btn-action {
+	width: 27px;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	cursor: pointer;
+
+	&:hover {
+		color: $cy-risk-color;
+	}
+
+	> i {
+		line-height: 26px;
+	}
+}

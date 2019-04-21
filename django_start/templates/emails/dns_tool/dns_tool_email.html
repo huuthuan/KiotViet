@@ -1,0 +1,26 @@
+{% extends "emails/base.html" %}
+{% block body %}
+    <p>Hello,</p>
+
+    <p>You have registered an account at KiotViet with the information:</p>
+
+    <p>Information shop:</p>
+
+    <p>- Shop name: {{ shop_name }}</p>
+
+    <p>- Full name: {{ name }}</p>
+
+    <p>- Phone: {{ phone }}</p>
+
+    <p>- Email: {{ email }}</p>
+
+    <p>- Address: {{ address }}</p>
+
+    <p>Information about login account:</p>
+
+    <p>- User name: {{ user_name}}</p>
+
+    <p>- Password: {{ password }}</p>
+
+    <p>Sincerely,</p>
+{% endblock body %}

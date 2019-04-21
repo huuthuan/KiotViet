@@ -25,6 +25,7 @@ export class UpdateCategoryModel {
 
 export class ProductDetailModel {
   id: number;
+  product_code: string;
   name: string;
   category: CategoryLookupModel;
   price_cost: number;

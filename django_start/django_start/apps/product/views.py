@@ -1,4 +1,3 @@
-from rest_framework import status
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -26,7 +25,8 @@ class CategoriesViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
     def get_queryset(self):
-        return Category.objects.all()
+        data = Category.objects.all()
+        return data
 
     def create(self, request, *args, **kwargs):
         serializer = CategorySerializer(data=request.data)
@@ -69,9 +69,10 @@ class CategoriesViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
+    pagination_class = None
 
     def get_queryset(self):
-        return Product.objects.filter(allows_sale__isnull=False)
+        return Product.objects.all();
 
     def create(self, request, *args, **kwargs):
         serializer = ProductSerializer(data=request.data)
@@ -83,3 +84,24 @@ class ProductViewSet(viewsets.ModelViewSet):
                 raise APIException(e)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = ProductSerializer(instance=instance, data=request.data)
+        if serializer.is_valid():
+            try:
+                serializer.update(instance, serializer.validated_data)
+                return Response(True, status=status.HTTP_200_OK)
+            except Exception as e:
+                raise APIException(e)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            product = self.get_object()
+            Product.objects.get(id=product.id).delete()
+            return Response(True, status=status.HTTP_200_OK)
+        except Exception as e:
+            raise APIException(e)
