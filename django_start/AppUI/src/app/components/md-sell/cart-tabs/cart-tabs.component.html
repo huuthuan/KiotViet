@@ -1,0 +1,24 @@
+<div class="header-tab-wrap">
+    <div class="content-tab">
+        <div class="scroll-lane">
+            <ul>
+                <li *ngFor="let report of invoiceReports">
+                    <a (click)="onSelectTab(report)"
+                       [ngClass]="{'active':selectedTab === report.invoice_code}">
+                                    <span>
+                                        {{ report.invoice_name }}
+                                    </span>
+                    </a>
+                    <span class="delete-invoice">
+                                    <i class="fas fa-times" (click)="onDeleteReport(report.invoice_code)"></i>
+                                </span>
+                </li>
+                <li class="add-btn" (click)="onAddReport($event)">
+                    <a>
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

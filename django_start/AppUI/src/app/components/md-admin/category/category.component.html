@@ -45,7 +45,7 @@
         <div class="row d-flex align-items-center mt-3">
             <div class="col text-lg-right mt-2">
                 <dx-button width="85" text="Save" type="danger"
-                           [(disabled)]="isSubmitting"
+                           [(disabled)]="!isFormDirty || isSubmitting"
                            (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
                 <dx-button *ngIf="isShowBtnDelete" width="85" text="Delete" type="danger"
                            [(disabled)]="isSubmitting"

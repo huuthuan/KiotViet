@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 
 import {NgxPermissionsModule} from 'ngx-permissions';
 import {DevExtremeModule} from 'devextreme-angular';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 import {
   JoinPipe
@@ -23,6 +24,7 @@ const BASE_MODULES = [
   FormsModule,
   RouterModule,
   NgxPermissionsModule,
+  ClickOutsideModule,
   //
   // Dev Extreme
   DevExtremeModule

@@ -54,13 +54,15 @@ export class SellCustomerDetailComponent implements OnInit {
   }
 
   genderMaleChanged() {
-    if (this.genderFemale)
+    if (this.genderFemale) {
       this.genderFemale = !this.genderMale;
+    }
   }
 
   genderFemaleChanged() {
-    if (this.genderMale)
+    if (this.genderMale) {
       this.genderMale = ! this.genderFemale;
+    }
   }
 
   onAddCustomer() {
@@ -72,7 +74,7 @@ export class SellCustomerDetailComponent implements OnInit {
     else if (this.genderFemale)
       this.editing_Customer.gender = 'Female'
     this.apiService.post(`${this.apiService.apiUrl}/sell-goods/customers/`, this.editing_Customer).subscribe((data) => {
-      this.onSuccess.emit();
+      this.onSuccess.emit(data);
       Utils.notifySuccess('Customer has been added successfully.');
       this.isSubmitting = false;
     }, (error) => {
@@ -91,7 +93,6 @@ export class SellCustomerDetailComponent implements OnInit {
     if (!e.validationGroup.validate().isValid) {
       return false;
     }
-
     this.onAddCustomer();
   }
 }

@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, EventEmitter, Output, Input, ViewChild} fr
 import {Subscription} from 'rxjs';
 import {DxTreeViewComponent} from 'devextreme-angular';
 import {Utils} from '../../../utils/utilities';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isEqual} from 'lodash';
 
 import {ApiService, UserService} from '../../../services';
 import {LoggedUser, UpdateProductModel, CategoryLookupModel, ProductDetailModel} from '../../../models';
@@ -191,4 +191,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.productSubscription.unsubscribe();
   }
 
+  get isFormDirty() {
+    return !isEqual(this.editing_Product, this.product);
+  }
 }

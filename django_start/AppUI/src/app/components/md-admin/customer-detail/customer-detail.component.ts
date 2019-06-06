@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isEqual} from 'lodash';
 import {formatDate} from '@angular/common';
 
 import {Utils} from '../../../utils/utilities';
@@ -128,5 +128,9 @@ export class CustomerDetailComponent implements OnInit {
     } else {
       this.onAddCustomer();
     }
+  }
+
+  get isFormDirty() {
+    return !isEqual(this.editing_Customer, this.customer);
   }
 }

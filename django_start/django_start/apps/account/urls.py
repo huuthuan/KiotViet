@@ -5,13 +5,14 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'employees', views.EmpluyeeViewSet, base_name='employees')
+router.register(r'employees', views.AccountsViewSet, base_name='employees')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^profile/?', views.UserProfileView.as_view(), name= 'profile'),
     url(r'^password/change/$', views.PasswordChangeView.as_view(), name='rest_password_change'),
     url(r'^register/?', views.Register.as_view(), name='register'),
+    url(r'^roles/$', views.RolesView.as_view()),
     url(r'^login/?', obtain_jwt_token, name='login'),
     url(r'^jwt/refresh/?', refresh_jwt_token, name='jwt-refresh'),
     url(r'^jwt/verify/?', verify_jwt_token, name='jwt-verify'),

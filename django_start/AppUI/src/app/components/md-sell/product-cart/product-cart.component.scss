@@ -1,0 +1,257 @@
+.product-cart-list {
+  .row-list {
+    content: "";
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #ebebeb;
+
+    .cell-order {
+      width: 35px;
+      text-align: center;
+    }
+
+    .cell-action {
+      width: 35px;
+      text-align: center;
+      .btn-delete {
+        i {
+          width: 14px;
+          height: 14px;
+          display: inline-block;
+          color: #e47885;
+
+          &:hover {
+            background-color: #e47885;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .row-product {
+      flex: 1;
+      position: relative;
+      margin-top: 15px;
+      display: flex;
+
+      button.btn-icon {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+        display: none;
+        border-radius: 2px;
+        i {
+          color: #a8a8a8;
+        }
+      }
+
+      .cell-code {
+        width: 120px;
+        max-width: 120px;
+        font-size: 13px;
+        color: #111111;
+      }
+
+      .cell-name {
+        flex: 1;
+        h4 {
+          font-size: 13px;
+          padding-bottom: 2px;
+          margin: 0;
+          color: #111111;
+          font-weight: normal;
+          line-height: 1.3;
+        }
+
+        .wrap-note {
+          label {
+            font-size: 11px;
+            padding: 0;
+            margin: 0;
+            color: #666666;
+            background: none;
+            border: none;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+            width: 100%;
+            cursor: pointer;
+            line-height: 14px;
+            button {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .cell-quatity {
+        top: -5px;
+        text-align: right;
+        font-size: 14px;
+        padding-left: 34px !important;
+        padding-right: 34px !important;
+        width: 115px;
+        padding-top: 0 !important;
+        position: relative;
+
+        button.btn-icon {
+          position: absolute;
+          cursor: pointer;
+          height: 24px;
+          width: 24px;
+          background: #e6121200;
+          text-align: center;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          i {
+            font-size: 16px;
+          }
+        }
+
+        dx-number-box {
+          border-width: 0 0 1px;
+          border-radius: 0;
+          height: 24px;
+          width: 100%;
+          line-height: 22px;
+          height: 24px;
+        }
+
+        button.down {
+          top: 0;
+          left: 4px;
+        }
+        button.up {
+          right: 4px;
+        }
+      }
+
+      .cell-warning {
+        width: 25px;
+        height: 35px;
+        button {
+          background: transparent;
+          cursor: pointer;
+          border: none;
+          padding: 4px 0;
+          i {
+            font-size: 12px;
+            color: #e47885;
+          }
+        }
+      }
+
+      .cell-change-price {
+        text-align: right;
+        font-size: 14px;
+        width: 100px;
+
+        .popup-anchor {
+          button {
+            width: 100%;
+            text-align: right;
+            border-width: 0 0 1px;
+            border-style: solid;
+            border-bottom-color: #e1e1e1;
+            cursor: pointer;
+            padding: 0 0 1px;
+            background-color: transparent;
+            border-radius: 0 !important;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+            height: 20px;
+            box-sizing: border-box;
+          }
+          span {
+            color: #e47885;
+            font-size: 12px;
+          }
+        }
+      }
+      .cell-price {
+        text-align: right;
+        font-size: 14px;
+        width: 120px;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      > [class^="cell-"] {
+        padding: 0 5px;
+        float: left;
+        min-height: 1px;
+      }
+    }
+
+    ::ng-deep {
+      .cell-quatity {
+        .dx-editor-outlined {
+          background: transparent !important;
+        }
+        .dx-texteditor-container {
+          .dx-texteditor-input {
+            background: transparent !important;
+            text-align: right;
+            padding: 3px !important;
+            min-height: 24px;
+          }
+        }
+
+      }
+    }
+
+    &:not(.not-batch) {
+      padding-bottom: 5px;
+      &:nth-child(odd) {
+        background-color: #fafafa;
+      }
+    }
+
+    &:hover {
+      .row-product {
+        .btn-icon {
+          display: initial;
+        }
+      }
+    }
+
+    > [class^="cell-"] {
+      padding: 15px 5px 0;
+      float: left;
+    }
+  }
+}
+
+.discount {
+  a {
+
+  }
+  width: 33px;
+  height: 27px;
+  top: 0;
+  background-color: #999999;
+  color: #ffffff !important;
+  font-size: 13px;
+  padding: 5px 0;
+  text-align: center;
+  border-radius: 2px;
+  margin-left: 1px;
+  position: absolute;
+
+  &:hover {
+    background-color: #317133;
+  }
+}
+
+.discount.active {
+  background-color: #4bac4d !important;
+}
+
+::ng-deep {
+  .dx-overlay-wrapper {
+    .dx-overlay-content {
+      transform: translate(207px, 182px);
+      .dx-popup-content {
+        padding: 0;
+      }
+    }
+  }
+}

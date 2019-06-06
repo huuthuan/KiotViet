@@ -21,8 +21,8 @@ class CustomerViewSet(viewsets.ModelViewSet):
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
             try:
-                serializer.create(serializer.validated_data)
-                return Response(True, status=status.HTTP_200_OK)
+                data = serializer.create(serializer.validated_data)
+                return Response(data, status=status.HTTP_200_OK)
             except Exception as e:
                 raise APIException(e)
 

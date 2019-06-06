@@ -1,0 +1,30 @@
+<i class="fas fa-search"></i>
+<dx-autocomplete
+        placeholder="Finding customers"
+        [dataSource]="dataSource"
+        valueExpr="name"
+        [searchExpr]='["customer_code","name"]'
+        [(value)]="invoice.customer.name"
+        (onItemClick)="onChangeCustomer($event)">
+    <div *dxTemplate="let item of 'item'">
+        <div>Code: {{ item.customer_code }}; Name: {{ item.name }}</div>
+    </div>
+</dx-autocomplete>
+<dx-button height="26" width="29" (onClick)="onAddCustomer()">
+    <i class="fas fa-plus"></i>
+</dx-button>
+
+<!--Detail product-->
+<div class="popup-container" *ngIf="isCustomerPopup">
+    <dx-popup [title]="customerPopupTitle" [width]="950" height="auto" [(visible)]="isCustomerPopup"
+              [dragEnabled]="false" class="center-popup">
+        <div *dxTemplate="let data of 'content'">
+            <app-sell-customer-detail
+                    [(customer)]="selectedCustomer"
+                    (onSuccess)="onSavedCustomer($event)"
+                    (onCancel)="onCancelCustomer()">
+            </app-sell-customer-detail>
+        </div>
+    </dx-popup>
+</div>
+

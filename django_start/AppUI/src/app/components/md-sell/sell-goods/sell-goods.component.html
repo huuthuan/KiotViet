@@ -9,15 +9,29 @@
                               *ngIf="loggedUser">{{ loggedUser.username }}</span>
                     </a>
                 </li>
-                <li class="menu-bar">
-                    <a class="list-bar">
+                <li class="menu-bar" (clickOutside)="onCloseMenu()">
+                    <a class="list-bar" (click)="onToggleMenu()">
                         <i class="fas fa-bars"></i>
                     </a>
+                    <ul class="list-bar-menu" [class.show]="isOpenMenu">
+                        <li>
+                            <a [routerLink]="['/invoices']">
+                                <i class="fa fa-list-alt fa-fw mr-2"></i> Manage
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="onLogout()">
+                                <i class="fas fa-power-off mr-2"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
         <div class="search-wrapper">
-            <dx-text-box>
+            <i class="fas fa-search"></i>
+            <dx-text-box
+                    placeholder="Finding product">
             </dx-text-box>
         </div>
         <div class="header-tab">
@@ -25,12 +39,19 @@
                 <div class="content-tab">
                     <div class="scroll-lane">
                         <ul>
-                            <li routerLinkActive="active" *ngFor="let report of invoiceReports">
-                                <a (click)="onSelectTab(report)">
-                                    <span>{{ report.invoice_code }}</span>
+                            <li *ngFor="let report of invoiceReports">
+                                <a (click)="onSelectTab(report)"
+                                   [ngClass]="{'active':selectedTab === report.invoice_code}">
+                                    <span>
+                                        {{ report.invoice_name }}
+                                    </span>
                                 </a>
+                                <span class="delete-invoice" title="Delete"
+                                      [ngClass]="{'active':selectedTab === report.invoice_code}">
+                                    <i class="fas fa-times" (click)="onDeleteReport(report.invoice_code)"></i>
+                                </span>
                             </li>
-                            <li class="add-btn" (click)="onAddReport($event)">
+                            <li class="add-btn" (click)="onAddReport($event)" title="Add invoice">
                                 <a>
                                     <i class="fas fa-plus"></i>
                                 </a>
@@ -43,21 +64,65 @@
     </div>
     <div class="wrap-content">
         <div class="col-right">
-            <app-payment></app-payment>
-        </div>
-        <div class="col-left">
-            <div class="">
-
-            </div>
-            <div class="report-wrapper" *ngFor="let report of invoiceReports" >
-                <div class="product-cart">
-                    <ul>
-                        <li *ngFor="let product of report.products" class="float-left mr-3">{{ product.id }}
-                            - {{ product.name }}</li>
-                    </ul>
+            <div class="sale-user">
+                <div class="form-inline">
+                    <div class="form-group sales-man">
+                        <i class="far fa-user-circle"></i>
+                        <div class="form-output">
+                            <span class="employee">
+                                <dx-select-box [dataSource]="dataSource"
+                                               displayExpr="profile.name"
+                                               (onItemClick)="setCreatedByEmployee($event)"
+                                               valueExpr="id"
+                                               [(value)]="createdByEmployee"
+                                               [searchEnabled]="true">
+                                </dx-select-box>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group pull-right">
+                        <label>
+                            12/03/2019 08:30
+                        </label>
+                    </div>
                 </div>
             </div>
-            <app-sell-products (onAddProduct)="addProductInvoiceReport($event, report)"></app-sell-products>
+            <div class="col-right-content">
+                <div class="col-right-container">
+                    <div class="col-right-inside">
+                        <div class="customer-search">
+                            <app-customer-search [(invoice)]="invoice"></app-customer-search>
+                        </div>
+                        <div class="wraper-payment-content mt-9">
+                            <app-payment [(invoice)]="invoice"></app-payment>
+                        </div>
+                    </div>
+                    <div class="col-right-inside">
+                        <div class="form-note-wrap">
+                            <div class="form-note">
+                                <i class="fas fa-pencil-alt"></i>
+                                <dx-text-area
+                                        [height]="100"
+                                        placeholder="Note"
+                                        [(value)]="invoice.note">
+                                </dx-text-area>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-button">
+                    <dx-button width="100%" height="60" text="Payment (F9)" type="danger"></dx-button>
+                </div>
+            </div>
+        </div>
+        <div class="col-left">
+            <div class="report-wrapper">
+                <app-product-cart [(invoice)]="invoice"></app-product-cart>
+            </div>
+            <div>
+                <app-sell-products (onAddProduct)="addProductInvoiceReport($event)"></app-sell-products>
+            </div>
+
         </div>
     </div>
 </div>

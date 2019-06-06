@@ -1,5 +1,9 @@
+from profile import Profile
+
 from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
+from django.db import transaction
+from django.contrib.auth.models import User
 
 from rest_framework import permissions, status, viewsets
 from rest_framework.exceptions import APIException
@@ -10,8 +14,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_auth.app_settings import PasswordChangeSerializer
 
-from .models import AccountEmployee
-from django_start.apps.account.serializers import RegisterSerializer, UserProfileSerializer, EmployeeSerializer
+from .models import Role
+from .serializers import RegisterSerializer, UserProfileSerializer, RoleSerializer, AccountDetailSerializer
 from django_start.utils.shortcuts import get_message_from_exception
 
 sensitive_post_parameters_m = method_decorator(
@@ -19,7 +23,6 @@ sensitive_post_parameters_m = method_decorator(
         'password', 'old_password', 'new_password1', 'new_password2'
     )
 )
-
 
 class Register(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -92,19 +95,30 @@ class PasswordChangeView(GenericAPIView):
 
         return Response({'token': token}, status=status.HTTP_200_OK)
 
-
-class EmpluyeeViewSet(viewsets.ModelViewSet):
+class RolesView(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = EmployeeSerializer
+
+    def get(self, request):
+        role = Role.objects.exclude(name='Admin').all()
+        serializer = RoleSerializer(role, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class AccountsViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AccountDetailSerializer
     pagination_class = None
 
     def get_queryset(self):
-        return AccountEmployee.objects.all();
+        user = self.request.user
+        return User.objects.exclude(username=user.username).filter(profile__isnull=False, profile__shop_id=user.profile.shop_id)
 
     def create(self, request, *args, **kwargs):
-        serializer = EmployeeSerializer(data=request.data)
+        serializer = AccountDetailSerializer(data=request.data)
         if serializer.is_valid():
             try:
+                user = self.request.user
+                shop = user.profile.shop
+                serializer.initial_data['shop'] = shop
                 serializer.create(serializer.validated_data)
                 return Response(True, status=status.HTTP_200_OK)
             except Exception as e:
@@ -114,7 +128,7 @@ class EmpluyeeViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = EmployeeSerializer(instance=instance, data=request.data)
+        serializer = AccountDetailSerializer(instance=instance, data=request.data)
         if serializer.is_valid():
             try:
                 serializer.update(instance, serializer.validated_data)
@@ -126,9 +140,23 @@ class EmpluyeeViewSet(viewsets.ModelViewSet):
 
 
     def destroy(self, request, *args, **kwargs):
-        try:
-            employee = self.get_object()
-            AccountEmployee.objects.get(id=employee.id).delete()
-            return Response(True, status=status.HTTP_200_OK)
-        except Exception as e:
-            raise APIException(e)
+        with transaction.atomic():
+            try:
+                data = self.get_object()
+                # AccountEmployee.objects.get(id=data.id).delete()
+                # Employee.objects.get(id=data.employee.id).delete()
+                # User.objects.get(id=data.account.id).delete()
+                return Response(True, status=status.HTTP_200_OK)
+            except Exception as e:
+                raise APIException(e)
+
+
+class EmployeeViewSet(APIView):
+    permission_classes = [IsAuthenticated]
+    pagination_class = None
+
+    def get(self, request):
+        user = self.request.user
+        employee = User.objects.filter(profile__isnull=False, profile__shop_id=user.profile.shop_id).all()
+        serializer = AccountDetailSerializer(employee, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

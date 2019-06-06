@@ -36,10 +36,10 @@ export class LoginComponent implements OnInit {
       (data: LoginTokenModel) => {
         if (data.token) {
           this.userService.setAccessToken(data.token);
-          if (e.element.innerText == 'Manage') {
+          if (e.element.innerText === 'Manage') {
             this.userService.redirectToPanel();
           }
-          if (e.element.innerText == 'Sell goods') {
+          if (e.element.innerText === 'Sell goods') {
             this.userService.redirectToSalesPage();
           }
         } else {

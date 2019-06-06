@@ -4,6 +4,7 @@
 
 export class UpdateProductModel {
   id: number;
+  product_code: string;
   name: string;
   category: number;
   price_cost: number;

@@ -16,13 +16,11 @@ class Invoice(models.Model):
     note = models.CharField(null=True, max_length=255)
 
 class InvoiceDetails(models.Model):
-    created_date = models.DateField()
     invoice =  models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True, blank=True)
     product =  models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.IntegerField()
     tax = models.IntegerField()
     price = models.IntegerField()
     discount = models.IntegerField()
-    sub_total = models.IntegerField()
     paid_amount = models.IntegerField()
     note = models.CharField(null=True, max_length=255)

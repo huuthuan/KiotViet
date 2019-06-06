@@ -3,7 +3,13 @@ import {RouterModule} from '@angular/router';
 
 import {SharedModule} from '../shared.module';
 import {
-  SellGoodsComponent, ProductsComponent, PaymentComponent, SellCustomerDetailComponent
+  SellGoodsComponent,
+  ProductsComponent,
+  PaymentComponent,
+  ProductCartComponent,
+  SellCustomerDetailComponent,
+  CustomerSearchComponent,
+  CartTabsComponent
 } from '../../components/md-sell';
 
 import {SwiperModule} from 'ngx-swiper-wrapper';
@@ -25,7 +31,10 @@ import {SwiperModule} from 'ngx-swiper-wrapper';
     SellGoodsComponent,
     ProductsComponent,
     PaymentComponent,
+    ProductCartComponent,
     SellCustomerDetailComponent,
+    CustomerSearchComponent,
+    CartTabsComponent,
   ]
 })
 export class SellGoodsModule {

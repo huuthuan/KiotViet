@@ -106,7 +106,7 @@
         <div class="row d-flex align-items-center mt-3">
             <div class="col text-lg-right mt-5 mr-5 mb-3">
                 <dx-button width="85" text="Save" type="danger"
-                           [(disabled)]="isSubmitting"
+                           [(disabled)]="!isFormDirty || isSubmitting"
                            (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
                 <dx-button text="Cancel" (onClick)="onCancelCustomer()"></dx-button>
             </div>

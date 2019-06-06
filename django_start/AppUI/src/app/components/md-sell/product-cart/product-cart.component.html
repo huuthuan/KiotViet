@@ -1,0 +1,128 @@
+<div class="product-cart-list">
+    <div class="row-list" *ngFor="let productDetail of invoice.products; index as indexProduct">
+        <div class="cell-order">{{ indexProduct + 1}}</div>
+        <div class="cell-action">
+            <a class="btn-delete">
+                <i class="fas fa-times" (click)="onDeleteProduct(indexProduct)"></i>
+            </a>
+        </div>
+        <div class="row-product">
+            <div class="cell-code">
+                {{ productDetail.product.product_code }}
+            </div>
+            <div class="cell-name not-units">
+                <h4>
+                    {{ productDetail.product.name }}
+                </h4>
+                <div class="wrap-note">
+                    <label id="note_{{ indexProduct }}"
+                           (click)="onAddNoteProduct(productDetail.product.product_code)">
+                        {{ productDetail.note }}
+                        <button class="btn-icon">
+                            <span *ngIf="!productDetail.note"> Note...</span>
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </label>
+                    <div *ngIf="isNoteProductPopover && isOpenPopover_id === productDetail.product.product_code">
+                        <dx-popover
+                                target="#note_{{ indexProduct }}"
+                                position="bottom"
+                                [width]="500"
+                                [(visible)]="isNoteProductPopover"
+                                class="center-popover">
+                            <div *dxTemplate="let data = model of 'content'">
+                                <dx-text-area
+                                        [height]="65"
+                                        placeholder="Note"
+                                        [(value)]="productDetail.note">
+                                </dx-text-area>
+                            </div>
+                        </dx-popover>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-quatity">
+                <button id="btnUpQuantity" class="btn-icon up"
+                        (click)="onUpQuantityProduct(indexProduct)">
+                    <i class="fas fa-angle-up"></i>
+                </button>
+                <dx-number-box [(value)]="productDetail.quantity"
+                               rtlEnabled="true"
+                               [min]="1"
+                               valueChangeEvent="keyup"
+                               (onKeyUp)="onKeyUpChangeQuantity($event, indexProduct)">
+                </dx-number-box>
+                <button id="btnDownQuantity" class="btn-icon down"
+                        (click)="onDownQuantityProduct(indexProduct)">
+                    <i class="fas fa-angle-down"></i>
+                </button>
+            </div>
+            <div class="cell-warning">
+                <button *ngIf="productDetail.quantity > productDetail.product.on_hand">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </button>
+            </div>
+            <div class="cell-change-price">
+                <div class="popup-anchor">
+                    <button id="price_{{ indexProduct }}"
+                            (click)="onChangePriceProduct(productDetail.product.product_code)">
+                        {{ productDetail.price }}
+                    </button>
+                    <span>
+                        <span>
+                            - {{ productDetail.discount.discount }}
+                        </span>
+                    </span>
+                    <div *ngIf="isChangePriceProductPopover && isOpenPopover_id === productDetail.product.product_code">
+                        <dx-popover
+                                target="#price_{{ indexProduct }}"
+                                position="left"
+                                [width]="300"
+                                [(visible)]="isChangePriceProductPopover">
+                            <div *dxTemplate="let data = model of 'content'">
+                                <div class="row">
+                                    <div class="col-lg-3" style="padding-right: 1px; padding-left: 8px">
+                                        <div class="label mt-lg-2">New price</div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <dx-number-box [(value)]="productDetail.price"
+                                                       [height]="30"
+                                                       format="$ #,##0.##"
+                                                       [min]="0"
+                                                       valueChangeEvent="keyup"
+                                                       (onKeyUp)="onChangePrice($event, indexProduct)"
+                                        ></dx-number-box>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-lg-3" style="padding-right: 1px; padding-left: 8px">
+                                        <div class="label mt-lg-2">Discount</div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <dx-number-box [(value)]="productDetail.discount.discount"
+                                                       [height]="30"
+                                                       [width]="108"
+                                                       [min]="0"
+                                                       [max]="max"
+                                                       valueChangeEvent="keyup"
+                                                       (onKeyUp)="onChangeDiscount($event, indexProduct)">
+                                        </dx-number-box>
+                                        <a class="discount" style="right: 50px"
+                                           [ngClass]="{'active':productDetail.discount.conversion_form === '$'}"
+                                           (click)="setDiscountForm($event, productDetail)">$</a>
+                                        <a class="discount" style="right: 15px"
+                                           [ngClass]="{'active':productDetail.discount.conversion_form === '%'}"
+                                           (click)="setDiscountForm($event, productDetail)">%</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </dx-popover>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-price">
+                {{ productDetail.paid_amount }}
+            </div>
+        </div>
+    </div>
+</div>

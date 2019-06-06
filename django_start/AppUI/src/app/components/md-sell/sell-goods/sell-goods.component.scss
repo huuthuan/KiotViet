@@ -1,21 +1,33 @@
+@import '../../../../assets/scss/variables';
+
 .invoice {
   height: 100%;
 
   @media screen and (max-width: 1599px) {
     .header {
-      height: 55px;
+      height: 45px;
       background-color: #0090DA;
 
       .search-wrapper {
         width: 540px;
         float: left;
         position: relative;
-        padding: 11px 0px 0px 12px;
+        padding: 5px 0px 0px 12px;
+        i {
+          position: absolute;
+          left: 22px;
+          bottom: 10px;
+          font-size: 13px;
+          color: #999999;
+          width: 14px;
+          height: 14px;
+          text-align: center;
+        }
       }
 
       .header-tab {
         margin: 0 370px 0 540px;
-        padding-top: 11px;
+        padding-top: 10px;
         .header-tab-wrap {
           width: 100%;
           overflow: hidden;
@@ -33,33 +45,64 @@
                   position: relative;
                   margin-left: 4px;
                   a {
-                    padding: 11px 10px 11px;
+                    padding: 6px 24px 10px 9px;
                     color: #ffffff;
                     font-size: 13px;
-                    padding-right: 24px;
                     background-color: #0077b4;
                     border-top: 3px solid transparent;
                     text-decoration: none;
                     display: block;
                     border-top-right-radius: 2px;
                     border-top-left-radius: 2px;
+                    span {
+                      opacity: 0.67;
+                    }
+                  }
+                  a.active {
+                    background-color: #ffffff;
+                    color: #0077b4;
+                  }
+                  .delete-invoice {
+                    position: absolute;
+                    right: 4px;
+                    top: 9px;
+                    line-height: 0;
+                    padding: 3px;
+                    cursor: pointer;
 
-                    &:active {
-                      background-color: #ffffff;
-                      color: #0077b4;
+                    i {
+                      color: #fff;
+                      opacity: 0.67;
+                      &:hover {
+                        opacity: 1;
+                      }
+                    }
+                  }
+                  .delete-invoice.active {
+                    i {
+                      color: #666666;
+                      &:hover {
+                        color: #e47885;
+                      }
                     }
                   }
                 }
                 .add-btn {
+                  float: left;
+                  position: relative;
+                  margin-left: 4px;
                   a {
+                    padding: 6px 10px 9px;
                     background-color: transparent;
                     cursor: pointer;
-                    padding-top: 11px;
-                    padding-bottom: 11px;
-                    padding-right: 17px;
+                    color: #ffffff;
+                    font-size: 13px;
+                    text-decoration: none;
+                    display: block;
+                    border-top-right-radius: 2px;
+                    border-top-left-radius: 2px;
                     i {
                       color: #ffffff;
-                      margin-left: 7px;
                     }
                     &:hover {
                       background-color: #006da4;
@@ -78,8 +121,8 @@
           list-style: none;
           text-align: right;
           float: right !important;
-          margin-top: 7px;
-          margin-bottom: 7px;
+          margin-top: 2px;
+          margin-bottom: 1px;
           li {
             float: left;
             padding-top: 6px;
@@ -122,6 +165,61 @@
                 text-align: center;
                 color: white;
               }
+              &:hover {
+                background-color: #0081c3;
+              }
+            }
+            ul.list-bar-menu {
+              width: 180px;
+              right: 0;
+              top: 100%;
+              padding: 0;
+              display: none;
+              position: absolute;
+              text-align: left;
+              float: left !important;
+              background-color: #0077b4;
+              z-index: 10004;
+              li {
+                width: 100%;
+                padding-top: 0;
+                margin-left: 0 !important;
+                a {
+                  padding: 10px 20px;
+                  -webkit-transition: color .15s ease;
+                  -moz-transition: color .15s ease;
+                  transition: color .15s ease;
+                  color: white;
+                  text-decoration: none;
+                  width: 100%;
+
+                  &:active,
+                  &:hover {
+                    background-color: #0090DA;
+                  }
+                }
+              }
+            }
+            ul.show {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    ::ng-deep {
+      .header {
+        .search-wrapper {
+          .dx-textbox {
+            .dx-texteditor-container {
+              padding-left: 30px !important;
+              .dx-texteditor-input {
+                padding-left: 0;
+              }
+              .dx-placeholder {
+                left: 22px !important;
+              }
             }
           }
         }
@@ -140,6 +238,114 @@
       height: 100%;
       float: right;
       border-left: 1px solid #e1e1e1;
+      .sale-user {
+        height: 38px;
+        padding: 10px 12px 0;
+        overflow: hidden;
+        .form-inline {
+          .form-group {
+            display: inline-block;
+            margin-bottom: 0;
+          }
+          .form-group.sales-man {
+            width: calc(100% - 110px);
+            i {
+              float: left;
+              margin: 3px 3px 0 0;
+              font-size: 12px;
+            }
+            .form-output {
+              position: relative;
+              padding: 0;
+              margin: 0;
+              display: inline-block;
+
+              .employee {
+                dx-select-box {
+                  border-width: 0;
+                  background-color: transparent;
+                  border-radius: 0;
+                  width: 160px;
+                  padding-left: 4px;
+                  line-height: 22px;
+                  height: 15px;
+                }
+              }
+            }
+          }
+          .form-group.pull-right {
+            float: right !important;
+          }
+        }
+      }
+
+      ::ng-deep {
+        .sale-user {
+          .form-output {
+            .employee {
+              .dx-texteditor-container {
+                .dx-texteditor-input {
+                  position: absolute;
+                  margin: 0;
+                  padding-bottom: 8px;
+                  min-height: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .col-right-content {
+        position: relative;
+        height: calc(100% - 38px);
+        overflow: auto;
+        .col-right-container {
+          .col-right-inside {
+            .customer-search {
+              position: relative;
+              margin-right: 9px;
+              margin-left: 10px;
+            }
+            .wraper-payment-content {
+              font-size: 13px;
+              position: relative;
+              margin-top: 60px;
+            }
+            .form-note-wrap {
+              height: 100%;
+              width: 100%;
+              position: relative;
+              .form-note {
+                margin: 10px 12px 0;
+                i {
+                  color: #999999;
+                  position: absolute;
+                  left: 14px;
+                  top: 11px;
+                }
+                dx-text-area {
+                  border: 0;
+                  background-color: transparent;
+                  padding-left: 15px;
+                }
+              }
+            }
+          }
+        }
+        .wrap-button {
+          margin: 0 12px;
+          padding-top: 5px;
+          height: 129px;
+
+          dx-button {
+            background-color: #4bac4d;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
     }
     .col-left {
       margin-right: 363px;
@@ -155,10 +361,6 @@
         background-color: white;
         border-bottom: 1px solid #e1e1e1;
         padding: 10px 12px 4px 20px;
-
-        .product-cart {
-
-        }
       }
     }
   }

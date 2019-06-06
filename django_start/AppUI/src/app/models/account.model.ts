@@ -1,4 +1,3 @@
-import {DateRange} from "../utils/enums";
 export class AccountLoginInput {
   username: string;
   password: string;
@@ -28,15 +27,11 @@ export class LoggedUser {
   first_name: string;
   last_name: string;
   phone: string;
-  is_superuser: boolean;
   name: string;
   address: string;
-  dare_birth: Date;
   title: string;
-  department: number;
   type: string;
   role: string;
-  last_login: string;
   exp: number;
 
   public constructor(init?: Partial<LoggedUser>) {
@@ -85,3 +80,4 @@ export class RegisterInput {
     Object.assign(this, init);
   }
 }
+

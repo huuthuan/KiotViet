@@ -6,7 +6,7 @@ from rest_framework_jwt.settings import api_settings
 from rest_framework import serializers
 
 from django_start.utils import mailer
-from .models import Shop, Employee, Role, AccountEmployee, Profile
+from .models import Shop, Role, Profile
 
 
 class RegisterSerializer(serializers.Serializer):
@@ -118,72 +118,102 @@ class UserProfileSerializer(serializers.Serializer):
         return token
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
+class RoleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AccountEmployee
+        model = Role
+        fields = ('id', 'name')
+        read_only_fields = ['id']
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
         fields = '__all__'
         read_only_fields = ['id']
 
+class AccountDetailSerializer(serializers.ModelSerializer):
+    profile = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email',
+                  'is_active', 'profile')
+
+    def get_profile(self, user):
+        profile = user.profile
+        serializer = ProfileSerializer(instance=profile, context=self.context)
+        return serializer.data
+
     def validate(self, data):
+        exclude_id = None
+        if self.instance:
+            exclude_id = self.instance.id
         if data.get('password') != data.get('confirm_password'):
             raise serializers.ValidationError('Passwords do not match.')
-        if User.objects.filter(email=data.get('email')).exists():
+        if User.objects.filter(email=data.get('email')).exclude(id=exclude_id).exists():
             raise serializers.ValidationError({"email": "Email already exist."})
-        if User.objects.filter(username=data.get('username')).exists():
+        if User.objects.filter(username=data.get('username')).exclude(id=exclude_id).exists():
             raise serializers.ValidationError('User name already exist.')
-        if Profile.objects.filter(phone=data.get('phone')).exists():
+        if Profile.objects.filter(phone=data.get('phone')).exclude(id=exclude_id).exists():
             raise serializers.ValidationError('Phone already exist.')
         return data
 
     def create(self, validated_data):
         data = self.initial_data
-        manage = User.objects.get(id=data.get('manage'))
-        role = Role.objects.get(id=data.get('role'))
 
         with transaction.atomic():
             try:
+                profile = data.get('profile')
+                role = Role.objects.get(id=profile.get('role'))
+                shop = data.get('shop')
+
                 # Create user
                 user = User.objects.create_user(
-                    username=validated_data['username'],
-                    password=validated_data['password'],
-                    email=validated_data['email'],
-                    is_active = validated_data['status']
+                    username=data.get('username'),
+                    password=data.get('password'),
+                    email=data.get('email'),
+                    first_name=data.get('first_name'),
+                    last_name=data.get('last_name'),
+                    is_active = data.get('is_active')
                 )
-                # Create employee
-                employee = Employee.objects.create(
-                    name=validated_data['shop_name'],
-                    phone=validated_data['phone'],
-                    date_birth=validated_data['date_birth'],
-                    address=validated_data['address'],
+                # Create profile
+                Profile.objects.create(
+                    name=data.get('first_name') + data.get('last_name'),
+                    gender=data.get('gender'),
+                    phone=profile.get('phone'),
+                    date_birth=profile.get('date_birth'),
+                    address=profile.get('address'),
+                    note=profile.get('note'),
+                    shop= shop,
                     role=role,
-                    manage=manage
-                )
-                # Create Account
-                AccountEmployee.objects.create(
-                    account=user,
-                    employee=employee,
+                    user=user
                 )
             except Exception as e:
                 raise e
 
     def update(self, instance, validated_data):
         data = self.initial_data
-        user = User.objects.get(id=data.get('created_by'))
+        profile = data.get('profile')
+        role = Role.objects.get(id=profile.get('role'))
         with transaction.atomic():
             try:
                 # Update customer
-                instance.name = validated_data.get('name')
-                instance.birthday = validated_data.get('birthday')
-                instance.gender = validated_data.get('gender')
+                instance.first_name = validated_data.get('first_name')
+                instance.last_name = validated_data.get('last_name')
+                instance.username = validated_data.get('username')
                 instance.email = validated_data.get('email')
-                instance.phone = validated_data.get('phone')
-                instance.tax_code = validated_data.get('tax_code')
-                instance.address = validated_data.get('address')
-                instance.created_by = user
-                instance.date_created = validated_data.get('date_created')
-                instance.note = validated_data.get('note')
+                instance.is_active = validated_data.get('is_active')
                 instance.save()
+
+                instance.profile.name = profile.get('first_name', instance.first_name) + data.get('last_name', instance.last_name)
+                instance.gender = profile.get('gender', instance.profile.gender),
+                instance.profile.phone = profile.get('phone', instance.profile.phone)
+                instance.profile.date_birth = profile.get('date_birth', instance.profile.date_birth)
+                instance.profile.address = profile.get('address', instance.profile.address)
+                instance.profile.note = profile.get('note', instance.profile.note)
+                instance.profile.role = role
+                instance.profile.save()
             except Exception as e:
                 raise e
 
-        return CustomerSerializer(instance=instance).data
+        return AccountDetailSerializer(instance=instance).data
+

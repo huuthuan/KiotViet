@@ -2,7 +2,7 @@ import {Component, OnDestroy, EventEmitter, OnInit, Output, Input, ViewChild} fr
 import {DxTreeViewComponent} from 'devextreme-angular';
 import {confirm} from 'devextreme/ui/dialog';
 import {Subscription} from 'rxjs';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isEqual} from 'lodash';
 
 
 import {UserService, ApiService} from '../../../services';
@@ -172,6 +172,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
     } else {
       this.onAddCategory();
     }
+  }
+
+  get isFormDirty() {
+    return !isEqual(this.editing_Category, this.category);
   }
 
   ngOnDestroy() {

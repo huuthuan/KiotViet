@@ -184,7 +184,7 @@
         <div class="row d-flex align-items-center mt-3">
             <div class="col text-lg-right mt-2">
                 <dx-button width="85" text="Save" type="danger"
-                           [(disabled)]="isSubmitting"
+                           [(disabled)]="!isFormDirty || isSubmitting"
                            (onClick)="onSaveClick($event)" class="mr-3"></dx-button>
                 <dx-button text="Cancel" (onClick)="onCancelProduct()"></dx-button>
             </div>
@@ -194,7 +194,7 @@
 
 <!--Detail Category-->
 <div class="popup-container" *ngIf="isCategoryPopup">
-    <dx-popup [title]="insurancePopupTitle" [width]="500" height="auto" [(visible)]="isCategoryPopup"
+    <dx-popup [title]="insurancePopupTitle" [width]="500" [(visible)]="isCategoryPopup"
               [dragEnabled]="false" class="center-popup">
         <div *dxTemplate="let data of 'content'">
             <app-category [(category)]="selectedCategory"

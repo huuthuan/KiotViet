@@ -631,7 +631,7 @@ var LoadingPanelComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"invoice\">\n    <div class=\"header\">\n        <div class=\"header-right\">\n            <ul>\n                <li class=\"user-name\">\n                    <a>\n                        <i class=\"fas fa-user-circle\"></i>\n                        <span class=\"user-name ml-2\"\n                              *ngIf=\"loggedUser\">{{ loggedUser.username }}</span>\n                    </a>\n                </li>\n                <li class=\"menu-bar\">\n                    <a class=\"list-bar\">\n                        <i class=\"fas fa-bars\"></i>\n                    </a>\n                </li>\n            </ul>\n        </div>\n        <div class=\"search-wrapper\">\n            <dx-text-box>\n            </dx-text-box>\n        </div>\n        <div class=\"header-tab\">\n            <div class=\"header-tab-wrap\">\n                <div class=\"content-tab\">\n                    <div class=\"scroll-lane\">\n                        <ul>\n                            <li routerLinkActive=\"active\" *ngFor=\"let report of invoiceReports\">\n                                <a (click)=\"onSelectTab(report)\">\n                                    <span>{{ report.invoice_code }}</span>\n                                </a>\n                            </li>\n                            <li class=\"add-btn\" (click)=\"onAddReport($event)\">\n                                <a>\n                                    <i class=\"fas fa-plus\"></i>\n                                </a>\n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"wrap-content\">\n        <div class=\"col-right\">\n            <app-payment></app-payment>\n        </div>\n        <div class=\"col-left\">\n            <div class=\"\">\n\n            </div>\n            <div class=\"report-wrapper\" *ngFor=\"let report of invoiceReports\" >\n                <div class=\"product-cart\">\n                    <ul>\n                        <li *ngFor=\"let product of report.products\" class=\"float-left mr-3\">{{ product.id }}\n                            - {{ product.name }}</li>\n                    </ul>\n                </div>\n            </div>\n            <app-sell-products (onAddProduct)=\"addProductInvoiceReport($event, report)\"></app-sell-products>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"invoice\">\n    <div class=\"header\">\n        <div class=\"header-right\">\n            <ul>\n                <li class=\"user-name\">\n                    <a>\n                        <i class=\"fas fa-user-circle\"></i>\n                        <span class=\"user-name ml-2\"\n                              *ngIf=\"loggedUser\">{{ loggedUser.username }}</span>\n                    </a>\n                </li>\n                <li class=\"menu-bar\" (clickOutside)=\"onCloseMenu()\">\n                    <a class=\"list-bar\" (click)=\"onToggleMenu()\">\n                        <i class=\"fas fa-bars\"></i>\n                    </a>\n                    <ul class=\"list-bar-menu\" [class.show]=\"isOpenMenu\">\n                        <li>\n                            <a [routerLink]=\"['/invoices']\">\n                                <i class=\"fa fa-list-alt fa-fw mr-2\"></i> Manage\n                            </a>\n                        </li>\n                        <li>\n                            <a (click)=\"onLogout()\">\n                                <i class=\"fas fa-power-off mr-2\"></i> Logout\n                            </a>\n                        </li>\n                    </ul>\n                </li>\n            </ul>\n        </div>\n        <div class=\"search-wrapper\">\n            <i class=\"fas fa-search\"></i>\n            <dx-text-box\n                    placeholder=\"Finding product\">\n            </dx-text-box>\n        </div>\n        <div class=\"header-tab\">\n            <div class=\"header-tab-wrap\">\n                <div class=\"content-tab\">\n                    <div class=\"scroll-lane\">\n                        <ul>\n                            <li *ngFor=\"let report of invoiceReports\">\n                                <a (click)=\"onSelectTab(report)\"\n                                   [ngClass]=\"{'active':selectedTab === report.invoice_code}\">\n                                    <span>\n                                        {{ report.invoice_name }}\n                                    </span>\n                                </a>\n                                <span class=\"delete-invoice\" title=\"Delete\"\n                                      [ngClass]=\"{'active':selectedTab === report.invoice_code}\">\n                                    <i class=\"fas fa-times\" (click)=\"onDeleteReport(report.invoice_code)\"></i>\n                                </span>\n                            </li>\n                            <li class=\"add-btn\" (click)=\"onAddReport($event)\" title=\"Add invoice\">\n                                <a>\n                                    <i class=\"fas fa-plus\"></i>\n                                </a>\n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"wrap-content\">\n        <div class=\"col-right\">\n            <div class=\"sale-user\">\n                <div class=\"form-inline\">\n                    <div class=\"form-group sales-man\">\n                        <i class=\"far fa-user-circle\"></i>\n                        <div class=\"form-output\">\n                            <span class=\"employee\">\n                                <dx-select-box [dataSource]=\"dataSource\"\n                                               displayExpr=\"profile.name\"\n                                               (onItemClick)=\"setCreatedByEmployee($event)\"\n                                               valueExpr=\"id\"\n                                               [(value)]=\"createdByEmployee\"\n                                               [searchEnabled]=\"true\">\n                                </dx-select-box>\n                            </span>\n                        </div>\n                    </div>\n                    <div class=\"form-group pull-right\">\n                        <label>\n                            12/03/2019 08:30\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-right-content\">\n                <div class=\"col-right-container\">\n                    <div class=\"col-right-inside\">\n                        <div class=\"customer-search\">\n                            <app-customer-search [(invoice)]=\"invoice\"></app-customer-search>\n                        </div>\n                        <div class=\"wraper-payment-content mt-9\">\n                            <app-payment [(invoice)]=\"invoice\"></app-payment>\n                        </div>\n                    </div>\n                    <div class=\"col-right-inside\">\n                        <div class=\"form-note-wrap\">\n                            <div class=\"form-note\">\n                                <i class=\"fas fa-pencil-alt\"></i>\n                                <dx-text-area\n                                        [height]=\"100\"\n                                        placeholder=\"Note\"\n                                        [(value)]=\"invoice.note\">\n                                </dx-text-area>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"wrap-button\">\n                    <dx-button width=\"100%\" height=\"60\" text=\"Payment (F9)\" type=\"danger\"></dx-button>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-left\">\n            <div class=\"report-wrapper\">\n                <app-product-cart [(invoice)]=\"invoice\"></app-product-cart>\n            </div>\n            <div>\n                <app-sell-products (onAddProduct)=\"addProductInvoiceReport($event)\"></app-sell-products>\n            </div>\n\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -642,7 +642,7 @@ module.exports = "<div class=\"invoice\">\n    <div class=\"header\">\n        <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".invoice {\n  height: 100%; }\n  @media screen and (max-width: 1599px) {\n    .invoice .header {\n      height: 55px;\n      background-color: #0090DA; }\n      .invoice .header .search-wrapper {\n        width: 540px;\n        float: left;\n        position: relative;\n        padding: 11px 0px 0px 12px; }\n      .invoice .header .header-tab {\n        margin: 0 370px 0 540px;\n        padding-top: 11px; }\n        .invoice .header .header-tab .header-tab-wrap {\n          width: 100%;\n          overflow: hidden; }\n          .invoice .header .header-tab .header-tab-wrap .content-tab {\n            float: left;\n            overflow: hidden;\n            width: 626px; }\n            .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul {\n              list-style: none;\n              padding: 0px;\n              margin: 0px; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li {\n                float: left;\n                position: relative;\n                margin-left: 4px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a {\n                  padding: 11px 10px 11px;\n                  color: #ffffff;\n                  font-size: 13px;\n                  padding-right: 24px;\n                  background-color: #0077b4;\n                  border-top: 3px solid transparent;\n                  text-decoration: none;\n                  display: block;\n                  border-top-right-radius: 2px;\n                  border-top-left-radius: 2px; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a:active {\n                    background-color: #ffffff;\n                    color: #0077b4; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a {\n                background-color: transparent;\n                cursor: pointer;\n                padding-top: 11px;\n                padding-bottom: 11px;\n                padding-right: 17px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a i {\n                  color: #ffffff;\n                  margin-left: 7px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a:hover {\n                  background-color: #006da4; }\n      .invoice .header .header-right {\n        width: 363px;\n        float: right; }\n        .invoice .header .header-right ul {\n          list-style: none;\n          text-align: right;\n          float: right !important;\n          margin-top: 7px;\n          margin-bottom: 7px; }\n          .invoice .header .header-right ul li {\n            float: left;\n            padding-top: 6px;\n            margin-left: 5px; }\n            .invoice .header .header-right ul li a {\n              color: white;\n              float: left;\n              line-height: 1.4;\n              padding: 5px; }\n          .invoice .header .header-right ul li.user-name {\n            width: 70px; }\n            .invoice .header .header-right ul li.user-name a {\n              float: right;\n              overflow: hidden;\n              white-space: nowrap;\n              text-overflow: ellipsis;\n              width: 100%;\n              padding-left: 0;\n              padding-right: 0;\n              cursor: default; }\n              .invoice .header .header-right ul li.user-name a span {\n                padding: 0;\n                text-align: left;\n                font-size: 13px; }\n          .invoice .header .header-right ul li.menu-bar {\n            padding: 0;\n            position: relative;\n            width: 50px; }\n            .invoice .header .header-right ul li.menu-bar a.list-bar {\n              padding: 11px 12px; }\n              .invoice .header .header-right ul li.menu-bar a.list-bar i {\n                font-size: 18px;\n                width: 18px;\n                text-align: center;\n                color: white; } }\n  .invoice .wrap-content {\n    height: calc(100% - 55px);\n    background-color: #ebebeb;\n    clear: both; }\n  .invoice .wrap-content .col-right {\n      width: 363px;\n      background-color: #fff;\n      height: 100%;\n      float: right;\n      border-left: 1px solid #e1e1e1; }\n  .invoice .wrap-content .col-left {\n      margin-right: 363px;\n      padding-right: 7px;\n      position: relative;\n      height: 100%;\n      overflow: hidden; }\n  .invoice .wrap-content .col-left .report-wrapper {\n        height: calc(100% - 330px);\n        transition: height 200ms ease-out;\n        overflow: auto;\n        background-color: white;\n        border-bottom: 1px solid #e1e1e1;\n        padding: 10px 12px 4px 20px; }\n  @media screen and (max-width: 1599px) {\n  .wrap-content {\n    height: calc(100% - 55px); } }\n  @media only screen and (max-width: 1023px) {\n  .col-right {\n    width: 313px; } }\n"
+module.exports = ".invoice {\n  height: 100%; }\n  @media screen and (max-width: 1599px) {\n    .invoice .header {\n      height: 45px;\n      background-color: #0090DA; }\n      .invoice .header .search-wrapper {\n        width: 540px;\n        float: left;\n        position: relative;\n        padding: 5px 0px 0px 12px; }\n        .invoice .header .search-wrapper i {\n          position: absolute;\n          left: 22px;\n          bottom: 10px;\n          font-size: 13px;\n          color: #999999;\n          width: 14px;\n          height: 14px;\n          text-align: center; }\n      .invoice .header .header-tab {\n        margin: 0 370px 0 540px;\n        padding-top: 10px; }\n        .invoice .header .header-tab .header-tab-wrap {\n          width: 100%;\n          overflow: hidden; }\n          .invoice .header .header-tab .header-tab-wrap .content-tab {\n            float: left;\n            overflow: hidden;\n            width: 626px; }\n            .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul {\n              list-style: none;\n              padding: 0px;\n              margin: 0px; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li {\n                float: left;\n                position: relative;\n                margin-left: 4px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a {\n                  padding: 6px 24px 10px 9px;\n                  color: #ffffff;\n                  font-size: 13px;\n                  background-color: #0077b4;\n                  border-top: 3px solid transparent;\n                  text-decoration: none;\n                  display: block;\n                  border-top-right-radius: 2px;\n                  border-top-left-radius: 2px; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a span {\n                    opacity: 0.67; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li a.active {\n                  background-color: #ffffff;\n                  color: #0077b4; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li .delete-invoice {\n                  position: absolute;\n                  right: 4px;\n                  top: 9px;\n                  line-height: 0;\n                  padding: 3px;\n                  cursor: pointer; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li .delete-invoice i {\n                    color: #fff;\n                    opacity: 0.67; }\n                    .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li .delete-invoice i:hover {\n                      opacity: 1; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li .delete-invoice.active i {\n                  color: #666666; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul li .delete-invoice.active i:hover {\n                    color: #e47885; }\n              .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn {\n                float: left;\n                position: relative;\n                margin-left: 4px; }\n                .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a {\n                  padding: 6px 10px 9px;\n                  background-color: transparent;\n                  cursor: pointer;\n                  color: #ffffff;\n                  font-size: 13px;\n                  text-decoration: none;\n                  display: block;\n                  border-top-right-radius: 2px;\n                  border-top-left-radius: 2px; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a i {\n                    color: #ffffff; }\n                  .invoice .header .header-tab .header-tab-wrap .content-tab .scroll-lane ul .add-btn a:hover {\n                    background-color: #006da4; }\n      .invoice .header .header-right {\n        width: 363px;\n        float: right; }\n        .invoice .header .header-right ul {\n          list-style: none;\n          text-align: right;\n          float: right !important;\n          margin-top: 2px;\n          margin-bottom: 1px; }\n          .invoice .header .header-right ul li {\n            float: left;\n            padding-top: 6px;\n            margin-left: 5px; }\n            .invoice .header .header-right ul li a {\n              color: white;\n              float: left;\n              line-height: 1.4;\n              padding: 5px; }\n          .invoice .header .header-right ul li.user-name {\n            width: 70px; }\n            .invoice .header .header-right ul li.user-name a {\n              float: right;\n              overflow: hidden;\n              white-space: nowrap;\n              text-overflow: ellipsis;\n              width: 100%;\n              padding-left: 0;\n              padding-right: 0;\n              cursor: default; }\n              .invoice .header .header-right ul li.user-name a span {\n                padding: 0;\n                text-align: left;\n                font-size: 13px; }\n          .invoice .header .header-right ul li.menu-bar {\n            padding: 0;\n            position: relative;\n            width: 50px; }\n            .invoice .header .header-right ul li.menu-bar a.list-bar {\n              padding: 11px 12px; }\n              .invoice .header .header-right ul li.menu-bar a.list-bar i {\n                font-size: 18px;\n                width: 18px;\n                text-align: center;\n                color: white; }\n              .invoice .header .header-right ul li.menu-bar a.list-bar:hover {\n                background-color: #0081c3; }\n            .invoice .header .header-right ul li.menu-bar ul.list-bar-menu {\n              width: 180px;\n              right: 0;\n              top: 100%;\n              padding: 0;\n              display: none;\n              position: absolute;\n              text-align: left;\n              float: left !important;\n              background-color: #0077b4;\n              z-index: 10004; }\n              .invoice .header .header-right ul li.menu-bar ul.list-bar-menu li {\n                width: 100%;\n                padding-top: 0;\n                margin-left: 0 !important; }\n                .invoice .header .header-right ul li.menu-bar ul.list-bar-menu li a {\n                  padding: 10px 20px;\n                  transition: color .15s ease;\n                  color: white;\n                  text-decoration: none;\n                  width: 100%; }\n                  .invoice .header .header-right ul li.menu-bar ul.list-bar-menu li a:active, .invoice .header .header-right ul li.menu-bar ul.list-bar-menu li a:hover {\n                    background-color: #0090DA; }\n            .invoice .header .header-right ul li.menu-bar ul.show {\n              display: block; }\n    .invoice ::ng-deep .header .search-wrapper .dx-textbox .dx-texteditor-container {\n      padding-left: 30px !important; }\n      .invoice ::ng-deep .header .search-wrapper .dx-textbox .dx-texteditor-container .dx-texteditor-input {\n        padding-left: 0; }\n      .invoice ::ng-deep .header .search-wrapper .dx-textbox .dx-texteditor-container .dx-placeholder {\n        left: 22px !important; } }\n  .invoice .wrap-content {\n    height: calc(100% - 55px);\n    background-color: #ebebeb;\n    clear: both; }\n  .invoice .wrap-content .col-right {\n      width: 363px;\n      background-color: #fff;\n      height: 100%;\n      float: right;\n      border-left: 1px solid #e1e1e1; }\n  .invoice .wrap-content .col-right .sale-user {\n        height: 38px;\n        padding: 10px 12px 0;\n        overflow: hidden; }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group {\n          display: inline-block;\n          margin-bottom: 0; }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group.sales-man {\n          width: calc(100% - 110px); }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group.sales-man i {\n            float: left;\n            margin: 3px 3px 0 0;\n            font-size: 12px; }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group.sales-man .form-output {\n            position: relative;\n            padding: 0;\n            margin: 0;\n            display: inline-block; }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group.sales-man .form-output .employee dx-select-box {\n              border-width: 0;\n              background-color: transparent;\n              border-radius: 0;\n              width: 160px;\n              padding-left: 4px;\n              line-height: 22px;\n              height: 15px; }\n  .invoice .wrap-content .col-right .sale-user .form-inline .form-group.pull-right {\n          float: right !important; }\n  .invoice .wrap-content .col-right ::ng-deep .sale-user .form-output .employee .dx-texteditor-container .dx-texteditor-input {\n        position: absolute;\n        margin: 0;\n        padding-bottom: 8px;\n        min-height: 10px; }\n  .invoice .wrap-content .col-right .col-right-content {\n        position: relative;\n        height: calc(100% - 38px);\n        overflow: auto; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .customer-search {\n          position: relative;\n          margin-right: 9px;\n          margin-left: 10px; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .wraper-payment-content {\n          font-size: 13px;\n          position: relative;\n          margin-top: 60px; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .form-note-wrap {\n          height: 100%;\n          width: 100%;\n          position: relative; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .form-note-wrap .form-note {\n            margin: 10px 12px 0; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .form-note-wrap .form-note i {\n              color: #999999;\n              position: absolute;\n              left: 14px;\n              top: 11px; }\n  .invoice .wrap-content .col-right .col-right-content .col-right-container .col-right-inside .form-note-wrap .form-note dx-text-area {\n              border: 0;\n              background-color: transparent;\n              padding-left: 15px; }\n  .invoice .wrap-content .col-right .col-right-content .wrap-button {\n          margin: 0 12px;\n          padding-top: 5px;\n          height: 129px; }\n  .invoice .wrap-content .col-right .col-right-content .wrap-button dx-button {\n            background-color: #4bac4d;\n            color: white;\n            font-size: 18px;\n            font-weight: bold; }\n  .invoice .wrap-content .col-left {\n      margin-right: 363px;\n      padding-right: 7px;\n      position: relative;\n      height: 100%;\n      overflow: hidden; }\n  .invoice .wrap-content .col-left .report-wrapper {\n        height: calc(100% - 330px);\n        transition: height 200ms ease-out;\n        overflow: auto;\n        background-color: white;\n        border-bottom: 1px solid #e1e1e1;\n        padding: 10px 12px 4px 20px; }\n  @media screen and (max-width: 1599px) {\n  .wrap-content {\n    height: calc(100% - 55px); } }\n  @media only screen and (max-width: 1023px) {\n  .col-right {\n    width: 313px; } }\n"
 
 /***/ }),
 
@@ -657,8 +657,10 @@ module.exports = ".invoice {\n  height: 100%; }\n  @media screen and (max-width:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellGoodsComponent", function() { return SellGoodsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
-/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
+/* harmony import */ var angular2_uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angular2-uuid */ "./node_modules/angular2-uuid/index.js");
+/* harmony import */ var angular2_uuid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(angular2_uuid__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services */ "./src/app/services/index.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../models */ "./src/app/models/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -671,17 +673,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SellGoodsComponent = /** @class */ (function () {
-    function SellGoodsComponent(userService, authService) {
+    function SellGoodsComponent(userService, apiService, authService) {
         this.userService = userService;
+        this.apiService = apiService;
         this.authService = authService;
-        this.loggedUser = new _models__WEBPACK_IMPORTED_MODULE_2__["LoggedUser"]();
+        this.loggedUser = new _models__WEBPACK_IMPORTED_MODULE_3__["LoggedUser"]();
+        this.dataSource = [];
+        this.isOpenMenu = false;
         this.isCustomerPopup = false;
         this.customerPopupTitle = 'New Customer';
-        this.selectedTab = 'Hoa don 1';
         this.invoiceReports = [
-            new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceReportModel"]({
-                invoice_code: 'Hoa don 1'
+            new _models__WEBPACK_IMPORTED_MODULE_3__["InvoiceReportModel"]({
+                invoice_code: angular2_uuid__WEBPACK_IMPORTED_MODULE_1__["UUID"].UUID(),
+                invoice_name: 'Hoa don 1',
+                customer: new _models__WEBPACK_IMPORTED_MODULE_3__["CustomerDetailModel"](),
+                total_quantity: 0,
+                total: 0,
+                discount: new _models__WEBPACK_IMPORTED_MODULE_3__["DiscountDetailModel"]({
+                    discount: 0,
+                    conversion_form: '$'
+                }),
+                note: null
             })
         ];
     }
@@ -690,26 +704,105 @@ var SellGoodsComponent = /** @class */ (function () {
         this.userSubscription = this.userService.currentUser.subscribe(function (user) {
             _this.loggedUser = user;
         });
+        this.loadEmployee();
+        this.selectedTab = this.invoiceReports[0].invoice_code;
+        this.invoice = this.invoiceReports[0];
+        this.createdByEmployee = this.invoice.created_by = this.loggedUser.user_id;
+    };
+    SellGoodsComponent.prototype.loadEmployee = function () {
+        var _this = this;
+        this.apiService.get(this.apiService.apiUrl + "/sell-goods/employees").subscribe(function (data) {
+            _this.dataSource = data;
+        });
     };
     SellGoodsComponent.prototype.onAddReport = function (e) {
-        var report = new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceReportModel"]({
-            invoice_code: 'Hoa don ' + (this.invoiceReports.length + 1)
+        debugger;
+        var report = new _models__WEBPACK_IMPORTED_MODULE_3__["InvoiceReportModel"]({
+            invoice_code: angular2_uuid__WEBPACK_IMPORTED_MODULE_1__["UUID"].UUID(),
+            invoice_name: 'Hoa don ' + (this.invoiceReports.length + 1),
+            created_by: this.loggedUser.user_id,
+            customer: new _models__WEBPACK_IMPORTED_MODULE_3__["CustomerDetailModel"](),
+            total_quantity: 0,
+            total: 0,
+            discount: new _models__WEBPACK_IMPORTED_MODULE_3__["DiscountDetailModel"]({
+                discount: 0,
+                conversion_form: '$'
+            }),
+            note: null
         });
+        for (var i = 0; i < this.invoiceReports.length; i++) {
+            if (this.invoiceReports[i].invoice_name === report.invoice_name) {
+                report.invoice_name = 'Hoa don ' + (this.invoiceReports.length + 3);
+            }
+        }
         this.invoiceReports.push(report);
+        this.selectedTab = report.invoice_code;
+        this.createdByEmployee = report.created_by;
+        this.invoice = report;
+    };
+    SellGoodsComponent.prototype.onSelectTab = function (report) {
+        this.selectedTab = report.invoice_code;
+        this.createdByEmployee = report.created_by;
+        this.invoice = report;
+    };
+    SellGoodsComponent.prototype.onDeleteReport = function (invoice_code) {
+        var index = this.invoiceReports.findIndex(function (invoice) { return invoice.invoice_code === invoice_code; });
+        this.invoiceReports.splice(index, 1);
+        if (this.selectedTab === invoice_code) {
+            var indexActive = this.invoiceReports.length - 1;
+            this.invoice = this.invoiceReports[indexActive];
+            this.selectedTab = this.invoice.invoice_code;
+        }
+    };
+    SellGoodsComponent.prototype.checkInvoiceExistProduct = function (product) {
+        for (var i = 0; i < this.invoice.products.length; i++) {
+            if (this.invoice.products[i].product.id === product.id) {
+                return i;
+            }
+        }
+    };
+    SellGoodsComponent.prototype.addProductsToCart = function (product) {
+        this.invoice.products.push(new _models__WEBPACK_IMPORTED_MODULE_3__["ProductInvoiceDetailModel"]({
+            product: product,
+            quantity: 1,
+            price: product.price_sale,
+            paid_amount: product.price_sale,
+            discount: new _models__WEBPACK_IMPORTED_MODULE_3__["DiscountDetailModel"]({
+                price: product.price_sale,
+                discount: null,
+                conversion_form: '$'
+            })
+        }));
+        this.invoice.total_quantity += 1;
+        this.invoice.total += product.price_sale;
+    };
+    SellGoodsComponent.prototype.addProductInvoiceReport = function (productNew) {
+        var products = this.invoice.products;
+        if (products.length !== 0) {
+            var index = this.checkInvoiceExistProduct(productNew);
+            if (!index && index !== 0) {
+                this.addProductsToCart(productNew);
+            }
+            else {
+                var quantity = this.invoice.products[index].quantity + 1;
+                var paid_amount = quantity * this.invoice.products[index].price;
+                this.invoice.products[index].quantity = quantity;
+                this.invoice.products[index].paid_amount = paid_amount;
+                this.invoice.total_quantity += 1;
+                this.invoice.total += this.invoice.products[index].price;
+            }
+        }
+        else {
+            this.addProductsToCart(productNew);
+        }
+    };
+    SellGoodsComponent.prototype.setCreatedByEmployee = function (e) {
+        this.invoice.created_by = e.itemData.id;
     };
     SellGoodsComponent.prototype.onAddCustomer = function () {
         this.customerPopupTitle = 'Add New Customer';
-        this.selectedCustomer = new _models__WEBPACK_IMPORTED_MODULE_2__["CustomerDetailModel"]();
+        this.selectedCustomer = new _models__WEBPACK_IMPORTED_MODULE_3__["CustomerDetailModel"]();
         this.isCustomerPopup = true;
-    };
-    SellGoodsComponent.prototype.onSelectTab = function (report) {
-        debugger;
-        this.selectedTab = report.invoice_code;
-    };
-    SellGoodsComponent.prototype.addProductInvoiceReport = function (product, report) {
-        report.products.push(new _models__WEBPACK_IMPORTED_MODULE_2__["InvoiceDetailModel"]({
-            product: product
-        }));
     };
     SellGoodsComponent.prototype.onSavedCustomer = function () {
         this.isCustomerPopup = false;
@@ -717,14 +810,26 @@ var SellGoodsComponent = /** @class */ (function () {
     SellGoodsComponent.prototype.onCancelCustomer = function () {
         this.isCustomerPopup = false;
     };
+    SellGoodsComponent.prototype.onToggleMenu = function () {
+        this.isOpenMenu = !this.isOpenMenu;
+    };
+    SellGoodsComponent.prototype.onCloseMenu = function () {
+        if (this.isOpenMenu) {
+            this.isOpenMenu = false;
+        }
+    };
+    SellGoodsComponent.prototype.onLogout = function () {
+        this.authService.logout();
+    };
     SellGoodsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-sell-goods',
             template: __webpack_require__(/*! ./sell-goods.component.html */ "./src/app/components/md-sell/sell-goods/sell-goods.component.html"),
             styles: [__webpack_require__(/*! ./sell-goods.component.scss */ "./src/app/components/md-sell/sell-goods/sell-goods.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["UserService"],
-            _services__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"]])
+        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_2__["UserService"],
+            _services__WEBPACK_IMPORTED_MODULE_2__["ApiService"],
+            _services__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
     ], SellGoodsComponent);
     return SellGoodsComponent;
 }());
@@ -973,28 +1078,59 @@ var CustomerDetailModel = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/models/employee.model.ts ***!
   \******************************************/
-/*! exports provided: RoleDetailModel, EmployeeDetailModel */
+/*! exports provided: AccountEmployeeModel, UpdateAccountEmployeeModel, EmployeeUserProfileModel, RoleDetailModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountEmployeeModel", function() { return AccountEmployeeModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateAccountEmployeeModel", function() { return UpdateAccountEmployeeModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeUserProfileModel", function() { return EmployeeUserProfileModel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleDetailModel", function() { return RoleDetailModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeDetailModel", function() { return EmployeeDetailModel; });
-/**
- * Created by Thuan Le on 04/18/2019.
- */
+var AccountEmployeeModel = /** @class */ (function () {
+    function AccountEmployeeModel(init) {
+        Object.assign(this, init);
+    }
+    return AccountEmployeeModel;
+}());
+
+var UpdateAccountEmployeeModel = /** @class */ (function () {
+    function UpdateAccountEmployeeModel(init) {
+        this.profile = new EmployeeUserProfileModel();
+        Object.assign(this, init);
+    }
+    UpdateAccountEmployeeModel.fromDetailModel = function (detail) {
+        var data = new UpdateAccountEmployeeModel({
+            id: detail.id,
+            username: detail.username,
+            first_name: detail.first_name,
+            last_name: detail.last_name,
+            email: detail.email,
+            is_active: detail.is_active
+        });
+        if (!!detail.profile) {
+            data.profile = new EmployeeUserProfileModel(detail.profile);
+        }
+        else {
+            data.profile = new EmployeeUserProfileModel();
+        }
+        return data;
+    };
+    return UpdateAccountEmployeeModel;
+}());
+
+var EmployeeUserProfileModel = /** @class */ (function () {
+    function EmployeeUserProfileModel(init) {
+        Object.assign(this, init);
+    }
+    return EmployeeUserProfileModel;
+}());
+
 var RoleDetailModel = /** @class */ (function () {
     function RoleDetailModel(init) {
         Object.assign(this, init);
     }
     return RoleDetailModel;
-}());
-
-var EmployeeDetailModel = /** @class */ (function () {
-    function EmployeeDetailModel(init) {
-        Object.assign(this, init);
-    }
-    return EmployeeDetailModel;
 }());
 
 
@@ -1005,7 +1141,7 @@ var EmployeeDetailModel = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/models/index.ts ***!
   \*********************************/
-/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput, RoleDetailModel, EmployeeDetailModel, UpdateProductModel, CategoryLookupModel, UpdateCategoryModel, ProductDetailModel, SearchOptions, SearchFilterModel, CustomerDetailModel, InvoiceReportModel, InvoiceDetailModel, ShopDetailModel */
+/*! exports provided: AccountLoginInput, LoginTokenModel, LoggedUser, UserConfirmPassword, ChangePasswordModel, ForgotPasswordModel, ResetPasswordModel, RegisterInput, AccountEmployeeModel, UpdateAccountEmployeeModel, EmployeeUserProfileModel, RoleDetailModel, UpdateProductModel, CategoryLookupModel, UpdateCategoryModel, ProductDetailModel, SearchOptions, SearchFilterModel, CustomerDetailModel, InvoiceReportModel, ProductInvoiceDetailModel, DiscountDetailModel, UpdateInvoiceReportModel, ShopDetailModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1028,9 +1164,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RegisterInput", function() { return _account_model__WEBPACK_IMPORTED_MODULE_0__["RegisterInput"]; });
 
 /* harmony import */ var _employee_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./employee.model */ "./src/app/models/employee.model.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RoleDetailModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["RoleDetailModel"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AccountEmployeeModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["AccountEmployeeModel"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmployeeDetailModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["EmployeeDetailModel"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateAccountEmployeeModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["UpdateAccountEmployeeModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmployeeUserProfileModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["EmployeeUserProfileModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RoleDetailModel", function() { return _employee_model__WEBPACK_IMPORTED_MODULE_1__["RoleDetailModel"]; });
 
 /* harmony import */ var _product_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product.model */ "./src/app/models/product.model.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateProductModel", function() { return _product_model__WEBPACK_IMPORTED_MODULE_2__["UpdateProductModel"]; });
@@ -1053,7 +1193,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _invoice_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./invoice.model */ "./src/app/models/invoice.model.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InvoiceReportModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["InvoiceReportModel"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InvoiceDetailModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["InvoiceDetailModel"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductInvoiceDetailModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["ProductInvoiceDetailModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DiscountDetailModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["DiscountDetailModel"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpdateInvoiceReportModel", function() { return _invoice_model__WEBPACK_IMPORTED_MODULE_6__["UpdateInvoiceReportModel"]; });
 
 /* harmony import */ var _shop_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shop.model */ "./src/app/models/shop.model.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ShopDetailModel", function() { return _shop_model__WEBPACK_IMPORTED_MODULE_7__["ShopDetailModel"]; });
@@ -1074,16 +1218,20 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./src/app/models/invoice.model.ts ***!
   \*****************************************/
-/*! exports provided: InvoiceReportModel, InvoiceDetailModel */
+/*! exports provided: InvoiceReportModel, ProductInvoiceDetailModel, DiscountDetailModel, UpdateInvoiceReportModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceReportModel", function() { return InvoiceReportModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceDetailModel", function() { return InvoiceDetailModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductInvoiceDetailModel", function() { return ProductInvoiceDetailModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DiscountDetailModel", function() { return DiscountDetailModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateInvoiceReportModel", function() { return UpdateInvoiceReportModel; });
+/* harmony import */ var _customer_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customer.model */ "./src/app/models/customer.model.ts");
 /**
  * Created by Thuan Le on 04/12/2019.
  */
+
 var InvoiceReportModel = /** @class */ (function () {
     function InvoiceReportModel(init) {
         this.products = [];
@@ -1092,11 +1240,45 @@ var InvoiceReportModel = /** @class */ (function () {
     return InvoiceReportModel;
 }());
 
-var InvoiceDetailModel = /** @class */ (function () {
-    function InvoiceDetailModel(init) {
+var ProductInvoiceDetailModel = /** @class */ (function () {
+    function ProductInvoiceDetailModel(init) {
         Object.assign(this, init);
     }
-    return InvoiceDetailModel;
+    return ProductInvoiceDetailModel;
+}());
+
+var DiscountDetailModel = /** @class */ (function () {
+    function DiscountDetailModel(init) {
+        Object.assign(this, init);
+    }
+    return DiscountDetailModel;
+}());
+
+var UpdateInvoiceReportModel = /** @class */ (function () {
+    function UpdateInvoiceReportModel(init) {
+        this.customer = new _customer_model__WEBPACK_IMPORTED_MODULE_0__["CustomerDetailModel"]();
+        this.products = [];
+        Object.assign(this, init);
+    }
+    UpdateInvoiceReportModel.fromDetailModel = function (detail) {
+        var data = new UpdateInvoiceReportModel({
+            id: detail.id,
+            invoice_code: detail.invoice_code,
+            created_by: detail.created_by,
+            created_date: detail.created_date,
+            total_quantity: detail.total_quantity,
+            total: detail.total,
+            note: detail.note
+        });
+        if (!!detail.customer) {
+            data.customer = new _customer_model__WEBPACK_IMPORTED_MODULE_0__["CustomerDetailModel"](detail.customer);
+        }
+        else {
+            data.customer = new _customer_model__WEBPACK_IMPORTED_MODULE_0__["CustomerDetailModel"]();
+        }
+        return data;
+    };
+    return UpdateInvoiceReportModel;
 }());
 
 
@@ -1203,8 +1385,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_permissions__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(ngx_permissions__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var devextreme_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! devextreme-angular */ "./node_modules/devextreme-angular/index.js");
 /* harmony import */ var devextreme_angular__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(devextreme_angular__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _pipies__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pipies */ "./src/app/pipies/index.ts");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components */ "./src/app/components/index.ts");
+/* harmony import */ var ng_click_outside__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng-click-outside */ "./node_modules/ng-click-outside/lib/index.js");
+/* harmony import */ var ng_click_outside__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(ng_click_outside__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _pipies__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pipies */ "./src/app/pipies/index.ts");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components */ "./src/app/components/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1219,25 +1403,27 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var BASE_MODULES = [
     _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
     _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
     _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"],
     ngx_permissions__WEBPACK_IMPORTED_MODULE_4__["NgxPermissionsModule"],
+    ng_click_outside__WEBPACK_IMPORTED_MODULE_6__["ClickOutsideModule"],
     //
     // Dev Extreme
     devextreme_angular__WEBPACK_IMPORTED_MODULE_5__["DevExtremeModule"]
 ];
 var COMPONENTS = [
-    _components__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"],
-    _components__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
-    _components__WEBPACK_IMPORTED_MODULE_7__["SidebarComponent"],
-    _components__WEBPACK_IMPORTED_MODULE_7__["ErrorComponent"],
-    _components__WEBPACK_IMPORTED_MODULE_7__["LoadingPanelComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_8__["LayoutComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_8__["HeaderComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_8__["SidebarComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_8__["ErrorComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_8__["LoadingPanelComponent"],
 ];
 var DIRECTIVES = [];
 var PIPES = [
-    _pipies__WEBPACK_IMPORTED_MODULE_6__["JoinPipe"]
+    _pipies__WEBPACK_IMPORTED_MODULE_7__["JoinPipe"]
 ];
 var NB_THEME_PROVIDERS = [];
 var SharedModule = /** @class */ (function () {

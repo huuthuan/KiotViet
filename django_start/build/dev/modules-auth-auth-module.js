@@ -226,10 +226,10 @@ var LoginComponent = /** @class */ (function () {
         this.authService.login(edited_user).subscribe(function (data) {
             if (data.token) {
                 _this.userService.setAccessToken(data.token);
-                if (e.element.innerText == 'Manage') {
+                if (e.element.innerText === 'Manage') {
                     _this.userService.redirectToPanel();
                 }
-                if (e.element.innerText == 'Sell goods') {
+                if (e.element.innerText === 'Sell goods') {
                     _this.userService.redirectToSalesPage();
                 }
             }

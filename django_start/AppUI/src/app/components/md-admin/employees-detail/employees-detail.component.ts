@@ -1,11 +1,15 @@
 import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {cloneDeep} from 'lodash';
-import {formatDate} from '@angular/common';
+import {cloneDeep, isEqual} from 'lodash';
 
 import {Utils} from '../../../utils/utilities';
 import {UserService, ApiService} from '../../../services';
-import {LoggedUser, EmployeeDetailModel} from '../../../models';
+import {
+  LoggedUser,
+  AccountEmployeeModel,
+  RoleDetailModel,
+  UpdateAccountEmployeeModel
+} from '../../../models';
 
 @Component({
   selector: 'app-employees-detail',
@@ -13,20 +17,20 @@ import {LoggedUser, EmployeeDetailModel} from '../../../models';
   styleUrls: ['./employees-detail.component.scss']
 })
 export class EmployeesDetailComponent implements OnInit {
-  private _employee: EmployeeDetailModel;
+  private _employee: AccountEmployeeModel;
   @Input()
-  get employee(): EmployeeDetailModel {
+  get employee(): AccountEmployeeModel {
     return this._employee;
   }
-
-  set employee(value: EmployeeDetailModel) {
+  set employee(value: AccountEmployeeModel) {
     this._employee = value;
   }
-
   employeeSubscription: Subscription;
   loggedUser: LoggedUser = new LoggedUser();
-  editing_Employee: EmployeeDetailModel;
+  editing_Employee: UpdateAccountEmployeeModel;
+  roles: RoleDetailModel[] = [];
   isSubmitting: boolean = false;
+  isOnReadOnlyRole: boolean = false;
   genderMale: boolean;
   genderFemale: boolean;
   phonePattern: any = /^\+\s*1\s*\(\s*[02-9]\d{2}\)\s*\d{3}\s*-\s*\d{3}$/;
@@ -47,6 +51,19 @@ export class EmployeesDetailComponent implements OnInit {
       this.loggedUser = user;
     });
     this.editing_Employee = cloneDeep(this.employee);
+    debugger
+    if (!this.editing_Employee.id) {
+      this.editing_Employee.is_active = true;
+    }
+    this.loadRole();
+  }
+
+  loadRole() {
+    this.apiService.get(`${this.apiService.apiUrl}/auth/roles`).subscribe((data) => {
+      this.roles = data;
+    }, (error) => {
+      console.error(error);
+    });
   }
 
   onCancelEmployee() {
@@ -54,19 +71,20 @@ export class EmployeesDetailComponent implements OnInit {
   }
 
   genderMaleChanged() {
-    if (this.genderFemale)
+    if (this.genderFemale) {
       this.genderFemale = !this.genderMale;
+    }
   }
 
   genderFemaleChanged() {
-    if (this.genderMale)
+    if (this.genderMale) {
       this.genderMale = !this.genderFemale;
+    }
   }
 
   onAddEmployee() {
     this.isSubmitting = true;
-    this.editing_Employee.manage = this.loggedUser.user_id;
-    this.apiService.post(`${this.apiService.apiUrl}/sell-goods/customers/`, this.editing_Employee).subscribe((data) => {
+    this.apiService.post(`${this.apiService.apiUrl}/auth/employees/`, this.editing_Employee).subscribe((data) => {
       this.onSuccess.emit();
       Utils.notifySuccess('Customer has been added successfully.');
       this.isSubmitting = false;
@@ -84,7 +102,7 @@ export class EmployeesDetailComponent implements OnInit {
 
   onUpdateEmployee() {
     this.isSubmitting = true;
-    this.apiService.update(`${this.apiService.apiUrl}/sell-goods/customers/${this.editing_Employee.id}`, this.editing_Employee).subscribe((data) => {
+    this.apiService.update(`${this.apiService.apiUrl}/auth/employees/${this.editing_Employee.id}`, this.editing_Employee).subscribe((data) => {
       this.onSuccess.emit();
       Utils.notifySuccess('Customer has been added successfully.');
       this.isSubmitting = false;
@@ -110,5 +128,9 @@ export class EmployeesDetailComponent implements OnInit {
     } else {
       this.onAddEmployee();
     }
+  }
+
+  get isFormDirty() {
+    return !isEqual(this.editing_Employee, this.employee);
   }
 }

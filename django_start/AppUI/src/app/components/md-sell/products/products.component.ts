@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import {ApiService} from '../../../services';
 
@@ -12,13 +11,6 @@ import {ProductDetailModel} from '../../../models';
 })
 export class ProductsComponent implements OnInit {
   @Output() onAddProduct = new EventEmitter<any>();
-  config: SwiperConfigInterface = {
-    slidesPerView: 'auto',
-    mousewheel: false,
-    scrollbar: false,
-    navigation: true,
-    pagination: true,
-  };
 
   products: ProductDetailModel[] = [];
   isLoading: boolean = false;

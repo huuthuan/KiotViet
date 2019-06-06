@@ -28,29 +28,29 @@
                         </div>
                     </dxi-column>
                     <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-                    <dxi-column dataField="name" caption="User name" [width]="150" [allowFiltering]="true"
+                    <dxi-column dataField="username" caption="User name" [width]="120" [allowFiltering]="true"
                                 [allowHeaderFiltering]="true">
                     </dxi-column>
-                    <dxi-column dataField="phone" caption="Full name" [allowFiltering]="true"
+                    <dxi-column dataField="profile.name" caption="Full name" [allowFiltering]="true"
                                 [allowHeaderFiltering]="true">
                     </dxi-column>
-                    <dxi-column dataField="birthday" width="100" caption="Birthday"
+                    <dxi-column dataField="profile.date_birth" width="100" caption="Birthday"
                                 cellTemplate="cellTemplateStartTime">
                         <div *dxTemplate="let cellData of 'cellTemplateStartTime'">
                             {{ (cellData.value) | date: 'MM/dd/yyyy' }}
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="phone" caption="Phone" [width]="150" [allowFiltering]="true"
+                    <dxi-column dataField="profile.phone" caption="Phone" [width]="120" [allowFiltering]="true"
                                 [allowHeaderFiltering]="true">
                     </dxi-column>
-                    <dxi-column dataField="email" caption="Email" [width]="150" [allowFiltering]="true"
+                    <dxi-column dataField="email" caption="Email" [width]="160" [allowFiltering]="true"
                                 [allowHeaderFiltering]="true">
                     </dxi-column>
-                    <dxi-column dataField="address" caption="Address" [allowFiltering]="true"
-                                [allowHeaderFiltering]="true" width="150">
+                    <dxi-column dataField="profile.address" caption="Address" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true" width="160">
                     </dxi-column>
-                    <dxi-column dataField="address" caption="Status" [allowFiltering]="true"
-                                [allowHeaderFiltering]="true" width="150">
+                    <dxi-column dataField="is_active" caption="Status" [allowFiltering]="true"
+                                [allowHeaderFiltering]="true" width="60">
                     </dxi-column>
                     <dxi-column dataField="id" [width]="80" caption="Action" alignment="center"
                                 cellTemplate="cellTemplateAction"
