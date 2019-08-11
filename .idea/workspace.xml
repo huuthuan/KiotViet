@@ -1,8 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e1d6aa1-9e37-4441-a9e3-ff958c3f1e09" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_start/.idea/workspace.xml" afterPath="$PROJECT_DIR$/django_start/.idea/workspace.xml" />
+    <list default="true" id="8e1d6aa1-9e37-4441-a9e3-ff958c3f1e09" name="Default" comment="Implement API to products">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources.local.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata.keystream.len" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata.len" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata.values.at" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata_i" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/_metadata_/metadata_i.len" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/dataSources/1745a5e7-25e7-4f3e-bf94-dca74fba447b/storage.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/django_start.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/jsLibraryMappings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/jsLinters/eslint.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/jsLinters/tslint.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/typescript-compiler.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/watcherTasks.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/webResources.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/3.1.1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/.editorconfig" afterPath="$PROJECT_DIR$/AppUI/.editorconfig" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/.gitignore" afterPath="$PROJECT_DIR$/AppUI/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/README.md" afterPath="$PROJECT_DIR$/AppUI/README.md" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/angular.json" afterPath="$PROJECT_DIR$/AppUI/angular.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/e2e/protractor.conf.js" afterPath="$PROJECT_DIR$/AppUI/e2e/protractor.conf.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/e2e/src/app.e2e-spec.ts" afterPath="$PROJECT_DIR$/AppUI/e2e/src/app.e2e-spec.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/e2e/src/app.po.ts" afterPath="$PROJECT_DIR$/AppUI/e2e/src/app.po.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/e2e/tsconfig.e2e.json" afterPath="$PROJECT_DIR$/AppUI/e2e/tsconfig.e2e.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/package-lock.json" afterPath="$PROJECT_DIR$/AppUI/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/package.json" afterPath="$PROJECT_DIR$/AppUI/package.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/app-routing.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/app-routing.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/app.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/app.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/app.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/app.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/error/error.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/error/error.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/error/error.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/error/error.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/error/error.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/error/error.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/header/header.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/header/header.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/header/header.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/header/header.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/header/header.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/header/header.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/layout/layout.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/layout/layout.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/layout/layout.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/layout/layout.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/layout/layout.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/layout/layout.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/loading-panel/loading-panel.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/loading-panel/loading-panel.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/loading-panel/loading-panel.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/loading-panel/loading-panel.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/loading-panel/loading-panel.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/loading-panel/loading-panel.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/category/category.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/category/category.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/category/category.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/category/category.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/category/category.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/category/category.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer-detail/customer-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer/customer.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer/customer.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer/customer.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer/customer.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/customer/customer.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/customer/customer.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees-detail/employees-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees/employees.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees/employees.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees/employees.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees/employees.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/employees/employees.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/employees/employees.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoice-detail/invoice-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoices/invoices.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoices/invoices.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoices/invoices.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoices/invoices.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/invoices/invoices.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/invoices/invoices.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product-detail/product-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product-detail/product-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product-detail/product-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product-detail/product-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product-detail/product-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product-detail/product-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product/product.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product/product.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product/product.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product/product.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/product/product.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/product/product.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/search-form/search-form.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/search-form/search-form.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/search-form/search-form.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/search-form/search-form.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/search-form/search-form.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/search-form/search-form.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-admin/shop-detail/shop-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/change-password/change-password.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/change-password/change-password.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/change-password/change-password.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/change-password/change-password.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/change-password/change-password.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/change-password/change-password.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/login/login.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/login/login.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/login/login.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/login/login.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/login/login.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/login/login.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/profile/profile.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/profile/profile.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/profile/profile.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/profile/profile.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/profile/profile.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/profile/profile.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/register/register.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/register/register.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/register/register.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/register/register.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-auth/register/register.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-auth/register/register.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/cart-tabs/cart-tabs.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-detail/customer-detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-search/customer-search.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-search/customer-search.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-search/customer-search.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-search/customer-search.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/customer-search/customer-search.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/customer-search/customer-search.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/payment/payment.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/payment/payment.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/payment/payment.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/payment/payment.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/payment/payment.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/payment/payment.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/product-cart/product-cart.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/product-cart/product-cart.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/product-cart/product-cart.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/product-cart/product-cart.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/product-cart/product-cart.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/product-cart/product-cart.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/products/products.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/products/products.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/products/products.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/products/products.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/products/products.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/products/products.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/md-sell/sell-goods/sell-goods.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/sidebar/sidebar.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/components/sidebar/sidebar.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/sidebar/sidebar.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/components/sidebar/sidebar.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/components/sidebar/sidebar.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/components/sidebar/sidebar.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/account.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/account.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/category.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/category.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/customer.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/customer.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/employee.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/employee.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/invoice.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/invoice.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/product.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/product.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/search.models.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/search.models.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/models/shop.model.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/models/shop.model.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/auth/auth.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/auth/auth.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/client/client.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/client/client.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/client/client.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/client/client.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/client/dashboard/dashboard.component.html" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/client/dashboard/dashboard.component.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/client/dashboard/dashboard.component.scss" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/client/dashboard/dashboard.component.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/client/dashboard/dashboard.component.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/client/dashboard/dashboard.component.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/sell-goods/sell-goods.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/sell-goods/sell-goods.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/modules/shared.module.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/modules/shared.module.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/pipies/array.pipies.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/pipies/array.pipies.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/pipies/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/pipies/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/api.service.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/api.service.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/authentication.service.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/authentication.service.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/gaurds/auth.guard.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/gaurds/auth.guard.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/gaurds/guest.guard.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/gaurds/guest.guard.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/gaurds/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/gaurds/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/index.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/index.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/router.service.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/router.service.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/shared.service.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/shared.service.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/services/user.service.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/services/user.service.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/utils/consts.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/utils/consts.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/utils/enums.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/utils/enums.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/app/utils/utilities.ts" afterPath="$PROJECT_DIR$/AppUI/src/app/utils/utilities.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/.gitkeep" afterPath="$PROJECT_DIR$/AppUI/src/assets/.gitkeep" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-300.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-300.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-300.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-300.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-300.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-300.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-400.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-400.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-400.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-400.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-400.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-400.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-500.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-500.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-500.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-500.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-500.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-500.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-700.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-700.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-700.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-700.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/fonts/Roboto-700.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/fonts/Roboto-700.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxicons.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxicons.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxicons.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxicons.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxicons.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxicons.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsios.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsios.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsios.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsios.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsios.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsios.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsmaterial.ttf" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsmaterial.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsmaterial.woff" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsmaterial.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/icons/dxiconsmaterial.woff2" afterPath="$PROJECT_DIR$/AppUI/src/assets/icons/dxiconsmaterial.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/images/avatar.png" afterPath="$PROJECT_DIR$/AppUI/src/assets/images/avatar.png" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/images/favicon.ico" afterPath="$PROJECT_DIR$/AppUI/src/assets/images/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/images/logo.png" afterPath="$PROJECT_DIR$/AppUI/src/assets/images/logo.png" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/bootstrap.min.css" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/bootstrap.min.css" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/devextreme-override.scss" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/devextreme-override.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/generic.light.custom.scss" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/generic.light.custom.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/mixins.scss" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/mixins.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/shared.scss" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/shared.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/assets/scss/variables.scss" afterPath="$PROJECT_DIR$/AppUI/src/assets/scss/variables.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/browserslist" afterPath="$PROJECT_DIR$/AppUI/src/browserslist" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/environments/environment.prod.ts" afterPath="$PROJECT_DIR$/AppUI/src/environments/environment.prod.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/environments/environment.ts" afterPath="$PROJECT_DIR$/AppUI/src/environments/environment.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/favicon.ico" afterPath="$PROJECT_DIR$/AppUI/src/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/index.html" afterPath="$PROJECT_DIR$/AppUI/src/index.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/karma.conf.js" afterPath="$PROJECT_DIR$/AppUI/src/karma.conf.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/main.ts" afterPath="$PROJECT_DIR$/AppUI/src/main.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/polyfills.ts" afterPath="$PROJECT_DIR$/AppUI/src/polyfills.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/styles.sass" afterPath="$PROJECT_DIR$/AppUI/src/styles.sass" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/styles.scss" afterPath="$PROJECT_DIR$/AppUI/src/styles.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/test.ts" afterPath="$PROJECT_DIR$/AppUI/src/test.ts" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/tsconfig.app.json" afterPath="$PROJECT_DIR$/AppUI/src/tsconfig.app.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/tsconfig.spec.json" afterPath="$PROJECT_DIR$/AppUI/src/tsconfig.spec.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/src/tslint.json" afterPath="$PROJECT_DIR$/AppUI/src/tslint.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/tsconfig.json" afterPath="$PROJECT_DIR$/AppUI/tsconfig.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/AppUI/tslint.json" afterPath="$PROJECT_DIR$/AppUI/tslint.json" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-300.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-300.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-300.woff" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-300.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-300.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-300.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-400.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-400.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-400.woff" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-400.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-400.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-400.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-500.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-500.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-500.woff" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-500.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-500.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-500.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-700.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-700.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-700.woff" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-700.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/fonts/Roboto-700.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/fonts/Roboto-700.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxicons.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxicons.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxicons.woff" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxicons.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxicons.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxicons.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsios.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsios.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsios.woff" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsios.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsios.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsios.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsmaterial.ttf" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsmaterial.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsmaterial.woff" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsmaterial.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/icons/dxiconsmaterial.woff2" afterPath="$PROJECT_DIR$/build/dev/assets/icons/dxiconsmaterial.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/images/avatar.png" afterPath="$PROJECT_DIR$/build/dev/assets/images/avatar.png" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/images/favicon.ico" afterPath="$PROJECT_DIR$/build/dev/assets/images/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/images/logo.png" afterPath="$PROJECT_DIR$/build/dev/assets/images/logo.png" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/bootstrap.min.css" afterPath="$PROJECT_DIR$/build/dev/assets/scss/bootstrap.min.css" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/devextreme-override.scss" afterPath="$PROJECT_DIR$/build/dev/assets/scss/devextreme-override.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/generic.light.custom.scss" afterPath="$PROJECT_DIR$/build/dev/assets/scss/generic.light.custom.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/mixins.scss" afterPath="$PROJECT_DIR$/build/dev/assets/scss/mixins.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/shared.scss" afterPath="$PROJECT_DIR$/build/dev/assets/scss/shared.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/assets/scss/variables.scss" afterPath="$PROJECT_DIR$/build/dev/assets/scss/variables.scss" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/dxicons.ttf" afterPath="$PROJECT_DIR$/build/dev/dxicons.ttf" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/dxicons.woff" afterPath="$PROJECT_DIR$/build/dev/dxicons.woff" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/dxicons.woff2" afterPath="$PROJECT_DIR$/build/dev/dxicons.woff2" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/favicon.ico" afterPath="$PROJECT_DIR$/build/dev/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/index.html" afterPath="$PROJECT_DIR$/build/dev/index.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/main.js" afterPath="$PROJECT_DIR$/build/dev/main.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/main.js.map" afterPath="$PROJECT_DIR$/build/dev/main.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-auth-auth-module.js" afterPath="$PROJECT_DIR$/build/dev/modules-auth-auth-module.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-auth-auth-module.js.map" afterPath="$PROJECT_DIR$/build/dev/modules-auth-auth-module.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-client-client-module.js" afterPath="$PROJECT_DIR$/build/dev/modules-client-client-module.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-client-client-module.js.map" afterPath="$PROJECT_DIR$/build/dev/modules-client-client-module.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-sell-goods-sell-goods-module.js" afterPath="$PROJECT_DIR$/build/dev/modules-sell-goods-sell-goods-module.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/modules-sell-goods-sell-goods-module.js.map" afterPath="$PROJECT_DIR$/build/dev/modules-sell-goods-sell-goods-module.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/polyfills.js" afterPath="$PROJECT_DIR$/build/dev/polyfills.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/polyfills.js.map" afterPath="$PROJECT_DIR$/build/dev/polyfills.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/runtime.js" afterPath="$PROJECT_DIR$/build/dev/runtime.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/runtime.js.map" afterPath="$PROJECT_DIR$/build/dev/runtime.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/scripts.js" afterPath="$PROJECT_DIR$/build/dev/scripts.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/scripts.js.map" afterPath="$PROJECT_DIR$/build/dev/scripts.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/styles.js" afterPath="$PROJECT_DIR$/build/dev/styles.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/styles.js.map" afterPath="$PROJECT_DIR$/build/dev/styles.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/vendor.js" afterPath="$PROJECT_DIR$/build/dev/vendor.js" />
+      <change beforePath="$PROJECT_DIR$/django_start/build/dev/vendor.js.map" afterPath="$PROJECT_DIR$/build/dev/vendor.js.map" />
+      <change beforePath="$PROJECT_DIR$/django_start/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change beforePath="$PROJECT_DIR$/django_start/example.env" afterPath="$PROJECT_DIR$/example.env" />
+      <change beforePath="$PROJECT_DIR$/django_start/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
+      <change beforePath="$PROJECT_DIR$/django_start/media/.gitignore" afterPath="$PROJECT_DIR$/media/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/django_start/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change beforePath="$PROJECT_DIR$/django_start/requirements/base.txt" afterPath="$PROJECT_DIR$/requirements/base.txt" />
+      <change beforePath="$PROJECT_DIR$/django_start/requirements/local.txt" afterPath="$PROJECT_DIR$/requirements/local.txt" />
+      <change beforePath="$PROJECT_DIR$/django_start/requirements/production.txt" afterPath="$PROJECT_DIR$/requirements/production.txt" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/404.html" afterPath="$PROJECT_DIR$/templates/404.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/500.html" afterPath="$PROJECT_DIR$/templates/500.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/emails/base.html" afterPath="$PROJECT_DIR$/templates/emails/base.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/emails/dns_tool/dns_tool_email.html" afterPath="$PROJECT_DIR$/templates/emails/dns_tool/dns_tool_email.html" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/emails/dns_tool/dns_tool_subject.txt" afterPath="$PROJECT_DIR$/templates/emails/dns_tool/dns_tool_subject.txt" />
+      <change beforePath="$PROJECT_DIR$/django_start/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,12 +277,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -24,7 +307,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -45,204 +328,52 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KiotViet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="AppUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="AppUI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="django_start" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="requirements" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SalesManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SalesManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -353,9 +484,6 @@
       <module name="KiotViet" />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts />
@@ -400,9 +528,20 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -411,6 +550,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554304829716</updated>
+      <workItem from="1565498987091" duration="234000" />
     </task>
     <task id="LOCAL-00001" summary="Implement API to products">
       <created>1554306019832</created>
@@ -429,37 +569,36 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="234000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="0" y="23" width="1440" height="824" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/django_start/AppUI/node_modules/karma/config.tpl.js" />
-      </list>
-    </option>
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -477,9 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1089">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -487,9 +623,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-837">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
